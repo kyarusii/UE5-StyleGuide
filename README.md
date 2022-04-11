@@ -151,7 +151,7 @@
 ### 맵(map)과 레벨(level)
 <a name="terms-level-map"></a>
 
-맵(map)은 일반적으로 게임플레이의 월드가 되는 레벨(level)을 의미합니다.  
+맵(map)은 일반적으로 게임플레이의 월드가 되는 레벨(level)을 의미합니다.  테스트
 <br>
 
 <a name="terms-cases"></a>

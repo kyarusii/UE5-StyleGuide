@@ -7,7 +7,6 @@
 >[UE 마켓플레이스 가이드라인](https://www.unrealengine.com/ko/marketplace-guidelines?sessionInvalidated=true)  
 >[UE Recommended Asset Naming Conventions](https://docs.unrealengine.com/4.27/ko/ProductionPipelines/AssetNaming/)  
 >[LyraStarterGame](https://www.unrealengine.com/marketplace/en-US/product/lyra)  
->[CitySample](https://www.unrealengine.com/marketplace/en-US/product/city-sample)  
 >[Valley of the Ancient](https://www.unrealengine.com/marketplace/en-US/product/ancient-game-01?lang=en-US)
 
 <br>
@@ -16,7 +15,7 @@
 
 <br>
 
-## 목차
+## **목차**
 - [중요한 용어들]()
   - [맵(map)과 레벨(level)]()
   - [명명 규칙 종류]()
@@ -144,126 +143,111 @@
 <br>
 
 
-## 중요한 용어들
+## **중요한 용어들**
 
 <a name="terms-level-map"></a>
 
 ### 맵(map)과 레벨(level)
 <a name="terms-level-map"></a>
 
-맵(map)은 일반적으로 게임플레이의 월드가 되는 레벨(level)을 의미합니다.  테스트
+>맵(map)은 일반적으로 게임플레이의 월드가 되는 레벨(level)을 의미합니다.  
+
 <br>
 
-<a name="terms-cases"></a>
-
 ### 명명 규칙 종류
+> #### 파스칼 케이스 (PascalCase)  
+> - 띄어쓰기를 모두 붙여서 표현합니다. 즉, 공백이 없습니다.  
+> - 각 단어의 첫 글자는 대문자가 됩니다.   
+> - 예시는 다음과 같습니다.  
+> `DesertEagle`, `StyleGuide`, `ASeriesOfWords`.
+>
+> #### 카멜 케이스 (camelCase) 
+> - 파스칼 케이스와 비슷하지만 첫 문자는 항상 소문자입니다
+> - 예시는 다음과 같습니다.  
+> `desertEagle`, `styleGuide`, `aSeriesOfWords`.
+>
+> #### 스네이크 케이스 (snake_case)
+> - 띄어쓰기를 밑줄(언더바)로 표시합니다.  
+> - 일반적으로 모두 소문자로 표시하지만, 경우에 따라 모두 대문자로 표시하기도 합니다.  
+> - 예시는 다음과 같습니다.  
+> `desert_Eagle`, `style_guide`, `A_SERIES_OF_WORDS`.
 
-There are a few different ways you can `CaseWordsWhenNaming`. Here are some common casing types:
+<br>
 
-> ###### PascalCase
->
-> Capitalize every word and remove all spaces, e.g. `DesertEagle`, `StyleGuide`, `ASeriesOfWords`.
->
-> ###### camelCase
->
-> The first letter is always lowercase but every following word starts with uppercase, e.g. `desertEagle`, `styleGuide`, `aSeriesOfWords`.
->
-> ###### Snake_case
->
-> Words can arbitrarily start upper or lowercase but words are separated by an underscore, e.g. `desert_Eagle`, `Style_Guide`, `a_Series_of_Words`.
-
-<a name="terms-var-prop"></a>
 ### 변수(Variable)와 프로퍼티(Property)
+> 일반적인 맥락에서, 변수와 프로퍼티는 서로 혼용이 가능합니다. 만약 동일한 문맥 내에서 두 용어가 혼용되는 경우 정확한 의미는 다음과 같습니다.  
+>
+> 
+>
+> #### 프로퍼티 (Property)
+> 일반적으로 클래스 내부 멤버로서 정의된 변수를 의미합니다. 예를 들어, `BP_Bomb` 클래스가 변수 `bExploded`를 멤버로 가지고 있다면, `bExploded`는 `BP_Bomb`의 프로퍼티입니다.  
+> 
+> 
+> 
+> #### 변수 (Variable)
+> 일반적으로 함수의 매개변수 또는 함수 내부의 지역변수로 정의된 변수를 의미합니다.  
+> 
+> 
 
-The words 'variable' and 'property' in most contexts are interchangable. If they are both used together in the same context however:
 
-<a name="terms-property"></a>
-###### Property
-Usually refers to a variable defined in a class. For example, if `BP_Barrel` had a variable `bExploded`, `bExploded` may be referred to as a property of `BP_Barrel`.
+<br>
+<br>
 
-When in the context of a class, it is often used to imply accessing previously defined data.
 
-<a name="terms-variable"></a>
-###### Variable
-Usually refers to a variable defined as a function argument or a local variable inside a function.
+## **00. 원칙들**
 
-When in the context of a class, it is often used to convey discussion about its definition and what it will hold.
+<br>
 
-<a name="0"></a>
-## 0. Principles
+### **00.1** 당신이 기존에 어떤 스타일을 가지고 있었든, VLAST 소속의 UE 작업자는 모두 이 스타일 가이드를 따라 작업해야 합니다.  
 
-These principles have been adapted from [idomatic.js style guide](https://github.com/rwaldron/idiomatic.js/).
+만약 이 스타일 가이드에 변경이 필요하다 생각한다면, 팀에 새로운 스타일을 제시하고 논의하시면 됩니다.  
 
-<a name="0.1"></a>
-### 0.1 If your UE4 project already has a style guide, you should follow it
+<br>
 
-If you are working on a project or with a team that has a pre-existing style guide, it should be respected.  Any inconsistency between an existing style guide and this guide should defer to the existing.
+### **00.2** 프로젝트는 아무리 많은 사람이 참여했다 하더라도, 이 스타일 가이드에 따라 모두 한 사람이 작업한 것처럼 보여야 합니다.
 
-Style guides should be living documents. You should propose style guide changes to an existing style guide as well as this guide if you feel the change benefits all usages.
+하나의 스타일 가이드를 따라 협업하는 프로젝트는 마치 한 사람이 제작한 것처럼 일관성이 유지되기에, 작업 과정에서의 모호성을 없애고 불필요한 짐작을 할 필요가 없도록 만들어 줍니다. 그 결과 팀은 더 나은 생산성을 얻게 되며, 유지보수가 쉬워지게 됩니다.
 
-> #### "Arguments over style are pointless. There should be a style guide, and you should follow it."
-> [_Rebecca Murphey_](https://rmurphey.com)
+<br>
 
-<a name="0.2"></a>
-### 0.2 All structure, assets, and code in any Unreal Engine 4 project should look like a single person created it, no matter how many people contributed
+### **00.3** 스타일 가이드를 지키지 않는 팀원을 그대로 내버려두어선 안됩니다.
 
-Moving from one project to another should not cause a re-learning of style and structure. Conforming to a style guide removes unneeded guesswork and ambiguities.
+만약 당신이 스타일 가이드를 지키지 않은 구조, 에셋명, 코드 등을 보게 된다면, 당신은 즉시 그것을 작성한 팀원에게 이를 알리고 스타일 가이드를 지키도록 정정해주어야 합니다.
 
-It also allows for more productive creation and maintenance as one does not need to think about style. Simply follow the instructions. This style guide is written with best practices in mind, meaning that by following this style guide you will also minimize hard to track issues.
+모든 사람이 같은 스타일 가이드를 지킨다는 것은 팀원 간의 질문과 답변을 더욱 쉽게 해줍니다. 아무렇게나 꼬아놓은 블루프린트를 풀거나 알 수 없는 변수명으로 가려진 머티리얼에 생긴 문제를 해결해주는 걸 좋아하는 사람은 없습니다.
 
-<a name="0.3"></a>
-### 0.3 Friends do not let friends have bad style
+명확한 스타일 가이드가 없는 팀은 협업 능력이 없는 팀입니다.
 
-If you see someone working either against a style guide or no style guide, try to correct them.
 
-When working within a team or discussing within a community such as [Unreal Slackers](http://join.unrealslackers.org/), it is far easier to help and to ask for help when people are consistent. Nobody likes to help untangle someone's Blueprint spaghetti or deal with assets that have names they can't understand.
+<br>
+<br>
 
-If you are helping someone whose work conforms to a different but consistent and sane style guide, you should be able to adapt to it. If they do not conform to any style guide, please direct them here.
+## **01. 금지된 사항들**
 
-<a name="0.4"></a>
-### 0.4 A team without a style guide is no team of mine
+<br>
 
-When joining an Unreal Engine 4 team, one of your first questions should be "Do you have a style guide?". If the answer is no, you should be skeptical about their ability to work as a team.
+### **01.1** 금지된 문자
 
-<a name="0.5"></a>
-### 0.5 Don't Break The Law
+아래의 문자들은 에셋명, 폴더명, 변수명 등 프로젝트 내 어디에서도 사용되어선 안됩니다.  
+* ` ` 공백 (스페이스바)
+* `\` 백슬래시 기호
+* `#!@$%` 대부분의 특수 기호
+* 한글 등 모든 유니코드 문자 (즉, 영문이 아닌 대부분의 문자)
 
-Gamemakin LLC is not a lawyer, but please don't introduce illegal actions and behavior to a project, including but not limited to:
 
-* Don't distribute content you don't have the rights to distribute
-* Don't infringe on someone else's copyrighted or trademark material
-* Don't steal content
-* Follow licensing restrictions on content, e.g. attribute when attributions are needed
+즉, 다음의 문자들만 허용됩니다.
+* `A-Z` ABCDEFGHIJKLMNOPQRSTUVWXYZ
+* `a-z` abcdefghijklmnopqrstuvwxyz
+* `0-9` 1234567890
+* `_` 밑줄(언더바)
 
-<a name="00"></a>
-## 00. Globally Enforced Opinions
+금지된 문자를 사용하지 않는 것은 모든 데이터의 모든 플랫폼으로의 포팅 호환성을 높여줍니다.
 
-@TODO: Make this section 1 and update this document accordingly. Or maybe we don't?
 
-<a name="00.1"></a>
-### 00.1 Forbidden Characters
+<br>
+<br>
 
-<a name="identifiers-1"></a>
-#### Identifiers
 
-In any `Identifier` of any kind, **never** use the following unless absolutely forced to:
-
-* White space of any kind
-* Backward slashes `\`
-* Symbols i.e. `#!@$%`
-* Any Unicode character
-
-Any `Identifier` should strive to only have the following characters when possible (the RegEx `[A-Za-z0-9_]+`)
-
-* ABCDEFGHIJKLMNOPQRSTUVWXYZ
-* abcdefghijklmnopqrstuvwxyz
-* 1234567890
-* _ (sparingly)
-
-The reasoning for this is this will ensure the greatest compatibility of all data across all platforms across all tools, and help prevent downtime due to potentially bad character handling for identifiers in code you don't control.
-
-<a name="anc"></a>
-<a name="1"></a>
 ## 1. Asset Naming Conventions
 
 Naming conventions should be treated as law. A project that conforms to a naming convention is able to have its assets managed, searched, parsed, and maintained with incredible ease.

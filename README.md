@@ -2,21 +2,18 @@
 
 
 다음 문서와 예제의 영향을 받아 작성되었습니다.  
->[UE4 코딩표준](https://docs.unrealengine.com/4.26/ko/ProductionPipelines/DevelopmentSetup/CodingStandard/)  
->[ue5-style-guide](https://github.com/Allar/ue5-style-guide#structure-assettypes)  
->[UE 마켓플레이스 가이드라인](https://www.unrealengine.com/ko/marketplace-guidelines?sessionInvalidated=true)  
->[UE Recommended Asset Naming Conventions](https://docs.unrealengine.com/4.27/ko/ProductionPipelines/AssetNaming/)  
->[LyraStarterGame](https://www.unrealengine.com/marketplace/en-US/product/lyra)  
->[Valley of the Ancient](https://www.unrealengine.com/marketplace/en-US/product/ancient-game-01?lang=en-US)
+[UE4 코딩표준](https://docs.unrealengine.com/4.26/ko/ProductionPipelines/DevelopmentSetup/CodingStandard/)  
+[ue5-style-guide](https://github.com/Allar/ue5-style-guide#structure-assettypes)  
+[UE 마켓플레이스 가이드라인](https://www.unrealengine.com/ko/marketplace-guidelines?sessionInvalidated=true)  
+[UE Recommended Asset Naming Conventions](https://docs.unrealengine.com/4.27/ko/ProductionPipelines/AssetNaming/)  
+[LyraStarterGame](https://www.unrealengine.com/marketplace/en-US/product/lyra)  
+[Valley of the Ancient](https://www.unrealengine.com/marketplace/en-US/product/ancient-game-01?lang=en-US)
 
 <br>
-
-
-
 <br>
 
 ## **목차**
-- [중요한 용어들]()
+- [**중요한 용어들**]()
   - [맵(map)과 레벨(level)]()
   - [명명 규칙 종류]()
   - [변수(Variable)와 프로퍼티(Property)]())

@@ -228,7 +228,7 @@
 즉, 다음의 문자들만 허용됩니다.
 * `A-Z` ABCDEFGHIJKLMNOPQRSTUVWXYZ
 * `a-z` abcdefghijklmnopqrstuvwxyz
-* `0-9` 1234567890
+* `0-9` 0123456789
 * `_` 밑줄(언더바)
 
 금지된 문자를 사용하지 않는 것은 모든 데이터의 모든 플랫폼으로의 포팅 호환성을 높여줍니다.
@@ -494,7 +494,7 @@
 **[⬆ Back to Top](#목차)**
 
 
-## 2. Content Directory Structure
+## 2. Content 폴더 디렉터리 구조
 
 Equally important as asset names, the directory structure style of a project should be considered law. Asset naming conventions and content directory structure go hand in hand, and a violation of either causes unneeded chaos.
 
@@ -503,7 +503,9 @@ There are multiple ways to lay out the content of a UE4 project. In this style, 
 > If you are using the prefix [naming convention](#1.2) above, using folders to contain assets of similar types such as `Meshes`, `Textures`, and `Materials` is a redundant practice as asset types are already both sorted by prefix as well as able to be filtered in the content browser.
 
 
-### 2e1 Example Project Content Structure
+### 2.1 Content 폴더 디렉터리 구조 예제
+
+프로젝트 이름 `NinaVirtual`의 `Content`폴더 디렉터리 구조 예제
 <pre>
 |-- Content
     |-- <a href="#2.2">GenericShooter</a>
@@ -559,33 +561,28 @@ There are multiple ways to lay out the content of a UE4 project. In this style, 
 The reasons for this structure are listed in the following sub-sections.
 
 
-### 2.1 Folder Names
+### 2.1 폴더명 규칙
 
-These are common rules for naming any folder in the content structure.
+Content 폴더 내의 모든 폴더 이름에 적용되는 공통 규칙들입니다.
 
 
-#### 2.1.1 Always Use PascalCase[<sup>*</sup>](#terms-cases)
+#### 2.1.1 항상 파스칼 케이스(PascalCase)를 사용할 것
 
-PascalCase refers to starting a name with a capital letter and then instead of using spaces, every following word also starts with a capital letter. For example, `DesertEagle`, `RocketPistol`, and `ASeriesOfWords`.
+파스칼 케이스는 첫 문자가 대문자로 시작하며, 각 단어의 시작을 대문자로 구분합니다.
+`GameModes`, `DesertEagle` 등이 그 예입니다. 자세한 설명은 [파스칼 케이스(PascalCase)](#파스칼-케이스-pascalcase)를 참고해주세요.
 
-See [Cases](#terms-cases).
+> Maya 작업자의 경우 Maya 내에서는 [카멜 케이스(camelCase)](#카멜-케이스-camelcase)가 표준 스타일인 경우가 많아 이 스타일을 그대로 언리얼 엔진에 적용하시는 경우가 많습니다.  
+> 언리얼 엔진에서는 `파스칼 케이스`가 표준임을 유념해주세요.
 
-<a name="2.1.2"></a>
-#### 2.1.2 Never Use Spaces
+#### 2.1.2 공백(스페이스바)을 사용하지 말 것
 
-Re-enforcing [2.1.1](#2.1.1), never use spaces. Spaces can cause various engineering tools and batch processes to fail. Ideally, your project's root also contains no spaces and is located somewhere such as `D:\Project` instead of `C:\Users\My Name\My Documents\Unreal Projects`.
+[금지된 문자](#011-금지된-문자)에 따라 폴더 이름에 ` `공백을 사용해선 안됩니다.
 
-<a name="2.1.3"></a>
-#### 2.1.3 Never Use Unicode Characters And Other Symbols
+#### 2.1.3 영문과 숫자 이외의 문자(특수문자 포함)를 사용하지 말 것
 
-If one of your game characters is named 'Zoë', its folder name should be `Zoe`. Unicode characters can be worse than [Spaces](#2.1.2) for engineering tool and some parts of UE4 don't support Unicode characters in paths either.
+폴더 이름에 허용되는 문자는 `A-Z`, `a-z`, `0-9` 뿐입니다. [금지된 문자](#011-금지된-문자)의 허용된 문자 항목을 참고해주세요.
 
-Related to this, if your project has [unexplained issues](https://answers.unrealengine.com/questions/101207/undefined.html) and your computer's user name has a Unicode character (i.e. your name is `Zoë`), any project located in your `My Documents` folder will suffer from this issue. Often simply moving your project to something like `D:\Project` will fix these mysterious issues.
 
-Using other characters outside `a-z`, `A-Z`, and `0-9` such as `@`, `-`, `_`, `,`, `*`, and `#` can also lead to unexpected and hard to track issues on other platforms, source control, and weaker engineering tools.
-
-<a name="2.2"></a>
-<a name="structure-top-level"><a>
 ### 2.2 Use A Top Level Folder For Project Specific Assets
 
 All of a project's assets should exist in a folder named after the project. For example, if your project is named 'Generic Shooter', _all_ of it's content should exist in `Content/GenericShooter`.
@@ -594,14 +591,14 @@ All of a project's assets should exist in a folder named after the project. For 
 
 There are multiple reasons for this approach.
 
-<a name="2.2.1"></a>
+
 #### 2.2.1 No Global Assets
 
 Often in code style guides it is written that you should not pollute the global namespace and this follows the same principle. When assets are allowed to exist outside of a project folder, it often becomes much harder to enforce a strict structure layout as assets not in a folder encourages the bad behavior of not having to organize assets.
 
 Every asset should have a purpose, otherwise it does not belong in a project. If an asset is an experimental test and shouldn't be used by the project it should be put in a [`Developer`](#2.3) folder.
 
-<a name="2.2.2"></a>
+
 #### 2.2.2 Reduce Migration Conflicts
 
 When working on multiple projects it is common for a team to copy assets from one project to another if they have made something useful for both. When this occurs, the easiest way to perform the copy is to use the Content Browser's Migrate functionality as it will copy over not just the selected asset but all of its dependencies.
@@ -612,7 +609,7 @@ This is also the primary reason why Epic's Marketplace staff enforces the same p
 
 After a migration, safe merging of assets can be done using the 'Replace References' tool in the content browser with the added clarity of assets not belonging to a project's top level folder are clearly pending a merge. Once assets are merged and fully migrated, there shouldn't be another top level folder in your Content tree. This method is _100%_ guaranteed to make any migrations that occur completely safe.
 
-<a name="2.2.2e1"></a>
+
 ##### 2.2.2e1 Master Material Example
 
 For example, say you created a master material in one project that you would like to use in another project so you migrated that asset over. If this asset is not in a top level folder, it may have a name like `Content/MaterialLibrary/M_Master`. If the target project doesn't have a master material already, this should work without issue.
@@ -625,7 +622,7 @@ This issue can be hard to predict and hard to account for. The person migrating 
 
 It is at this point where if the master materials for both projects are incompatible in _any way_, you risk breaking possibly the entire material library for a project as well as any other dependencies that may have already been migrated, simply because assets were not stored in a top level folder. The simple migration of static meshes now becomes a very ugly task.
 
-<a name="2.2.3"></a>
+
 #### 2.2.3 Samples, Templates, and Marketplace Content Are Risk-Free
 
 An extension to [2.2.2](#2.2.2), if a team member decides to add sample content, template files, or assets they bought from the marketplace, it is guaranteed, as long your project's top-level folder is uniquely named,that these new assets will not interfere with your project.
@@ -634,13 +631,12 @@ You can not trust marketplace content to fully conform to the [top level folder 
 
 When adhering to [2.2](#2.2), the worst marketplace conflict you can have is if two marketplace assets both have the same Epic sample content. If all your assets are in a project specific folder, including sample content you may have moved into your folder, your project will never break.
 
-<a name="2.2.4"></a>
+
 #### 2.2.4 DLC, Sub-Projects, and Patches Are Easily Maintained
 
 If your project plans to release DLC or has multiple sub-projects associated with it that may either be migrated out or simply not cooked in a build, assets relating to these projects should have their own separate top level content folder. This make cooking DLC separate from main project content far easier. Sub-projects can also be migrated in and out with minimal effort. If you need to change a material of an asset or add some very specific asset override behavior in a patch, you can easily put these changes in a patch folder and work safely without the chance of breaking the core project.
 
-<a name="2.3"></a>
-<a name="structure-developers"></a>
+
 ### 2.3 Use Developers Folder For Local Testing
 
 During a project's development, it is very common for team members to have a sort of 'sandbox' where they can experiment freely without risking the core project. Because this work may be ongoing, these team members may wish to put their assets on a project's source control server. Not all teams require use of Developer folders, but ones that do use them often run into a common problem with assets submitted to source control.
@@ -651,8 +647,7 @@ If these modular assets were placed in a Developer folder, the world builder sho
 
 Once the assets are ready for use, an artist simply has to move the assets into the project specific folder and fix up redirectors. This is essentially 'promoting' the assets from experimental to production.
 
-<a name="2.4"></a>
-<a name="structure-maps"></a>
+
 ### 2.4 All Map[<sup>*</sup>](#terms-level-map) Files Belong In A Folder Called Maps
 
 Map files are incredibly special and it is common for every project to have its own map naming system, especially if they work with sub-levels or streaming levels. No matter what system of map organization is in place for the specific project, all levels should belong in `/Content/Project/Maps`.
@@ -661,8 +656,7 @@ Being able to tell someone to open a specific map without having to explain wher
 
 This also simplifies the job of cooking for engineers. Wrangling levels for a build process can be extremely frustrating if they have to dig through arbitrary folders for them. If a team's maps are all in one place, it is much harder to accidentally not cook a map in a build. It also simplifies lighting build scripts as well as QA processes.
 
-<a name="2.5"></a>
-<a name="structure-core"></a>
+
 ### 2.5 Use A `Core` Folder For Critical Blueprints And Other Assets
 
 Use `/Content/Project/Core` folder for assets that are absolutely fundamental to a project's workings. For example, base `GameMode`, `Character`, `PlayerController`, `GameState`, `PlayerState`, and related Blueprints should live here.
@@ -671,16 +665,15 @@ This creates a very clear "don't touch these" message for other team members. No
 
 For example, if your project requires pickups that can be placed in a level, there should exist a base Pickup class in `Core/Pickups` that defines base behavior for a pickup. Specific pickups such as a Health or Ammo should exist in a folder such as `/Content/Project/Placeables/Pickups/`. Game designers can define and tweak pickups in this folder however they please, but they should not touch `Core/Pickups` as they may unintentionally break pickups project-wide.
 
-<a name="2.6"></a>
-<a name="structure-assettypes"></a>
+
 ### 2.6 Do Not Create Folders Called `Assets` or `AssetTypes`
 
-<a name="2.6.1"></a>
+
 #### 2.6.1 Creating a folder named `Assets` is redundant
 
 All assets are assets.
 
-<a name="2.6.2"></a>
+
 #### 2.6.2 Creating a folder named `Meshes`, `Textures`, or `Materials` is redundant
 
 All asset names are named with their asset type in mind. These folders offer only redundant information and the use of these folders can easily be replaced with the robust and easy to use filtering system the Content Browser provides.
@@ -691,8 +684,7 @@ Want to view only static mesh in `Environment/Rocks/`? Simply turn on the Static
 
 Not doing this also prevents the inevitability of someone putting a static mesh or a texture in a `Materials` folder.
 
-<a name="2.7"></a>
-<a name="structure-large-sets"></a>
+
 ### 2.7 Very Large Asset Sets Get Their Own Folder Layout
 
 This can be seen as a pseudo-exception to [2.6](#2.6).
@@ -703,8 +695,7 @@ For example, animations that are shared across multiple characters should lay in
 
 > This does not apply to assets like textures and materials. It is common for a `Rocks` folder to have a large amount of textures if there are a large amount of rocks, however these textures are generally only related to a few specific rocks and should be named appropriately. Even if these textures are part of a [Material Library](#2.8).
 
-<a name="2.8"></a>
-<a name="structure-material-library"></a>
+
 ### 2.8 `MaterialLibrary`
 
 If your project makes use of master materials, layered materials, or any form of reusable materials or textures that do not belong to any subset of assets, these assets should be located in `Content/Project/MaterialLibrary`.
@@ -717,8 +708,7 @@ The `MaterialLibrary` doesn't have to consist of purely materials. Shared utilit
 
 Any testing or debug materials should be within `MaterialLibrary/Debug`. This allows debug materials to be easily stripped from a project before shipping and makes it incredibly apparent if production assets are using them if reference errors are shown.
 
-<a name="2.9"></a>
-<a name="structure-no-empty-folders"></a>
+
 ### 2.9 No Empty Folders
 
 There simply shouldn't be any empty folders. They clutter the content browser.
@@ -733,19 +723,17 @@ If you find that the content browser has an empty folder you can't delete, you s
 1. Ensure the folder is now gone.
 1. Submit changes to source control.
 
-**[⬆ Back to Top](#table-of-contents)**
+**[⬆ Back to Top](#목차)**
 
 
-<a name="3"></a>
-<a name="bp"></a>
+
 ## 3. Blueprints
 
 This section will focus on Blueprint classes and their internals. When possible, style rules conform to [Epic's Coding Standard](https://docs.unrealengine.com/latest/INT/Programming/Development/CodingStandard).
 
 Remember: Blueprinting badly bears blunders, beware! (Phrase by [KorkuVeren](http://github.com/KorkuVeren))
 
-<a name="3.1"></a>
-<a name="bp-compiling"></a>
+
 ### 3.1 Compiling
 
 All blueprints should compile with zero warnings and zero errors. You should fix blueprint warnings and errors immediately as they can quickly cascade into very scary unexpected behavior.

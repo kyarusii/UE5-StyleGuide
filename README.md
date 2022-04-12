@@ -1,12 +1,12 @@
 # UE5 스타일 가이드 (ver. VLAST)
 
+대부분 [ue5-style-guide](https://github.com/Allar/ue5-style-guide#structure-assettypes)를 기반으로 작성되었으며, 아래의 문서와 샘플 프로젝트들을 참고해 일부 변형이 적용되었습니다.
 
-다음 문서와 예제의 영향을 받아 작성되었습니다.  
-[UE4 코딩표준](https://docs.unrealengine.com/4.26/ko/ProductionPipelines/DevelopmentSetup/CodingStandard/)  
-[ue5-style-guide](https://github.com/Allar/ue5-style-guide#structure-assettypes)  
-[UE 마켓플레이스 가이드라인](https://www.unrealengine.com/ko/marketplace-guidelines?sessionInvalidated=true)  
-[UE Recommended Asset Naming Conventions](https://docs.unrealengine.com/4.27/ko/ProductionPipelines/AssetNaming/)  
-[LyraStarterGame](https://www.unrealengine.com/marketplace/en-US/product/lyra)  
+>[UE4 코딩표준](https://docs.unrealengine.com/4.26/ko/ProductionPipelines/DevelopmentSetup/CodingStandard/)  
+[언리얼 엔진 마켓플레이스 가이드라인](https://www.unrealengine.com/ko/marketplace-guidelines?sessionInvalidated=true)  
+[Recommended Asset Naming Conventions](https://docs.unrealengine.com/4.27/ko/ProductionPipelines/AssetNaming/)  
+[LyraStarterGame 샘플 프로젝트](https://www.unrealengine.com/marketplace/en-US/product/lyra)  
+메가스캔 폴더 디렉터리 구조
 
 <br>
 <br>

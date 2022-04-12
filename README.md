@@ -22,29 +22,30 @@
 - [**00. 원칙들**](#00-원칙들)
   - [00.1 당신이 기존에 어떤 스타일을 가지고 있었든, VLAST 소속의 UE 작업자는 모두 이 스타일 가이드를 따라 작업해야 합니다.](#001-당신이-기존에-어떤-스타일을-가지고-있었든-vlast-소속의-ue-작업자는-모두-이-스타일-가이드를-따라-작업해야-합니다)
   - [00.2 프로젝트는 아무리 많은 사람이 참여했다 하더라도, 이 스타일 가이드에 따라 모두 한 사람이 작업한 것처럼 보여야 합니다.](#002-프로젝트는-아무리-많은-사람이-참여했다-하더라도-이-스타일-가이드에-따라-모두-한-사람이-작업한-것처럼-보여야-합니다)
-  - [00.3 스타일 가이드를 지키지 않는 팀원을 그대로 내버려두어선 안됩니다.]()
-- [**01. 금지된 사항들**]()
-  - [01.1 금지된 문자]()
+  - [00.3 스타일 가이드를 지키지 않는 팀원을 그대로 내버려두어선 안됩니다.](#003-스타일-가이드를-지키지-않는-팀원을-그대로-내버려두어선-안됩니다)
+- [**01. 금지된 사항들**](#01-금지된-사항들)
+  - [01.1 금지된 문자](#011-금지된-문자)
 - [**02. BaseEngineConfig 설정**]()
   - [02.1 BaseEngine.ini]()
   - [02.2 BaseEditorPerProjectUserSettings.ini]()
-- [**1. 에셋 명명 규칙**]()
-  - [1.1 에셋명 기본 형식: `접두사_기본에셋명_변형_접미사`]()
-    - [1.1 에셋 명명 예]()
-  - [1.2 에셋 접두사 & 접미사 테이블]()
-    - [1.2.1 자주 사용되는 에셋](#anc-common)
-    - [1.2.2 애니메이션 (Animations)](#anc-animations)
-    - [1.2.3 인공 지능 (Artificial Intelligence)](#anc-ai)
-    - [1.2.4 블루프린트 (Blueprints)](#anc-bp)
-    - [1.2.5 머티리얼 (Materials)](#anc-materials)
-    - [1.2.6 텍스처 (Textures)](#anc-textures)
-      - [1.2.6.1 패킹된 텍스처 (Texture Packing)](#anc-textures-packing)
-    - [1.2.7 기타 (Miscellaneous)](#anc-misc)
-    - [1.2.8 페이퍼 2D (Paper 2D)](#anc-paper2d)
-    - [1.2.9 피직스 (Physics)](#anc-physics)
-    - [1.2.10 사운드 (Sounds)](#anc-sounds)
-    - [1.2.11 유저 인터페이스 (User Interface)](#anc-ui)
-    - [1.2.12 FX](#anc-effects)
+- [**1. 에셋 명명 규칙**](#1-에셋-명명-규칙)
+  - [1.1 에셋명 기본 형식: `접두사_기본에셋명_변형_접미사`](#11-에셋명-기본-형식-접두사_기본에셋명_변형_접미사)
+    - [1.1 에셋 명명 예](#11의-예시들)
+  - [1.2 에셋 접두사 & 접미사 테이블](#12-에셋-접두사--접미사-테이블)
+    - [1.2.1 흔히 사용되는 에셋](#121-흔히-사용되는-에셋)
+    - [1.2.2 애니메이션 (Animations)](#122-애니메이션-animations)
+    - [1.2.3 인공 지능 (Artificial Intelligence)](#123-인공-지능-artificial-intelligence)
+    - [1.2.4 블루프린트 (Blueprints)](#124-블루프린트-blueprints)
+    - [1.2.5 머티리얼 (Materials)](#125-머티리얼-materials)
+    - [1.2.6 텍스처 (Textures)](#126-텍스처-textures)
+      - [1.2.6.1 패킹된 텍스처 (Texture Packing)](#1261-패킹된-텍스처-texture-packing)
+    - [1.2.7 기타 (Miscellaneous)](#127-기타-miscellaneous)
+    - [1.2.8 페이퍼 2D (Paper 2D)](#128-페이퍼-2d-paper-2d)
+    - [1.2.9 피직스 (Physics)](#129-피직스-physics)
+    - [1.2.10 사운드 (Sounds)](#1210-사운드-sounds)
+    - [1.2.11 유저 인터페이스 (User Interface)](#1211-유저-인터페이스-user-interface)
+    - [1.2.12 FX](#1212-fx)
+    - [1.2.13 미디어 (Media)](#1213-미디어-media)
 - [**2. Content 폴더 디렉터리 구조**](#structure)
   - [2e1 Example Project Content Structure](#2e1)
   - [2.1 폴더명 규칙](#structure-folder-names)
@@ -297,7 +298,7 @@
 | 레벨                           |            |            | `Maps` 폴더 안에 있어야 한다.      |
 | 블루프린트                  | BP_        |            |                                  |
 | 머티리얼                    | M_         |            |                                  |
-| 머티리얼 인스턴스   | M_         |            |                                  |
+| 머티리얼 인스턴스   | MI_         |            |                                  |
 | 스태틱 메시              | SM_        |            |                                  |
 | 스켈레탈 메시          | SKM_       |            |                                  |
 | 텍스처                       | T_         | _?         | 접미사 디테일은 [텍스처 (Textures)]() 항목을 봐주세요.    |
@@ -349,7 +350,7 @@
 | 블루프린트 함수 라이브러리  | BPFL_   |            |                                  |
 | 블루프린트 인터페이스      | BPI_       |            |                                  |
 | 블루프린트 매크로 라이브러리  | BPML_      |            | 가능한 한 사용하지 않는다. |
-| 열거형 *Enumeration*             | E          |            | 접두사 후 밑줄 없음. eg. ECharacterState                   |
+| 열거형 *Enumeration*             | E          |            | 접두사 후 밑줄 없음. eg. `ECharacterState`                   |
 | 구조체 *Structure*               | S     |            | 접두사 후 밑줄 없음.                  |
 | 위젯 블루프린트         | WBP_       |            |                                  |
 | 게임플레이 어빌리티         | GA_       |            |                                  |
@@ -406,28 +407,15 @@
 
 | 에셋 유형                 | 접두사     | 접미사     | Notes                            |
 | -------------------------- | ---------- | ---------- | -------------------------------- |
-| Animated Vector Field      | VFA_       |            |                                  |
-| Camera Anim                | CA_        |            |                                  |
-| Color Curve                | Curve_     | _Color     |                                  |
-| Curve Table                | Curve_     | _Table     |                                  |
-| Data Asset                 | *_         |            | Prefix should be based on class. |
-| Data Table                 | DT_        |            |                                  |
-| Float Curve                | Curve_     | _Float     |                                  |
-| Foliage Type               | FT_        |            |                                  |
-| Force Feedback Effect      | FFE_       |            |                                  |
-| Landscape Grass Type       | LG_        |            |                                  |
-| Landscape Layer            | LL_        |            |                                  |
-| Matinee Data               | Matinee_   |            |                                  |
-| Media Player               | MP_        |            |                                  |
-| File Media Source          | FMS_       |            |                                  |
-| Object Library             | OL_        |            |                                  |
-| Redirector                 |            |            | 가능한 한 빨리 고쳐 제거해야 한다.   |
-| Sprite Sheet               | SS_        |            |                                  |
-| Static Vector Field        | VF_        |            |                                  |
-| Substance Graph Instance   | SGI_       |            |                                  |
-| Substance Instance Factory | SIF_       |            |                                  |
-| Touch Interface Setup      | TI_        |            |                                  |
-| Vector Curve               | Curve_     | _Vector    |                                  |
+| 데이터 에셋                 | DA_         |            |  |
+| 데이터 테이블                | DT_        |            |                                  |
+| 플롯 커브                | CV_     | _Float     |                                  |
+| 벡터 커브               | CV_     | _Vector    |                                  |
+| 컬러 커브                | CV_     | _Color     |                                  |
+| 커브 테이블                | CV_     | _Table     |                                  |
+| 벡터 필드        | VF_        |            |                                  |
+| HLOD 레이어        | HLODLayer_        |            |                                  |
+| 그룸 *Groom*       | Groom_        |            |                                  |
 
 
 #### 1.2.8 페이퍼 2D (Paper 2D)
@@ -445,9 +433,12 @@
 
 | 에셋 유형              | 접두사     | 접미사     | Notes                            |
 | ----------------------- | ---------- | ---------- | -------------------------------- |
-| Physical Material       | PM_        |            |                                  |
-| Physics Asset           | PHYS_      |            |                                  |
-| Destructible Mesh       | DM_        |            |                                  |
+| 피직스 머티리얼       | PM_        |            |                                  |
+| 피직스 에셋           | PA_      |            |                                  |
+| 지오메트리 컬렉션       | GC_        |            |                                  |
+| 지오메트리 컬렉션 캐시           | GC_      | _Cache           |                                  |
+| 카오스 솔버       | Solver_        |            |                                  |
+| 카오스 캐시 컬렉션           | Chaos_      | _Cache           |                                  |
 
 
 #### 1.2.10 사운드 (Sounds)
@@ -456,7 +447,6 @@
 | ----------------------- | ---------- | ---------- | -------------------------------- |
 | Dialogue Voice          | DV_        |            |                                  |
 | Dialogue Wave           | DW_        |            |                                  |
-| Media Sound Wave        | MSW_       |            |                                  |
 | Reverb Effect           | Reverb_    |            |                                  |
 | Sound Attenuation       | ATT_       |            |                                  |
 | Sound Class             |            |            | No prefix/suffix. Should be put in a folder called SoundClasses |
@@ -464,6 +454,10 @@
 | Sound Cue               | A_         | _Cue       |                                  |
 | Sound Mix               | Mix_       |            |                                  |
 | Sound Wave              | A_         |            |                                  |
+| 메타 사운드              | MS_         |            |                                  |
+| 메타 사운드 소스              | MSS_         |            |                                  |
+| 컨트롤 버스              | CB_         |            |                                  |
+| 컨트롤 버스 믹스              | CBM_         |            |                                  |
 
 
 #### 1.2.11 유저 인터페이스 (User Interface)
@@ -471,18 +465,31 @@
 | 에셋 유형              | 접두사     | 접미사     | Notes                            |
 | ----------------------- | ---------- | ---------- | -------------------------------- |
 | Font                    | Font_      |            |                                  |
-| Slate Brush             | Brush_     |            |                                  |
-| Slate Widget Style      | Style_     |            |                                  |
-| Widget Blueprint        | WBP_       |            |                                  |
+| 위젯 블루프린트          | WBP_       |            |                                  |
 
 
 #### 1.2.12 FX
 
 | 에셋 유형              | 접두사     | 접미사     | Notes                            |
 | ----------------------- | ---------- | ---------- | -------------------------------- |
-| 나이아가라 시스템 *Niagara System*         | NS_        |            |                                  |
-| 나이아가라 시스템 *Niagara System*         | NS_        |            |                                  |
-| 나이아가라 시스템 *Niagara System*         | NS_        |            |                                  |
+| 나이아가라 시스템          | NS_        |            |                                  |
+| 나이아가라 모듈          | NM_        |            |                                  |
+| Niagara Dynamic Input Script          | NM_        |            |                                  |
+| 나이아가라 이미터          | NE_        |            |                                  |
+| 나이아가라 이펙트 타입          | EffectType_        |            |                                  |
+| 나이아가라 파라미터 컬렉션          | NPC_        |            |                                  |
+| - 인스턴스          | NPCI_        |            |                                  |
+
+
+#### 1.2.13 미디어 (Media)
+
+| 에셋 유형              | 접두사     | 접미사     | Notes                            |
+| ----------------------- | ---------- | ---------- | -------------------------------- |
+| File Media Source          | MS_File_        |            |                                  |
+| Img Media Source           | MS_Img_        |            |                                  |
+| Stream Media Source        | MS_Stream_        |            |                                  |
+| Media Player               | MP_        |            |                                  |
+| Media Texture              | MT_        |            |                                  |
 
 
 **[⬆ Back to Top](#목차)**

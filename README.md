@@ -252,7 +252,9 @@
 
 모든 에셋들은 기본이 되는 에셋 이름인 `기본에셋명`을 가져야만 합니다. `기본에셋명`은 그 에셋이 속한 그룹의 문맥에 연관되는 짧고 쉬운 이름일수록 좋습니다. 예를 들어 캐릭터의 이름이 `Nina`라면, 모든 Nina 에셋들의 `기본에셋명`이 `Nina`가 되어야 합니다.
 
-`변형`은 기본에셋명에서 `파생된 다양한 변종의 이름`을 지칭합니다. 예를 들어 `Nina` 캐릭터 에셋에는 다양한 `스킨 변형`이 있을 수 있습니다. Nina 스켈레탈 메시 중 `캐주얼 스타일`의 스킨이 있다면 에셋명은 SKM_Nina_`Casual` 이 됩니다. 또다른 예로 `레트로 스타일`의 스킨이 있다면, 에셋명은 SKM_Nina_`Retro` 가 됩니다. 
+`변형`은 기본에셋명에서 `파생된 다양한 변종의 이름`을 지칭합니다. 예를 들어 `Nina` 캐릭터 에셋에는 다양한 `스킨 변형`이 있을 수 있습니다. Nina 스켈레탈 메시 중 `캐주얼 스타일`의 스킨이 있다면 에셋명은 SKM_Nina_`Casual` 이 됩니다.  
+또다른 예로 `레트로 스타일`의 스킨이 있다면, 에셋명은 SKM_Nina_`Retro` 가 됩니다.  
+
 이 스켈레탈 메시에 사용되는 텍스쳐 에셋명의 좋은 예는 캐주얼 스킨의 경우 `T_Nina_Casual_Top_D`, `T_Nina_Casual_Top_N`, `T_Nina_Casual_Feet_D`, 레트로의 경우 `T_Nina_Retro_Top_D`, `T_Nina_Retro_Bottom_D` 가 좋은 예시가 됩니다.
 
 만약 기본에셋명에서 파생되는 변형이 특정 이름으로 표현하기에는 애매한 눈에 띄는 특징이 없는 경우, 변형 이름을 숫자로 대신할 수 있습니다. 예를 들어 모델러가 다양한 종류의 암석을 디자인했을 때, 그것들의 변형은 SM_Rock_`01`, SM_Rock_`02`, SM_Rock_`03` 같은 형태가 될 수 있습니다. 또는 다음과 같이 특정 변형이름 다음에 변형숫자가 올 수도 있습니다. SM_Rock_Tropical_`01`, SM_Rock_Tropical_`02`
@@ -279,7 +281,7 @@
 | 스태틱 메시 (Static Mesh) *변형3*                                 | SM_Rock_03                             |
 | 머티리얼 (Material) *변형들의 마스터*                              | M_Rock                                 |
 | 머티리얼 인스턴스 (Material Instance) *변형1의 인스턴스*            | MI_Rock_01                            |
-| 머티리얼 인스턴스 (Material Instance) *변형1의 눈쌓인 버전 인스턴스* | MI_Rock_01_Snow                       |
+| 머티리얼 인스턴스 (Material Instance) *눈쌓인 번형 인스턴스* | MI_Rock_Snow_01                       |
 
 <br>
 
@@ -292,35 +294,36 @@
 
 | 에셋 유형                | 접두사     | 접미사     | Notes                            |
 | ----------------------- | ---------- | ---------- | -------------------------------- |
-| 레벨 (Level)             |            |            | `Maps` 폴더 안에 있어야 한다.      |
-| 블루프린트 (Blueprint)               | BP_        |            |                                  |
-| 머티리얼 (Material)                | M_         |            |                                  |
-| 머티리얼 인스턴스 (Material Instance)                | M_         |            |                                  |
-| 스태틱 메시 (Static Mesh)             | SM_        |            |                                  |
-| 스켈레탈 메시 (Skeletal Mesh)           | SKM_       |            |                                  |
-| 텍스처 (Texture)                 | T_         | _?         | 접미사 디테일은 [텍스처 (Textures)]() 항목을 봐주세요.    |
-| 나이아가라 시스템 (Niagara System)         | NS_        |            |                                  |
-| 위젯 블루프린트 (Widget Blueprint)        | WBP_       |            |                                  |
+| 레벨 *Level*             |            |            | `Maps` 폴더 안에 있어야 한다.      |
+| 블루프린트 *Blueprint*               | BP_        |            |                                  |
+| 머티리얼 *Material*                | M_         |            |                                  |
+| 머티리얼 인스턴스 *Material Instance*                | M_         |            |                                  |
+| 스태틱 메시 *Static Mesh*             | SM_        |            |                                  |
+| 스켈레탈 메시 *Skeletal Mesh*           | SKM_       |            |                                  |
+| 텍스처 *Texture*                 | T_         | _?         | 접미사 디테일은 [텍스처 (Textures)]() 항목을 봐주세요.    |
+| 나이아가라 시스템 *Niagara System*         | NS_        |            |                                  |
+| 위젯 블루프린트 *Widget Blueprint*        | WBP_       |            |                                  |
 
 
 #### 1.2.2 애니메이션 (Animations)
 
 | Asset Type              | Prefix     | Suffix     | Notes                            |
 | ----------------------- | ---------- | ---------- | -------------------------------- |
-| Aim Offset              | AO_        |            |                                  |
-| Aim Offset 1D           | AO_        |            |                                  |
-| Animation Blueprint     | ABP_       |            |                                  |
-| Animation Composite     | AC_        |            |                                  |
-| Animation Montage       | AM_        |            |                                  |
-| Animation Sequence      | A_         |            |                                  |
-| Blend Space             | BS_        |            |                                  |
-| Blend Space 1D          | BS_        |            |                                  |
-| Level Sequence          | LS_        |            |                                  |
-| Morph Target            | MT_        |            |                                  |
-| Paper Flipbook          | PFB_       |            |                                  |
-| Rig                     | Rig_       |            |                                  |
-| Skeletal Mesh           | SK_        |            |                                  |
-| Skeleton                | SKEL_      |            |                                  |
+| 에임 오프셋 *Aim Offset*              | AO_        |            |                                  |
+| 에임 오프셋 1D *Aim Offset 1D*           | AO_        |            |                                  |
+| 애니메이션 블루프린트 *Animation Blueprint*     | ABP_       |            |                                  |
+| 애니메이션 컴포짓 *Animation Composite*     | AC_        |            |                                  |
+| 애니메이션 몽타주 *Animation Montage*       | AM_        |            |                                  |
+| 애니메이션 시퀀스 *Animation Sequence*      | A_         |            |                                  |
+| 블렌드 스페이스 *Blend Space*             | BS_        |            |                                  |
+| 블렌드 스페이스 1D *Blend Space 1D*          | BS_        |            |                                  |
+| 레벨 시퀀스 *Level Sequence*          | LS_        |            |                                  |
+| 페이퍼 플립북 *Paper Flipbook*          | PFB_       |            |                                  |
+| 컨트롤 릭 *Control Rig*                     | CR_       |            |                                  |
+| IK 릭 *IK Rig*                     | IK_       |            |                                  |
+| IK 리타기터 *IK Retargeter*                     | RTG_       |            |                                  |
+| 스켈레탈 메시 *Skeletal Mesh*         | SKM_       |            |                                  |
+| 스켈레톤 *Skeleton*                   | SKEL_      |            |                                  |
 
 
 #### 1.2.3 인공 지능 (Artificial Intelligence)

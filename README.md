@@ -262,23 +262,24 @@
 
 ##### 기본에셋명 `Nina`의 `CasualOffice`변형 예
 
-| 에셋 유형              | 에셋명                                                 |
-| ----------------------- | ---------------------------------------------------------- |
-| 스켈레탈 메시(Skeletal Mesh) *상의*           | SKM_Nina_Suit_Shirt                                        |
-| 스켈레탈 메시(Skeletal Mesh) *하의*           | SKM_Nina_Suit_Slacks                                       |
-| 머티리얼 (Material) *상의*                | M_Nina_Suit_Shirt                                                      |
-| 텍스처 (Texture) *Diffuse/Albedo* | T_Nina_Suit_Shirt_D                                                    |
-| 텍스처 (Texture) *Normal*        | T_Nina_Suit_Shirt_N                                                    |
+| 에셋 유형                                  | 에셋명                            |
+| ----------------------------------------- | -------------------------------- |
+| 스켈레탈 메시(Skeletal Mesh) *상의*        | SKM_Nina_Suit_Shirt               |
+| 스켈레탈 메시(Skeletal Mesh) *하의*        | SKM_Nina_Suit_Slacks              |
+| 머티리얼 (Material) *상의*                 | M_Nina_Suit_Shirt                 |
+| 텍스처 (Texture) *Diffuse/Albedo*         | T_Nina_Suit_Shirt_D               |
+| 텍스처 (Texture) *Normal*                 | T_Nina_Suit_Shirt_N               |
 
-##### 1.1e2 Rocks
+##### 기본에셋명 `Rock`의 불특정 변형들
 
-| Asset Type              | Asset Name                                                 |
-| ----------------------- | ---------------------------------------------------------- |
-| Static Mesh (01)        | S_Rock_01                                                  |
-| Static Mesh (02)        | S_Rock_02                                                  |
-| Static Mesh (03)        | S_Rock_03                                                  |
-| Material                | M_Rock                                                     |
-| Material Instance (Snow)| MI_Rock_Snow                                               |
+| 에셋 유형                                                         | 에셋명                                |
+| ---------------------------------------------------------------- | ------------------------------------- |
+| 스태틱 메시 (Static Mesh) *변형1*                                 | SM_Rock_01                             |
+| 스태틱 메시 (Static Mesh) *변형2*                                 | SM_Rock_02                             |
+| 스태틱 메시 (Static Mesh) *변형3*                                 | SM_Rock_03                             |
+| 머티리얼 (Material) *변형들의 마스터*                              | M_Rock                                 |
+| 머티리얼 인스턴스 (Material Instance) *변형1의 인스턴스*            | MI_Rock_01                            |
+| 머티리얼 인스턴스 (Material Instance) *변형1의 눈쌓인 버전 인스턴스* | MI_Rock_01_Snow                       |
 
 <a name="asset-name-modifiers"></a>
 <a name="1.2"></a>

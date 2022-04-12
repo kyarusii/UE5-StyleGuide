@@ -248,7 +248,7 @@
 
 ### 02.1 BaseEngine.ini
 
-#### 02.2.1 공유 DCC 설정
+#### 02.1.1 공유 DCC 설정
 
 사내 네트워크에 연결되어있는 PC의 경우, 셰이더를 새로 컴파일하는 속도보다 네트워크를 통해 공유받는 속도가 더 빠릅니다.  
 사무실 내의 PC 중 한 대만 셰이더 컴파일을 해두면 다른 PC들은 셰이더 컴파일을 할 필요가 없도록 공유 DCC 경로를 설정해줍니다.  
@@ -763,7 +763,7 @@ Content 폴더 내의 모든 폴더 이름에 적용되는 공통 규칙들입�
 `Developers` 폴더는 콘텐츠 브라우저에서 기본적으로 숨겨져 있습니다. 콘텐츠 브라우저 세팅의 `개발자 콘텐츠 표시(Show Developers Content)` 항목을 체크해야 콘텐츠 브라우저에 노출됩니다. 
 
 `Developers` 폴더 내의 모든 에셋은 `소스컨트롤(PlasticSCM)`의 `ignore.conf` 설정에 의해 무시되도록 설정되어있습니다. 하지만 에디터 개인설정에서 `변경 시 새 파일 추가(Add New Files when Modified)` 옵션이 켜져있을 경우, `Developers` 폴더 내에 에셋을 추가할 경우 `ignore.conf` 규칙을 무시한 채 체크인 대기 항목에 올라가며 소스컨트롤에 잘못 체크인할 확률을 높이게 됩니다. 이 항목을 꺼두었다 하더라도 `Saved` 폴더를 삭제할 경우 에디터 개인설정이 엔진 기본설정으로 초기화됩니다.  
-때문에 `Developers` 폴더를 완전히 개인화된 실험실로 사용하기 위해서는 [BaseEditorPerProjectUserSettings.ini](#022-baseeditorperprojectusersettingsini)항목의 `bSCCAutoAddNewFiles=False` 설정이 되어있어야 합니다.
+때문에 `Developers` 폴더를 완전히 개인화된 실험실로 사용하기 위해서는 [Developers 폴더 사용 편의를 위한 설정](#0221-developers-폴더-사용-편의를-위한-설정)이 되어있어야 합니다.
 
 <br>
 

@@ -13,7 +13,7 @@
 <br>
 
 ## **목차**
-- [**중요한 용어들**](#중요한-용어들)
+- [**중요한 용어들**]()
   - [맵(map)과 레벨(level)]()
   - [명명 규칙 종류]()
   - [변수(Variable)와 프로퍼티(Property)]())
@@ -29,7 +29,7 @@
   - [02.1 BaseEngine.ini]()
   - [02.2 BaseEditorPerProjectUserSettings.ini]()
 - [**1. 에셋 명명 규칙**]()
-  - [1.1 기본 에셋 이름 - `접두사_기본에셋명_변형_접미사`](#base-asset-name)
+  - [1.1 에셋명 기본 형식: `접두사_기본에셋명_변형_접미사`](#base-asset-name)
     - [1.1 에셋 명명 예](#1.1-examples)
   - [1.2 에셋 접두사 & 접미사 테이블](#asset-name-modifiers)
     - [1.2.1 자주 사용되는 에셋](#anc-common)
@@ -198,7 +198,7 @@
 
 ### **00.2** 프로젝트는 아무리 많은 사람이 참여했다 하더라도, 이 스타일 가이드에 따라 모두 한 사람이 작업한 것처럼 보여야 합니다.
 
-하나의 스타일 가이드를 따라 협업하는 프로젝트는 마치 한 사람이 제작한 것처럼 일관성이 유지되기에, 작업 과정에서의 모호성을 없애고 불필요한 짐작을 할 필요가 없도록 만들어 줍니다. 그 결과 팀은 더 나은 생산성을 얻게 되며, 유지보수가 쉬워지게 됩니다.
+하나의 스타일 가이드를 따라 협업하는 프로젝트는 마치 한 사람이 제작한 것처럼 일관성이 유지됩니다. 이는 작업 과정에서의 모호성을 없애고 다른 팀원의 작업에 대한 불확실한 짐작을 할 필요가 없도록 만들어 줍니다. 그 결과 팀은 더 나은 생산성을 얻게 되며, 유지보수가 쉬워지게 됩니다.
 
 
 ### **00.3** 스타일 가이드를 지키지 않는 팀원을 그대로 내버려두어선 안됩니다.
@@ -238,29 +238,24 @@
 <br>
 
 
-## 1. Asset Naming Conventions
+## 1. 에셋 명명 규칙
 
-Naming conventions should be treated as law. A project that conforms to a naming convention is able to have its assets managed, searched, parsed, and maintained with incredible ease.
+스타일 가이드의 모든 부분이 그렇지만, 에셋 명명 규칙은 반드시 지켜야 합니다.  
+명명 규칙에 따라 일관되게 지어진 에셋 이름은 에셋 관리, 검색, 분석, 유지보수를 매우 쉽게 만들어줍니다.
 
-Most things are prefixed with prefixes being generally an acronym of the asset type followed by an underscore.
+명명 규칙의 큰 틀은 다음과 같이 `_`(밑줄)에 의해 에셋의 종류, 이름 등을 구분합니다.
 
-<a name="base-asset-name"></a>
-<a name="1.1"></a>
-### 1.1 Base Asset Name - `Prefix_BaseAssetName_Variant_Suffix`
 
-All assets should have a _Base Asset Name_. A Base Asset Name represents a logical grouping of related assets. Any asset that is part of this logical group should follow the standard of  `Prefix_BaseAssetName_Variant_Suffix`.
+### 1.1 에셋명 기본 형식: `접두사_기본에셋명_변형_접미사`  
 
-Keeping the pattern `Prefix_BaseAssetName_Variant_Suffix` and in mind and using common sense is generally enough to warrant good asset names. Here are some detailed rules regarding each element.
+`접두사`와 `접미사`는 에셋 형식에 따라 다음의 [1.2 에셋 접두사 & 접미사 테이블]()에 의해 결정됩니다.
 
-`Prefix` and `Suffix` are to be determined by the asset type through the following [Asset Name Modifier](#asset-name-modifiers) tables.
+모든 에셋들은 기본이 되는 에셋 이름인 `기본에셋명`을 가져야만 합니다. `기본에셋명`은 그 에셋이 속한 그룹의 문맥에 연관되는 짧고 쉬운 이름일수록 좋습니다. 예를 들어 캐릭터의 이름이 `Nina`라면, 모든 Nina 에셋들의 `기본에셋명`이 `Nina`가 되어야 합니다.
 
-`BaseAssetName` should be determined by a short and easily recognizable name related to the context of this group of assets. For example, if you had a character named Bob, all of Bob's assets would have the `BaseAssetName` of `Bob`.
+`변형`은 기본에셋명에서 `파생된 다양한 변종의 이름`을 지칭합니다. 예를 들어 `Nina` 캐릭터 에셋에는 다양한 `스킨 변형`이 있을 수 있습니다. Nina 스켈레탈 메시 중 `캐주얼 스킨`이 있다면 에셋명은 SKM_Nina_`Casual` 이 됩니다. 또다른 예로 `레트로 스타일`의 스킨이 있다면, 에셋명은 SKM_Nina_`Retro` 가 됩니다. 
+이 스켈레탈 메시에 사용되는 텍스쳐 에셋명의 좋은 예는 캐주얼 스킨의 경우 `T_Nina_Casual_Top_D`, `T_Nina_Casual_Top_N`, `T_Nina_Casual_Feet_D`, 레트로의 경우 `T_Nina_Retro_Top_D`, `T_Nina_Retro_Bottom_D` 가 좋은 예시가 됩니다.
 
-For unique and specific variations of assets, `Variant` is either a short and easily recognizable name that represents logical grouping of assets that are a subset of an asset's base name. For example, if Bob had multiple skins these skins should still use `Bob` as the `BaseAssetName` but include a recognizable `Variant`. An 'Evil' skin would be referred to as `Bob_Evil` and a 'Retro' skin would be referred to as `Bob_Retro`.
-
-For unique but generic variations of assets, `Variant` is a two digit number starting at `01`. For example, if you have an environment artist generating nondescript rocks, they would be named `Rock_01`, `Rock_02`, `Rock_03`, etc. Except for rare exceptions, you should never require a three digit variant number. If you have more than 100 assets, you should consider organizing them with different base names or using multiple variant names.
-
-Depending on how your asset variants are made, you can chain together variant names. For example, if you are creating flooring assets for an Arch Viz project you should use the base name `Flooring` with chained variants such as `Flooring_Marble_01`, `Flooring_Maple_01`, `Flooring_Tile_Squares_01`.
+만약 기본에셋명에서 파생되는 변형이 특정 이름으로 표현하기에는 애매한 눈에 띄는 특징이 없는 경우, 변형 이름을 숫자로 대신할 수 있습니다. 예를 들어 모델러가 다양한 종류의 암석을 디자인했을 때, 그것들의 변형은 SM_Rock_01, SM_Rock_02, SM_Rock_03 같은 형태가 될 수 있습니다. 또는 다음과 같이 특정 변형이름 다음에 변형숫자가 올 수도 있습니다. SM_Rock_Tropical_01, SM_Rock_Tropical_02
 
 <a name="1.1-examples"></a>
 #### 1.1 Examples

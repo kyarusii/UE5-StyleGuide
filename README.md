@@ -7,18 +7,17 @@
 [UE 마켓플레이스 가이드라인](https://www.unrealengine.com/ko/marketplace-guidelines?sessionInvalidated=true)  
 [UE Recommended Asset Naming Conventions](https://docs.unrealengine.com/4.27/ko/ProductionPipelines/AssetNaming/)  
 [LyraStarterGame](https://www.unrealengine.com/marketplace/en-US/product/lyra)  
-[Valley of the Ancient](https://www.unrealengine.com/marketplace/en-US/product/ancient-game-01?lang=en-US)
 
 <br>
 <br>
 
 ## **목차**
 - [**중요한 용어들**]()
-  - [맵(map)과 레벨(level)]()
-  - [명명 규칙 종류]()
-  - [변수(Variable)와 프로퍼티(Property)]())
-    - [프로퍼티(Property)]()
-    - [변수(Variable)]()
+  - [맵(map)과 레벨(level)](#맵map과-레벨level)
+  - [명명 규칙 종류](#명명-규칙-종류)
+  - [변수(Variable)와 프로퍼티(Property)](#변수variable와-프로퍼티property))
+    - [프로퍼티(Property)](#프로퍼티-property)
+    - [변수(Variable)](#변수-variable)
 - [**00. 원칙들**](#00-원칙들)
   - [00.1 당신이 기존에 어떤 스타일을 가지고 있었든, VLAST 소속의 UE 작업자는 모두 이 스타일 가이드를 따라 작업해야 합니다.](#001-당신이-기존에-어떤-스타일을-가지고-있었든-vlast-소속의-ue-작업자는-모두-이-스타일-가이드를-따라-작업해야-합니다)
   - [00.2 프로젝트는 아무리 많은 사람이 참여했다 하더라도, 이 스타일 가이드에 따라 모두 한 사람이 작업한 것처럼 보여야 합니다.](#002-프로젝트는-아무리-많은-사람이-참여했다-하더라도-이-스타일-가이드에-따라-모두-한-사람이-작업한-것처럼-보여야-합니다)
@@ -249,7 +248,7 @@
 
 ### 1.1 에셋명 기본 형식: `접두사_기본에셋명_변형_접미사`  
 
-`접두사`와 `접미사`는 에셋 형식에 따라 다음의 [1.2 에셋 접두사 & 접미사 테이블]()에 의해 결정됩니다.
+`접두사`와 `접미사`는 에셋 형식에 따라 다음의 [1.2 에셋 접두사 & 접미사 테이블](#12-에셋-접두사--접미사-테이블)에 의해 결정됩니다.
 
 모든 에셋들은 기본이 되는 에셋 이름인 `기본에셋명`을 가져야만 합니다. `기본에셋명`은 그 에셋이 속한 그룹의 문맥에 연관되는 짧고 쉬운 이름일수록 좋습니다. 예를 들어 캐릭터의 이름이 `Nina`라면, 모든 Nina 에셋들의 `기본에셋명`이 `Nina`가 되어야 합니다.
 
@@ -288,7 +287,7 @@
 
 ### 1.2 에셋 접두사 & 접미사 테이블
 
-[1.1 에셋명 기본 형식]()의 `접두사`, `접미사` 규칙입니다. 
+[1.1 에셋명 기본 형식](#11-에셋명-기본-형식-접두사_기본에셋명_변형_접미사)의 `접두사`, `접미사` 규칙입니다. 
 
 
 #### 1.2.1 흔히 사용되는 에셋
@@ -301,7 +300,7 @@
 | 머티리얼 인스턴스   | MI_         |            |                                  |
 | 스태틱 메시              | SM_        |            |                                  |
 | 스켈레탈 메시          | SKM_       |            |                                  |
-| 텍스처                       | T_         | _?         | 접미사 디테일은 [텍스처 (Textures)]() 항목을 봐주세요.    |
+| 텍스처                       | T_         | _?         | 접미사 디테일은 [텍스처 (Textures)](#126-텍스처-textures) 항목을 봐주세요.    |
 | 나이아가라 시스템      | NS_        |            |                                  |
 | 위젯 블루프린트      | WBP_       |            |                                  |
 
@@ -494,8 +493,7 @@
 
 **[⬆ Back to Top](#목차)**
 
-<a name="2"></a>
-<a name="structure"></a>
+
 ## 2. Content Directory Structure
 
 Equally important as asset names, the directory structure style of a project should be considered law. Asset naming conventions and content directory structure go hand in hand, and a violation of either causes unneeded chaos.
@@ -504,7 +502,7 @@ There are multiple ways to lay out the content of a UE4 project. In this style, 
 
 > If you are using the prefix [naming convention](#1.2) above, using folders to contain assets of similar types such as `Meshes`, `Textures`, and `Materials` is a redundant practice as asset types are already both sorted by prefix as well as able to be filtered in the content browser.
 
-<a name="2e1"><a>
+
 ### 2e1 Example Project Content Structure
 <pre>
 |-- Content
@@ -560,13 +558,12 @@ There are multiple ways to lay out the content of a UE4 project. In this style, 
 
 The reasons for this structure are listed in the following sub-sections.
 
-<a name="2.1"></a>
-<a name="structure-folder-names"><a>
+
 ### 2.1 Folder Names
 
 These are common rules for naming any folder in the content structure.
 
-<a name="2.1.1"></a>
+
 #### 2.1.1 Always Use PascalCase[<sup>*</sup>](#terms-cases)
 
 PascalCase refers to starting a name with a capital letter and then instead of using spaces, every following word also starts with a capital letter. For example, `DesertEagle`, `RocketPistol`, and `ASeriesOfWords`.

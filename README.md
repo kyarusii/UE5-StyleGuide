@@ -315,9 +315,9 @@
 `세부변형`은 기본에셋에서 `파생된 다양한 변형의 이름`을 지칭합니다. 예를 들어 `Nina` 캐릭터 에셋에는 다양한 `스킨 변형`이 있을 수 있습니다. Nina 스켈레탈 메시 중 `캐주얼 스타일`의 스킨이 있다면 에셋명은 SKM_Nina_`Casual` 이 됩니다.  
 또다른 예로 `레트로 스타일`의 스킨이 있다면, 에셋명은 SKM_Nina_`Retro` 가 됩니다.  
 
-이 스켈레탈 메시에 사용되는 텍스쳐 에셋명의 좋은 예는 캐주얼 스킨의 경우 `T_Nina_Casual_Top_D`, `T_Nina_Casual_Top_N`, `T_Nina_Casual_Feet_D`, 레트로의 경우 `T_Nina_Retro_Top_D`, `T_Nina_Retro_Bottom_D` 가 좋은 예시가 됩니다.
+이 스켈레탈 메시에 사용되는 텍스처 에셋명의 좋은 예는 캐주얼 스킨의 경우 `T_Nina_Casual_Top_D`, `T_Nina_Casual_Top_N`, `T_Nina_Casual_Feet_D`, 레트로의 경우 `T_Nina_Retro_Top_D`, `T_Nina_Retro_Bottom_D` 가 좋은 예시가 됩니다.
 
-만약 기본에셋명에서 파생되는 변형이 특정 이름으로 표현하기에는 애매한 눈에 띄는 특징이 없는 경우, 변형 이름을 숫자로 대신할 수 있습니다. 예를 들어 모델러가 다양한 종류의 암석을 디자인했을 때, 그것들의 변형은 SM_Rock_`01`, SM_Rock_`02`, SM_Rock_`03` 같은 형태가 될 수 있습니다. 또는 다음과 같이 특정 변형이름 다음에 변형숫자가 올 수도 있습니다. SM_Rock_Tropical_`01`, SM_Rock_Tropical_`02`
+만약 기본에셋명에서 파생되는 `세부변형`이 특정 이름으로 표현하기에는 애매한 눈에 띄는 특징이 없는 경우, `세부변형` 이름을 숫자로 대신할 수 있습니다. 예를 들어 모델러가 다양한 종류의 암석을 디자인했을 때, 그것들의 변형은 SM_Rock_`01`, SM_Rock_`02`, SM_Rock_`03` 같은 형태가 될 수 있습니다. 또는 다음과 같이 특정 `세부변형` 다음에 `변형숫자`가 올 수도 있습니다. SM_Rock_`Basalt`_`01`, SM_Rock_`Basalt`_`02`
 
 
 #### 1.1의 예시들
@@ -326,22 +326,22 @@
 
 | 에셋 유형                                  | 에셋명                            |
 | ----------------------------------------- | -------------------------------- |
-| 스켈레탈 메시(Skeletal Mesh) *상의*        | SKM_Nina_Suit_Shirt               |
-| 스켈레탈 메시(Skeletal Mesh) *하의*        | SKM_Nina_Suit_Slacks              |
-| 머티리얼 (Material) *상의*                 | M_Nina_Suit_Shirt                 |
-| 텍스처 (Texture) *Diffuse/Albedo*         | T_Nina_Suit_Shirt_D               |
-| 텍스처 (Texture) *Normal*                 | T_Nina_Suit_Shirt_N               |
+| 스켈레탈 메시 *상의*        | SKM_Nina_Suit_Shirt               |
+| 스켈레탈 메시 *하의*        | SKM_Nina_Suit_Slacks              |
+| 머티리얼 *상의*                 | M_Nina_Suit_Shirt                 |
+| 텍스처 *Diffuse/Albedo*         | T_Nina_Suit_Shirt_D               |
+| 텍스처 *Normal*                 | T_Nina_Suit_Shirt_N               |
 
 ##### 기본에셋명 `Rock`의 `불특정 변형` 예
 
 | 에셋 유형                                                         | 에셋명                                |
 | ---------------------------------------------------------------- | ------------------------------------- |
-| 스태틱 메시 (Static Mesh) *변형1*                                 | SM_Rock_01                             |
-| 스태틱 메시 (Static Mesh) *변형2*                                 | SM_Rock_02                             |
-| 스태틱 메시 (Static Mesh) *변형3*                                 | SM_Rock_03                             |
-| 머티리얼 (Material) *변형들의 마스터*                              | M_Rock                                 |
-| 머티리얼 인스턴스 (Material Instance) *변형1의 인스턴스*            | MI_Rock_01                            |
-| 머티리얼 인스턴스 (Material Instance) *눈쌓인 번형 인스턴스*        | MI_Rock_Snow_01                       |
+| 스태틱 메시 *변형1*                                 | SM_Rock_01                             |
+| 스태틱 메시 *변형2*                                 | SM_Rock_02                             |
+| 스태틱 메시 *변형3*                                 | SM_Rock_03                             |
+| 머티리얼 *변형들의 마스터*                              | M_Rock                                 |
+| 머티리얼 인스턴스 *변형1의 인스턴스*            | MI_Rock_01                            |
+| 머티리얼 인스턴스 *눈쌓인 번형 인스턴스*        | MI_Rock_Snow                       |
 
 <br>
 
@@ -379,7 +379,6 @@
 | 블렌드 스페이스                    | BS_        |            |                                  |
 | 블렌드 스페이스 1D              | BS_        |            |                                  |
 | 레벨 시퀀스                    | LS_         |            |                                  |
-| 페이퍼 플립북 *Paper Flipbook*                 | PFB_        |            |                                  |
 | 컨트롤 릭 *Control Rig*                        | CR_         |            |                                  |
 | IK 릭 *IK Rig*                                 | IK_        |            |                                  |
 | IK 리타기터 *IK Retargeter*                     | RTG_       |            |                                  |

@@ -693,11 +693,12 @@ Content 폴더 내의 모든 폴더 이름에 적용되는 공통 규칙들입�
 
 ### 2.5 프로젝트에 핵심적인 블루프린트 및 기타 에셋은 `Core` 폴더 내에 위치합니다.
 
-Use `/Content/Project/Core` folder for assets that are absolutely fundamental to a project's workings. For example, base `GameMode`, `Character`, `PlayerController`, `GameState`, `PlayerState`, and related Blueprints should live here.
+프로젝트의 근본을 이루는 매우 중요한 에셋에는 `Content\Project\Core` 경로를 사용하십시오. 예를 들어 프로젝트의 기본이 되는 `GameMode`, `Character`, `PlayerController`, `GameState`, `PlayerState`와 이와 관련된 블루프린트 등이 여기에 위치할 수 있습니다.
 
-This creates a very clear "don't touch these" message for other team members. Non-engineers should have very little reason to enter the `Core` folder. Following good code structure style, designers should be making their gameplay tweaks in child classes that expose functionality. World builders should be using prefab Blueprints in designated folders instead of potentially abusing base classes.
+`Core` 폴더를 사용하면 팀원들에게 이 안의 에셋은 수정해선 안된다는 사실을 명확히 암시할 수 있습니다. 아티스트들이 흔히 접근하는 경로에는 `Core` 블루프린트로부터 파생된 자식 블루프린트들이 위치하게 되며, 아티스트들은 `Core` 블루프린트를 직접 다루는 대신 그 자식을 다루며 게임 플레이를 제작하게 됩니다. 이 가이드에 따라 아티스트들은 `Core` 폴더에 접근할 이유가 거의 사라지게 됩니다.
 
-For example, if your project requires pickups that can be placed in a level, there should exist a base Pickup class in `Core/Pickups` that defines base behavior for a pickup. Specific pickups such as a Health or Ammo should exist in a folder such as `/Content/Project/Placeables/Pickups/`. Game designers can define and tweak pickups in this folder however they please, but they should not touch `Core/Pickups` as they may unintentionally break pickups project-wide.
+예를 들어, 프로젝트에는 레벨에 배치할 수 있는 기본 아이템 클래스가 존재할 수 있으며, 그 기본 동작을 정의한 클래스가 `Content\Project\Core\Item`에 위치할 수 있습니다. 게임 디자이너가 흔히 접근하는 경로에는 이 부모 블루프린트로부터 파생된 자식 블루프린트가 존재하며, 게임 디자이너는 자유롭게 이 파생 블루프린트를 조정하며 게임 플레이를 구성할 수 있습니다. 이러한 분리는 게임 디자이너가 `Core`에 정의된 부모 블루프린트를 직접 수정해 프로젝트 전체에 문제를 일으키는 일을 방지합니다.
+
 
 <br>
 

@@ -523,8 +523,8 @@ no content
 프로젝트 이름 `NinaVirtual`의 `Content`폴더 디렉터리 구조 예제
 <pre>
 |-- Content
-    |-- <a href="">NinaVirtual</a>
-        |-- <a href="">3D_Assets</a>
+    |-- <a href="#22-최상위-폴더-규칙">NinaVirtual</a>
+        |-- <a href="#27-이름이-meshes-textures-materials인-에셋유형-폴더를-만들지-마십시오">3D_Assets</a>
             |-- Building
                 |-- Balcony
                 |-- Wall
@@ -545,8 +545,8 @@ no content
         |-- Surfaces
             |-- Asphalt
             |-- Fabric         
-        |-- <a href="">Characters</a>
-            |-- <a href="">Common</a>
+        |-- <a href="#271-characters-이하-폴더에는-적용하지-않음">Characters</a>
+            |-- <a href="#28-여러-에셋과-공유되는-에셋들은-common-폴더-내에-위치합니다">Common</a>
                 |-- Animations
                 |-- Audio
             |-- Nina
@@ -561,7 +561,7 @@ no content
                 |-- Meshes
                 |-- Materials
                 |-- Textures                
-        |-- <a href="">Core</a>
+        |-- <a href="#25-프로젝트에-핵심적인-블루프린트-및-기타-에셋은-core-폴더-내에-위치합니다">Core</a>
             |-- Characters
             |-- Engine
             |-- GameModes
@@ -571,20 +571,49 @@ no content
             |-- Electrical
             |-- Fire
             |-- Weather
-        |-- <a href="#2.4">Maps</a>
+        |-- <a href="#24-모든-레벨-에셋은-maps-폴더-내에-위치해야-합니다">Maps</a>
             |-- Campaign1
             |-- Campaign2
-        |-- <a href="#2.8">MaterialLibrary</a>
+        |-- <a href="#29-materiallibrary">MaterialLibrary</a>
             |-- Debug
             |-- Functions
             |-- Textures
             |-- Utility
-    |-- <a href="">Megascans</a>   
-    |-- <a href="">StarterContent</a>
-    |-- <a href="">ThirdPerson</a>                   
+    |-- <a href="#223-최상위-폴더-규칙을-준수하는-샘플-템플릿-마켓플레이스-콘텐츠는-폴더-구조를-수정하지-않습니다">Megascans</a>   
+    |-- <a href="#223-최상위-폴더-규칙을-준수하는-샘플-템플릿-마켓플레이스-콘텐츠는-폴더-구조를-수정하지-않습니다">StarterContent</a>
+    |-- <a href="#223-최상위-폴더-규칙을-준수하는-샘플-템플릿-마켓플레이스-콘텐츠는-폴더-구조를-수정하지-않습니다">ThirdPerson</a>                   
 </pre>
 
-이러한 구조를 사용하는 이유는 밑의 항목들에서 다룹니다.
+#### 2.0.1 예제의 폴더들에 대한 설명
+
+| 폴더 이름          | Notes                            |
+| ----------------- | -------------------------------- |
+| NinaVirtual       | [최상위 폴더 규칙](#22-최상위-폴더-규칙)에 따라 생성된 프로젝트의 최상위 폴더         |
+| Core         | 프로젝트에 핵심 기능을 하는 에셋들이 모인 폴더. 자세한 내용은 [Core](#25-프로젝트에-핵심적인-블루프린트-및-기타-에셋은-core-폴더-내에-위치합니다) 참조.           |
+| Maps         | Level 에셋 폴더           |
+| MaterialLibrary         | 프로젝트 공용 마스터 머티리얼, 함수, 텍스처 등이 모인 폴더. 자세한 내용은 [MaterialLibrary](#29-materiallibrary) 참조.           |
+
+아래의 폴더들은 3D 에셋, 재질, 데칼 등 개체화된 아트 에셋들이 저장되는 경로이다.  
+가장 말단의 폴더는 개체화된 아트 에셋의 [기본에셋명](#11-에셋명-기본-형식-접두사_기본에셋명_세부변형_접미사)이며, 개체화된 에셋들을 아우르는 상위 테마 폴더를 가질 수 있다. 예를 들어 사막의 식물 `Cactus`, `DesertYellowHead`는 `Content\ProjectName\3D_Plants\Desert\` 이하 경로에 모여있다.  
+
+개체폴더 이하에 `Meshes`, `Textures`, `Materials`, `Blueprints` 폴더는 생성하지 않는다. 자세한 내용은 [2.7](#27-이름이-meshes-textures-materials인-에셋유형-폴더를-만들지-마십시오) 항목 참조.
+| 폴더 이름          | Notes                            |
+| ----------------- | -------------------------------- |
+| 3D_Assets         | 구조물, 소품, 장식, 환경요소 등의 에셋들이 위치한다. 단순한 스켈레탈 메시 에셋들도 포함된다. |
+| 3D_Plants         | 폴리지(Foliage) 기능에 사용될 꽃, 풀, 잡초와 같은 작은 식생 에셋들이 위치한다. |
+| Decals            | 데칼에 사용되는 머티리얼, 텍스처 에셋들이 위치한다. |
+| Surfaces          | 표면 재질에 사용되는 머티리얼, 텍스처 에셋들이 위치한다. 마스크 같은 맵에 의해 특정 3D 에셋에 종속되지 않고 머티리얼 레이어, 랜드스케이프, 버텍스 페인팅 등에 사용되는 재질들이 속한다. |
+
+캐릭터 폴더들은 [2.7](#27-이름이-meshes-textures-materials인-에셋유형-폴더를-만들지-마십시오)의 예외이다.  
+캐릭터와 관련된 `Blueprints`, `Meshes`, `Materials`, `Textures` 등 `에셋유형` 폴더를 가진다. 자세한 내용은 [2.7.1](#271-characters-이하-폴더에는-적용하지-않음) 항목 참조.
+| 폴더 이름           | Notes                                            |
+| ------------------ | ------------------------------------------------ |
+| Characters         | 본 구조를 가지면서 캐릭터로서 사용되는 에셋들을 가진다. *본 구조를 가졌으나 캐릭터로 사용되지 않는 단순한 에셋들은 `3D_Assets` 경로에 포함된다.* |
+| Common         | 여러 캐릭터에 공유될 수 있는 에셋들을 가진다. 자세한 내용은 [2.8](#28-여러-에셋과-공유되는-에셋들은-common-폴더-내에-위치합니다) 항목 참조. |
+
+`Megascans`, `StarterContent`, `ThirdPerson` 폴더는 외부에서 이주되어온 [최상위 폴더](#22-최상위-폴더-규칙)로, [2.2.3](#223-최상위-폴더-규칙을-준수하는-샘플-템플릿-마켓플레이스-콘텐츠는-폴더-구조를-수정하지-않습니다)에 따라 Content 폴더에 그대로 존재한다.
+
+보다 자세한 설명과 세부 원칙들은 이하의 항목에서 다룹니다.
 
 <br>
 

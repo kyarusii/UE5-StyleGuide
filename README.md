@@ -523,54 +523,65 @@ no content
 프로젝트 이름 `NinaVirtual`의 `Content`폴더 디렉터리 구조 예제
 <pre>
 |-- Content
-    |-- <a href="#2.2">GenericShooter</a>
-        |-- 3D_Assets
-        |   |-- Industrial
-        |   |   |-- Ambient
-        |   |   |-- Machinery
-        |   |   |-- Pipes
-        |   |-- Nature
-        |   |   |-- Ambient
-        |   |   |-- Foliage
-        |   |   |-- Rocks
-        |   |   |-- Trees
-        |   |-- Office
-        |-- Characters
-        |   |-- Bob
-        |   |-- Common
-        |   |   |-- <a href="#2.7">Animations</a>
-        |   |   |-- Audio
-        |   |-- Jack
-        |   |-- Steve
-        |   |-- <a href="#2.1.3">Zoe</a>
-        |-- <a href="#2.5">Core</a>
-        |   |-- Characters
-        |   |-- Engine
-        |   |-- <a href="#2.1.2">GameModes</a>
-        |   |-- Interactables
-        |   |-- Pickups
-        |   |-- Weapons
+    |-- <a href="">NinaVirtual</a>
+        |-- <a href="">3D_Assets</a>
+            |-- Building
+                |-- Balcony
+                |-- Wall
+            |-- Nature
+                |-- Rock
+                |-- Tree
+            |-- Props
+                |-- OldWoodenBench            
+        |-- 3D_Plants
+            |-- Desert
+                |-- Cactus
+                |-- DesertYellowHead
+            |-- Arctic
+                |-- Moss        
+        |-- Decals
+            |-- Concrete
+            |-- Metal        
+        |-- Surfaces
+            |-- Asphalt
+            |-- Fabric         
+        |-- <a href="">Characters</a>
+            |-- <a href="">Common</a>
+                |-- Animations
+                |-- Audio
+            |-- Nina
+                |-- Animations
+                |-- Blueprints
+                |-- Meshes
+                |-- Materials
+                |-- Textures    
+            |-- Abo
+                |-- Animations
+                |-- Blueprints
+                |-- Meshes
+                |-- Materials
+                |-- Textures                
+        |-- <a href="">Core</a>
+            |-- Characters
+            |-- Engine
+            |-- GameModes
+            |-- Interactables
+            |-- Weapons
         |-- Effects
-        |   |-- Electrical
-        |   |-- Fire
-        |   |-- Weather
+            |-- Electrical
+            |-- Fire
+            |-- Weather
         |-- <a href="#2.4">Maps</a>
-        |   |-- Campaign1
-        |   |-- Campaign2
+            |-- Campaign1
+            |-- Campaign2
         |-- <a href="#2.8">MaterialLibrary</a>
-        |   |-- Debug
-        |   |-- Metal
-        |   |-- Paint
-        |   |-- Utility
-        |   |-- Weathering
-        |-- Placeables
-        |   |-- Pickups
-        |-- Weapons
-            |-- Common
-            |-- Pistols
-            |   |-- DesertEagle
-            |   |-- RocketPistol
-            |-- Rifles
+            |-- Debug
+            |-- Functions
+            |-- Textures
+            |-- Utility
+    |-- <a href="">Megascans</a>   
+    |-- <a href="">StarterContent</a>
+    |-- <a href="">ThirdPerson</a>                   
 </pre>
 
 이러한 구조를 사용하는 이유는 밑의 항목들에서 다룹니다.
@@ -644,10 +655,10 @@ Content 폴더 내의 모든 폴더 이름에 적용되는 공통 규칙들입�
 |-- Content
     |-- ProjectA
         |-- MaterialLibrary
-        |   |-- M_Master.uasset
+            |-- M_Master.uasset
     |-- ProjectB
         |-- MaterialLibrary
-        |   |-- M_Master.uasset 
+            |-- M_Master.uasset 
 </pre>
 
 
@@ -729,20 +740,20 @@ Content 폴더 내의 모든 폴더 이름에 적용되는 공통 규칙들입�
     |-- ProjectName
       |-- 3D_Assets
           |-- Building
-          |   |-- Balcony
-          |   |-- Wall
+              |-- Balcony
+              |-- Wall
           |-- Nature
-          |   |-- Rock
-          |   |-- Tree
+              |-- Rock
+              |-- Tree
           |-- Props
-          |   |-- Book
-          |   |-- OldWoodenBench            
+              |-- Book
+              |-- OldWoodenBench            
       |-- 3D_Plants
           |-- Desert
-          |   |-- Cactus
-          |   |-- DesertYellowHead
+              |-- Cactus
+              |-- DesertYellowHead
           |-- Arctic
-          |   |-- Moss        
+              |-- Moss        
       |-- Decals
           |-- Concrete
           |-- Blood 
@@ -756,66 +767,55 @@ Content 폴더 내의 모든 폴더 이름에 적용되는 공통 규칙들입�
 다음과 같이 실제로 배치될 개체 단위로 잘 정리된 폴더구조는 아티스트가 `Meshes`와 같은 불필요한 에셋유형 정보가 아닌, 실제로 찾으려는 `개체이름`에 집중해 폴더를 탐색할 수 있게 해줍니다. 개체이름의 폴더 안에는 그 개체에 필요한 모든 `스태틱 메시`, `머티리얼`, `텍스처` 등이 포함되어있으며, 아티스트는 콘텐츠 브라우저의 필터링 시스템을 활용해 구체적인 에셋 유형을 찾으면 됩니다.
 
 
-#### 2.7.1 `Characters` 폴더 이하에는 적용하지 않음.
+#### 2.7.1 `Characters` 이하 폴더에는 적용하지 않음.
 
 캐릭터 에셋은 개체폴더 내에 `스켈레탈 메시`, `머티리얼`, `텍스처` 외에도 `애니메이션 블루프린트`, `애니메이션 시퀀스`, `블루프린트`, `애니메이션 몽타주`, `피직스 에셋`, `사운드` 등 매우 다양한 에셋유형을 가지게 되며, 단순한 3D 모델이나 재질 에셋과는 달리 체계적으로 구조화됩니다.  
 
-이러한 특징을 가지는 폴더에까지 [2.7](#27-이름이-meshes-textures-materials인-에셋유형-폴더를-만들지-마십시오)의 규칙을 적용하는 것은 콘텐츠 브라우저에 5개 이상의 다양한 필터를 준비해두게 만들어 필터 시스템의 전반적인 편의 자체를 해치게 됩니다. 또한 [2.7](#27-이름이-meshes-textures-materials인-에셋유형-폴더를-만들지-마십시오)의 규칙은 캐릭터와 같은 복잡하게 구조화된 폴더에는 적합하지 않으므로, `Characters` 이하의 캐릭터 폴더들에는 [2.7](#27-이름이-meshes-textures-materials인-에셋유형-폴더를-만들지-마십시오)의 규칙을 적용하지 않습니다.
+이러한 특징을 가지는 폴더에까지 [2.7](#27-이름이-meshes-textures-materials인-에셋유형-폴더를-만들지-마십시오)의 규칙을 적용하는 것은 콘텐츠 브라우저에 5개 이상의 다양한 필터를 준비해두게 만들어 필터 시스템의 전반적인 편의 자체를 해치게 됩니다. 또한 [2.7](#27-이름이-meshes-textures-materials인-에셋유형-폴더를-만들지-마십시오)의 규칙은 캐릭터와 같은 복잡하게 구조화된 폴더에는 적합하지 않습니다.  
 
-캐릭터 폴더들에는 다음과 같은 관습적인 스타일을 그대로 따릅니다. 
+따라서, `Characters` 경로 이하의 캐릭터 폴더들은 다음과 같은 관습적인 스타일을 따라 `에셋유형` 폴더를 만들어줍니다. 
 <pre>
 |-- Content
     |-- ProjectName
       |-- Characters
           |-- Nina
-          |   |-- Animations
-          |   |-- Blueprints
-          |   |-- Meshes
-          |   |-- Materials
-          |   |-- Textures      
+              |-- Audio          
+              |-- Animations
+              |-- Blueprints
+              |-- Meshes
+              |-- Materials
+              |-- Textures      
 </pre>
 
 <br>
 
-### 2.7 Very Large Asset Sets Get Their Own Folder Layout
+### 2.8 여러 에셋과 공유되는 에셋들은 `Common` 폴더 내에 위치합니다.
 
-This can be seen as a pseudo-exception to [2.6](#2.6).
+다른 개체 에셋들과 쉽게 공유되고 호환되는 특정 에셋 유형들이 있습니다. 가장 일반적인 예는 `애니메이션`과 `오디오` 에셋입니다. 
 
-There are certain asset types that have a huge volume of related files where each asset has a unique purpose. The two most common are Animation and Audio assets. If you find yourself having 15+ of these assets that belong together, they should be together.
-
-For example, animations that are shared across multiple characters should lay in `Characters/Common/Animations` and may have sub-folders such as `Locomotion` or `Cinematic`.
-
-> This does not apply to assets like textures and materials. It is common for a `Rocks` folder to have a large amount of textures if there are a large amount of rocks, however these textures are generally only related to a few specific rocks and should be named appropriately. Even if these textures are part of a [Material Library](#2.8).
+예를 들어, `애니메이션`의 경우 여러 스켈레톤에 걸쳐 공유되는 애니메이션이 있을 수 있습니다. UE5에서부터는 유사한 본 구조를 지닌 캐릭터 사이에서의 애니메이션 공유가 특히 쉬워졌으므로, 이런 유형의 에셋들에 `Content\Project\Characters\Common\Animations`와 같은 경로를 적용할 수 있습니다.
 
 <br>
 
-### 2.8 `MaterialLibrary`
+### 2.9 `MaterialLibrary`
 
-If your project makes use of master materials, layered materials, or any form of reusable materials or textures that do not belong to any subset of assets, these assets should be located in `Content/Project/MaterialLibrary`.
+프로젝트 전체에 걸쳐 광범위하게 사용되는 `마스터 머티리얼`, `머티리얼 함수`, `텍스처` 등은 `Content/Project/MaterialLibrary` 경로에 있어야 합니다.
 
-This way all 'global' materials have a place to live and are easily located.
+이 규칙은 아티스트들이 `머티리얼 인스턴스만 사용` 규칙을 따르는 것을 매우 쉽게 만들어줍니다. 프로젝트에 `머티리얼 인스턴스만 사용` 정책을 사용할 경우, 전체적인 룩에 변경이 필요할 때 3D 에셋 각각의 머티리얼을 수정할 필요 없이 마스터 머티리얼 하나만 변경하는 것으로 전체에 변경사항을 적용할 수 있습니다. `머티리얼 인스턴스만 사용` 정책은 생산성을 높이고 유지보수를 쉽게 만들어주며, `MaterialLibrary` 폴더의 사용은 정책을 따르는 것을 쉽게 만들어줍니다. 
 
-> This also makes it incredibly easy to enforce a 'use material instances only' policy within a project. If all artists and assets should be using material instances, then the only regular material assets that should exist are within this folder. You can easily verify this by searching for base materials in any folder that isn't the `MaterialLibrary`.
+`MaterialLibrary`는 순수 머티리얼만으로 구성되지 않습니다. 프로젝트 전체에 사용되는 `텍스처`, `머티리얼 함수`, 또는 이러한 목적을 지닌 셰이더 관련 에셋들은 모두 `MaterialLibrary` 이하에 위치합니다. 예를 들어, 공용 노이즈 텍스처는 `Content\Project\MaterialLibrary\Textures` 경로에 위치하며, 공용 노이즈 함수는 `Content\Project\MaterialLibrary\Functions` 경로에 위치합니다.
 
-The `MaterialLibrary` doesn't have to consist of purely materials. Shared utility textures, material functions, and other things of this nature should be stored here as well within folders that designate their intended purpose. For example, generic noise textures should be located in `MaterialLibrary/Utility`.
-
-Any testing or debug materials should be within `MaterialLibrary/Debug`. This allows debug materials to be easily stripped from a project before shipping and makes it incredibly apparent if production assets are using them if reference errors are shown.
+모든 테스트 또는 디버깅을 위한 머티리얼은 `MaterialLibrary\Debug` 폴더 내에 있어야 합니다. 이는 프로젝트가 배포용으로 패키징되기 이전에 디버깅을 위한 요소들을 제거하는 것을 쉽게 만들어주며, 참조 오류가 발생할 경우 디버깅을 위한 에셋을 사용하고 있지는 않은지 확인하는 것을 쉽게 만들어줍니다.
 
 <br>
 
-### 2.9 No Empty Folders
+### 2.10 리디렉터, 비어있는 폴더
 
-There simply shouldn't be any empty folders. They clutter the content browser.
+에셋의 이름 또는 경로 변경은 그 자리에 동일한 이름의 리디렉터 파일을 남기게 됩니다. 이를 인식하지 못하고 다시 리디렉터와 동일한 이름으로 파일을 생성하거나 가져올 경우, 리디렉터로 덮어씌워지며 파일이 사라져 작업사항을 잃어버릴 수 있습니다. 
 
-If you find that the content browser has an empty folder you can't delete, you should perform the following:
-1. Be sure you're using source control.
-1. Immediately run Fix Up Redirectors on your project.
-1. Navigate to the folder on-disk and delete the assets inside.
-1. Close the editor.
-1. Make sure your source control state is in sync (i.e. if using Perforce, run a Reconcile Offline Work on your content directory)
-1. Open the editor. Confirm everything still works as expected. If it doesn't, revert, figure out what went wrong, and try again.
-1. Ensure the folder is now gone.
-1. Submit changes to source control.
+리디렉터의 제거는 콘텐츠 브라우저에서 폴더를 우클릭한 뒤 `폴더의 리디렉터 고치기(Fix Up Redirectors in Folder)`로 수행할 수 있으며, 에셋의 이름이나 경로를 변경한 후에는 곧바로 리디렉터를 고쳐줘야 합니다.
+
+`Content` 폴더 안에 빈 폴더를 남겨두지 마십시오. 만약 삭제되지 않는 빈 폴더가 있다면, 폴더 내에 리디렉터 파일이 있는 것입니다. `폴더의 리디렉터 고치기` 기능으로 리디렉터를 제거한 뒤 빈 폴더를 삭제해주세요. 리디렉터는 기본적으로 감춰져있으며, 콘텐츠 브라우저 설정을 통해 볼 수 있습니다.
 
 **[⬆ Back to Top](#목차)**
 

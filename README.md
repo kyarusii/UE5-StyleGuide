@@ -301,7 +301,8 @@ no content
 
 ### 1.2 에셋 접두사 & 접미사 테이블
 
-[1.1 에셋명 기본 형식](#11-에셋명-기본-형식-접두사_기본에셋명_세부변형_접미사)의 `접두사`, `접미사` 규칙입니다. 
+[1.1 에셋명 기본 형식](#11-에셋명-기본-형식-접두사_기본에셋명_세부변형_접미사)의 `접두사`, `접미사` 규칙입니다.  
+이 스타일 가이드는 [텍스처](#126-텍스처-textures)를 제외한 에셋유형에는 가능한 한 접미사를 사용하지 않습니다.
 
 
 #### 1.2.1 흔히 사용되는 에셋
@@ -422,10 +423,10 @@ no content
 | -------------------------- | ---------- | ---------- | -------------------------------- |
 | 데이터 에셋                 | DA_         |            |  |
 | 데이터 테이블                | DT_        |            |                                  |
-| 플롯 커브                | CV_     | _Float     |                                  |
-| 벡터 커브               | CV_     | _Vector    |                                  |
-| 컬러 커브                | CV_     | _Color     |                                  |
-| 커브 테이블                | CV_     | _Table     |                                  |
+| 플롯 커브                | CV_Float_     |      |                                  |
+| 벡터 커브               | CV_Vector_     |     |                                  |
+| 컬러 커브                | CV_Color_     |      |                                  |
+| 커브 테이블                | CV_Table_     |      |                                  |
 | 벡터 필드        | VF_        |            |                                  |
 | HLOD 레이어        | HLODLayer_        |            |                                  |
 | 그룸 *Groom*       | Groom_        |            |                                  |
@@ -646,7 +647,7 @@ Content 폴더 내의 모든 폴더 이름에 적용되는 공통 규칙들입�
         |   |-- M_Master.uasset
     |-- ProjectB
         |-- MaterialLibrary
-        |   |-- M_Master.uasset
+        |   |-- M_Master.uasset 
 </pre>
 
 
@@ -706,19 +707,73 @@ Content 폴더 내의 모든 폴더 이름에 적용되는 공통 규칙들입�
 ### 2.6 이름이 `Assets`인 폴더를 만들지 마십시오.
 
 `Assets` 폴더가 암묵적으로 3D 에셋들에 사용되는 경로임을 알지만, 3D 에셋 외의 모든 에셋들도 `Assets`이기에 이 스타일 가이드에서는 권장하지 않습니다.  
-그보다는 메가스캔의 스타일을 따라 3D 에셋들에는 `3D_Assets` 경로를 사용합니다.
+이 스타일 가이드는 메가스캔의 스타일에 영향을 받아 3D 에셋들에는 `3D_Assets` 경로를 사용합니다.
 
 <br>
 
 ### 2.7 이름이 `Meshes`, `Textures`, `Materials`인 `에셋유형` 폴더를 만들지 마십시오.
 
-All asset names are named with their asset type in mind. These folders offer only redundant information and the use of these folders can easily be replaced with the robust and easy to use filtering system the Content Browser provides.
+이 규칙은 `3D_Assets`, `3D_Plants`, `Surfaces`, `Decals` 등 폴더 내의 에셋이 주로 `스태틱 메시`, `머티리얼`, `텍스처` 유형인 폴더들에 강제됩니다.  
+예외 상황은 [`Characters` 폴더 이하에는 적용하지 않음](#271-characters-폴더-이하에는-적용하지-않음)를 확인해주세요.
 
-Want to view only static mesh in `Environment/Rocks/`? Simply turn on the Static Mesh filter. If all assets are named correctly, they will also be sorted in alphabetical order regardless of prefixes. Want to view both static meshes and skeletal meshes? Simply turn on both filters. This eliminates the need to potentially have to `Control-Click` select two folders in the Content Browser's tree view.
+모든 에셋 이름은 이미 접두사에 자신의 에셋 유형을 담고있습니다. `Meshes`, `Textures`, `Materials`와 같은 에셋 유형 폴더는 중복된 정보를 제공할 뿐입니다.
 
-> This also extends the full path name of an asset for very little benefit. The `S_` prefix for a static mesh is only two characters, whereas `Meshes/` is seven characters.
+잘 정리된 에셋 이름은 이미 접두사에 의해 유형별로 잘 정돈되어 폴더에 추가로 정리하는 것의 이득이 적습니다. 만일 특정 유형의 에셋만 모아서 보고 싶다면, `콘텐츠 브라우저`의 `필터 기능`을 이용하는 것으로 에셋유형 폴더를 간단히 대체할 수 있습니다. 스태틱 메시만을 보고싶다면, `Meshes` 폴더에 정리하는 대신 단지 `스태틱 메시 필터`를 켜기만 하면 됩니다. 머티리얼과 텍스처만 보고싶다면, `Materials`, `Textures` 폴더에 정리하는 대신 `머티리얼과 텍스처 필터`를 켜기만 하면 됩니다. 
 
-Not doing this also prevents the inevitability of someone putting a static mesh or a texture in a `Materials` folder.
+이 규칙은 불필요하게 깊어진 폴더 구조를 간소화해 폴더 탐색 피로도를 줄여줍니다. 또한 이러한 유형의 에셋을 자주 임포트해야하는 아티스트들이 `Materials` 폴더에 텍스처를 넣는 등의 실수도 방지해줍니다. 전체 파일경로 길이를 줄여주며 `쿠킹 파일 경로 길이` 제한에 걸리는 일도 줄여줍니다.
+
+이 규칙의 핵심은 3D 에셋 폴더들을 에셋유형 단위로 해체하지 않고 실제로 월드에 배치될 개체 단위로 `폴더 자체를 개체화`하는 데 있습니다.
+
+<pre>
+|-- Content
+    |-- ProjectName
+      |-- 3D_Assets
+          |-- Building
+          |   |-- Balcony
+          |   |-- Wall
+          |-- Nature
+          |   |-- Rock
+          |   |-- Tree
+          |-- Props
+          |   |-- Book
+          |   |-- OldWoodenBench            
+      |-- 3D_Plants
+          |-- Desert
+          |   |-- Cactus
+          |   |-- DesertYellowHead
+          |-- Arctic
+          |   |-- Moss        
+      |-- Decals
+          |-- Concrete
+          |-- Blood 
+          |-- Metal        
+      |-- Surfaces
+          |-- Grass
+          |-- Asphalt
+          |-- Fabric        
+</pre>
+
+다음과 같이 실제로 배치될 개체 단위로 잘 정리된 폴더구조는 아티스트가 `Meshes`와 같은 불필요한 에셋유형 정보가 아닌, 실제로 찾으려는 `개체이름`에 집중해 폴더를 탐색할 수 있게 해줍니다. 개체이름의 폴더 안에는 그 개체에 필요한 모든 `스태틱 메시`, `머티리얼`, `텍스처` 등이 포함되어있으며, 아티스트는 콘텐츠 브라우저의 필터링 시스템을 활용해 구체적인 에셋 유형을 찾으면 됩니다.
+
+
+#### 2.7.1 `Characters` 폴더 이하에는 적용하지 않음.
+
+캐릭터 에셋은 개체폴더 내에 `스켈레탈 메시`, `머티리얼`, `텍스처` 외에도 `애니메이션 블루프린트`, `애니메이션 시퀀스`, `블루프린트`, `애니메이션 몽타주`, `피직스 에셋`, `사운드` 등 매우 다양한 에셋유형을 가지게 되며, 단순한 3D 모델이나 재질 에셋과는 달리 체계적으로 구조화됩니다.  
+
+이러한 특징을 가지는 폴더에까지 [2.7](#27-이름이-meshes-textures-materials인-에셋유형-폴더를-만들지-마십시오)의 규칙을 적용하는 것은 콘텐츠 브라우저에 5개 이상의 다양한 필터를 준비해두게 만들어 필터 시스템의 전반적인 편의 자체를 해치게 됩니다. 또한 [2.7](#27-이름이-meshes-textures-materials인-에셋유형-폴더를-만들지-마십시오)의 규칙은 캐릭터와 같은 복잡하게 구조화된 폴더에는 적합하지 않으므로, `Characters` 이하의 캐릭터 폴더들에는 [2.7](#27-이름이-meshes-textures-materials인-에셋유형-폴더를-만들지-마십시오)의 규칙을 적용하지 않습니다.
+
+캐릭터 폴더들에는 다음과 같은 관습적인 스타일을 그대로 따릅니다. 
+<pre>
+|-- Content
+    |-- ProjectName
+      |-- Characters
+          |-- Nina
+          |   |-- Animations
+          |   |-- Blueprints
+          |   |-- Meshes
+          |   |-- Materials
+          |   |-- Textures      
+</pre>
 
 <br>
 

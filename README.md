@@ -245,6 +245,7 @@
 
 명명 규칙의 큰 틀은 다음과 같이 `_`(밑줄)에 의해 에셋의 종류, 이름 등을 구분합니다.
 
+<br>
 
 ### 1.1 에셋명 기본 형식: `접두사_기본에셋명_변형_접미사`  
 
@@ -493,13 +494,15 @@
 
 **[⬆ Back to Top](#목차)**
 
+<br>
+<br>
 
 ## 2. Content 폴더 디렉터리 구조
 
 에셋 명명 규칙과 마찬가지로, 프로젝트 디렉터리 구조 스타일 역시 반드시 지켜주셔야 합니다.  
 에셋 이름과 Content 디렉터리 구조는 서로 연관이 깊으며, 둘 중 하나를 위반한다면 불필요한 혼란이 생기게 됩니다.  
 
-
+<br>
 
 ### 2.0 Content 폴더 디렉터리 구조 예제
 
@@ -558,6 +561,7 @@
 
 이러한 구조를 사용하는 이유는 밑의 항목들에서 다룹니다.
 
+<br>
 
 ### 2.1 폴더명 규칙
 
@@ -580,15 +584,15 @@ Content 폴더 내의 모든 폴더 이름에 적용되는 공통 규칙들입�
 
 폴더 이름에 허용되는 문자는 `A-Z`, `a-z`, `0-9` 뿐입니다. [금지된 문자](#011-금지된-문자)의 허용된 문자 항목을 참고해주세요.
 
+<br>
 
 ### 2.2 최상위 폴더 규칙
 
-프로젝트의 모든 에셋은 프로젝트 이름을 딴 최상위 폴더 내에 위치해야 합니다. 예를 들어, 프로젝트 이름이 `NinaVirtual`이라면 `NinaVirtual` 프로젝트를 위해 생성된 모든 에셋은 `Content\NinaVirtual\` 내에 위치해야 합니다.
+프로젝트의 모든 에셋은 프로젝트 이름을 딴 최상위 폴더 내에 위치해야 합니다. 예를 들어, 프로젝트 이름이 `NinaVirtual`이라면 `NinaVirtual` 프로젝트를 위해 생성된 모든 에셋은 `Content\NinaVirtual\` 내에 위치해야 합니다. 만약 프로젝트 이름이 너무 길거나 프로젝트 이름을 그대로 최상위 폴더명으로 따기에 부적합하다 느낄 경우, 적합한 이름으로 변경할 수 있습니다. 
 
+프로젝트 내의 모든 에셋이 프로젝트의 최상위 폴더에 위치해야하는 것은 아닙니다. 다른 프로젝트에서 이주해오거나 프로젝트에 추가한 마켓플레이스 콘텐츠 등이 있을 경우 이주해온 프로젝트의 에셋들도 `최상위 폴더 규칙`에 따라 각자의 최상위 폴더를 가질 것이므로, 한 프로젝트는 다수의 최상위 폴더를 가질 수 있습니다. 자세한 내용은 [다음](#223-최상위-폴더-규칙을-준수하는-샘플-템플릿-마켓플레이스-콘텐츠는-폴더-구조를-수정하지-않습니다)을 확인해주세요.
 
-> The `Developers` folder is not for assets that your project relies on and therefore is not project specific. See [Developer Folders](#2.3) for details about this.
-
-There are multiple reasons for this approach.
+> `Developers` 폴더는 프로젝트에 종속된 폴더가 아니므로, 프로젝트별로 구분되지 않습니다. 자세한 내용은 [Developers 폴더](#23-로컬-테스트는-developers-폴더-내에서-해야합니다) 항목을 참고해주세요.
 
 
 #### 2.2.1 No Global Assets
@@ -635,6 +639,7 @@ When adhering to [2.2](#2.2), the worst marketplace conflict you can have is if 
 
 If your project plans to release DLC or has multiple sub-projects associated with it that may either be migrated out or simply not cooked in a build, assets relating to these projects should have their own separate top level content folder. This make cooking DLC separate from main project content far easier. Sub-projects can also be migrated in and out with minimal effort. If you need to change a material of an asset or add some very specific asset override behavior in a patch, you can easily put these changes in a patch folder and work safely without the chance of breaking the core project.
 
+<br>
 
 ### 2.3 로컬 테스트는 `Developers` 폴더 내에서 해야합니다.
 
@@ -646,6 +651,7 @@ If these modular assets were placed in a Developer folder, the world builder sho
 
 Once the assets are ready for use, an artist simply has to move the assets into the project specific folder and fix up redirectors. This is essentially 'promoting' the assets from experimental to production.
 
+<br>
 
 ### 2.4 모든 레벨 에셋은 `Maps` 폴더 내에 위치해야 합니다.
 
@@ -655,6 +661,7 @@ Being able to tell someone to open a specific map without having to explain wher
 
 This also simplifies the job of cooking for engineers. Wrangling levels for a build process can be extremely frustrating if they have to dig through arbitrary folders for them. If a team's maps are all in one place, it is much harder to accidentally not cook a map in a build. It also simplifies lighting build scripts as well as QA processes.
 
+<br>
 
 ### 2.5 프로젝트에 핵심적인 블루프린트 및 기타 에셋은 `Core` 폴더 내에 위치합니다.
 
@@ -664,6 +671,7 @@ This creates a very clear "don't touch these" message for other team members. No
 
 For example, if your project requires pickups that can be placed in a level, there should exist a base Pickup class in `Core/Pickups` that defines base behavior for a pickup. Specific pickups such as a Health or Ammo should exist in a folder such as `/Content/Project/Placeables/Pickups/`. Game designers can define and tweak pickups in this folder however they please, but they should not touch `Core/Pickups` as they may unintentionally break pickups project-wide.
 
+<br>
 
 ### 2.6 Do Not Create Folders Called `Assets` or `AssetTypes`
 
@@ -683,6 +691,7 @@ Want to view only static mesh in `Environment/Rocks/`? Simply turn on the Static
 
 Not doing this also prevents the inevitability of someone putting a static mesh or a texture in a `Materials` folder.
 
+<br>
 
 ### 2.7 Very Large Asset Sets Get Their Own Folder Layout
 
@@ -694,6 +703,7 @@ For example, animations that are shared across multiple characters should lay in
 
 > This does not apply to assets like textures and materials. It is common for a `Rocks` folder to have a large amount of textures if there are a large amount of rocks, however these textures are generally only related to a few specific rocks and should be named appropriately. Even if these textures are part of a [Material Library](#2.8).
 
+<br>
 
 ### 2.8 `MaterialLibrary`
 
@@ -707,6 +717,7 @@ The `MaterialLibrary` doesn't have to consist of purely materials. Shared utilit
 
 Any testing or debug materials should be within `MaterialLibrary/Debug`. This allows debug materials to be easily stripped from a project before shipping and makes it incredibly apparent if production assets are using them if reference errors are shown.
 
+<br>
 
 ### 2.9 No Empty Folders
 
@@ -724,7 +735,8 @@ If you find that the content browser has an empty folder you can't delete, you s
 
 **[⬆ Back to Top](#목차)**
 
-
+<br>
+<br>
 
 ## 3. Blueprints
 

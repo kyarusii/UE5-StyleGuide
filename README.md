@@ -28,7 +28,7 @@
   - [02.1 BaseEngine.ini]()
   - [02.2 BaseEditorPerProjectUserSettings.ini]()
 - [**1. 에셋 명명 규칙**](#1-에셋-명명-규칙)
-  - [1.1 에셋명 기본 형식: `접두사_기본에셋명_변형_접미사`](#11-에셋명-기본-형식-접두사_기본에셋명_변형_접미사)
+  - [1.1 에셋명 기본 형식: `접두사_기본에셋명_세부변형_접미사`](#11-에셋명-기본-형식-접두사_기본에셋명_세부변형_접미사)
     - [1.1 에셋 명명 예](#11의-예시들)
   - [1.2 에셋 접두사 & 접미사 테이블](#12-에셋-접두사--접미사-테이블)
     - [1.2.1 흔히 사용되는 에셋](#121-흔히-사용되는-에셋)
@@ -247,13 +247,13 @@
 
 <br>
 
-### 1.1 에셋명 기본 형식: `접두사_기본에셋명_변형_접미사`  
+### 1.1 에셋명 기본 형식: `접두사_기본에셋명_세부변형_접미사`  
 
 `접두사`와 `접미사`는 에셋 형식에 따라 다음의 [1.2 에셋 접두사 & 접미사 테이블](#12-에셋-접두사--접미사-테이블)에 의해 결정됩니다.
 
 모든 에셋들은 기본이 되는 에셋 이름인 `기본에셋명`을 가져야만 합니다. `기본에셋명`은 그 에셋이 속한 그룹의 문맥에 연관되는 짧고 쉬운 이름일수록 좋습니다. 예를 들어 캐릭터의 이름이 `Nina`라면, 모든 Nina 에셋들의 `기본에셋명`이 `Nina`가 되어야 합니다.
 
-`변형`은 기본에셋명에서 `파생된 다양한 변종의 이름`을 지칭합니다. 예를 들어 `Nina` 캐릭터 에셋에는 다양한 `스킨 변형`이 있을 수 있습니다. Nina 스켈레탈 메시 중 `캐주얼 스타일`의 스킨이 있다면 에셋명은 SKM_Nina_`Casual` 이 됩니다.  
+`세부변형`은 기본에셋에서 `파생된 다양한 변형의 이름`을 지칭합니다. 예를 들어 `Nina` 캐릭터 에셋에는 다양한 `스킨 변형`이 있을 수 있습니다. Nina 스켈레탈 메시 중 `캐주얼 스타일`의 스킨이 있다면 에셋명은 SKM_Nina_`Casual` 이 됩니다.  
 또다른 예로 `레트로 스타일`의 스킨이 있다면, 에셋명은 SKM_Nina_`Retro` 가 됩니다.  
 
 이 스켈레탈 메시에 사용되는 텍스쳐 에셋명의 좋은 예는 캐주얼 스킨의 경우 `T_Nina_Casual_Top_D`, `T_Nina_Casual_Top_N`, `T_Nina_Casual_Feet_D`, 레트로의 경우 `T_Nina_Retro_Top_D`, `T_Nina_Retro_Bottom_D` 가 좋은 예시가 됩니다.
@@ -288,7 +288,7 @@
 
 ### 1.2 에셋 접두사 & 접미사 테이블
 
-[1.1 에셋명 기본 형식](#11-에셋명-기본-형식-접두사_기본에셋명_변형_접미사)의 `접두사`, `접미사` 규칙입니다. 
+[1.1 에셋명 기본 형식](#11-에셋명-기본-형식-접두사_기본에셋명_세부변형_접미사)의 `접두사`, `접미사` 규칙입니다. 
 
 
 #### 1.2.1 흔히 사용되는 에셋
@@ -510,7 +510,7 @@
 <pre>
 |-- Content
     |-- <a href="#2.2">GenericShooter</a>
-        |-- Art
+        |-- 3D_Assets
         |   |-- Industrial
         |   |   |-- Ambient
         |   |   |-- Machinery
@@ -595,44 +595,57 @@ Content 폴더 내의 모든 폴더 이름에 적용되는 공통 규칙들입�
 > `Developers` 폴더는 프로젝트에 종속된 폴더가 아니므로, 프로젝트별로 구분되지 않습니다. 자세한 내용은 [Developers 폴더](#23-로컬-테스트는-developers-폴더-내에서-해야합니다) 항목을 참고해주세요.
 
 
-#### 2.2.1 No Global Assets
+#### 2.2.1 최상위 폴더 바깥에 에셋을 두어선 안됩니다. 
 
-Often in code style guides it is written that you should not pollute the global namespace and this follows the same principle. When assets are allowed to exist outside of a project folder, it often becomes much harder to enforce a strict structure layout as assets not in a folder encourages the bad behavior of not having to organize assets.
+에셋이 프로젝트의 최상위 폴더 바깥에 위치하는 것은 허용되지 않습니다. 구체적인 예시는 다음과 같습니다.  
+프로젝트 `NinaVirtual` 내의 `T_Rock` 에셋이 최상위 폴더 외의 경로에 잘못 위치한 예시들:  
+> `Content\T_Rock.uasset`  
+> `Content\Textures\T_Rock.uasset`  
+> `Content\Temp\T_Rock.uasset`  
+> `Content\Test\T_Rock.uasset`  
 
-Every asset should have a purpose, otherwise it does not belong in a project. If an asset is an experimental test and shouldn't be used by the project it should be put in a [`Developer`](#2.3) folder.
+최상위 폴더 바깥에 위치한 에셋은 팀원들에게 정리할 필요가 없는 에셋이라는 암시를 주게 되며, 이러한 경로의 존재는 에셋을 정리하지 않는 나쁜 습관을 조장하여 올바른 스타일을 따르는 것을 매우 어렵게 만듭니다.  
 
-
-#### 2.2.2 Reduce Migration Conflicts
-
-When working on multiple projects it is common for a team to copy assets from one project to another if they have made something useful for both. When this occurs, the easiest way to perform the copy is to use the Content Browser's Migrate functionality as it will copy over not just the selected asset but all of its dependencies.
-
-These dependencies are what can easily get you into trouble. If two project's assets do not have a top level folder and they happen to have similarly named or already previously migrated assets, a new migration can accidentally wipe any changes to the existing assets.
-
-This is also the primary reason why Epic's Marketplace staff enforces the same policy for submitted assets.
-
-After a migration, safe merging of assets can be done using the 'Replace References' tool in the content browser with the added clarity of assets not belonging to a project's top level folder are clearly pending a merge. Once assets are merged and fully migrated, there shouldn't be another top level folder in your Content tree. This method is _100%_ guaranteed to make any migrations that occur completely safe.
+최상위 폴더 바깥에 에셋이 위치할 경우 그래야만 하는 명확한 목적이 있어야 합니다. 만약 실험적인 목적을 위한 로컬 테스트 에셋이라면 [Developers 폴더](#23-로컬-테스트는-developers-폴더-내에서-해야합니다) 내에 위치해야 합니다.
 
 
-##### 2.2.2e1 Master Material Example
+#### 2.2.2 최상위 폴더 규칙은 이주 충돌을 감소시켜줍니다.
 
-For example, say you created a master material in one project that you would like to use in another project so you migrated that asset over. If this asset is not in a top level folder, it may have a name like `Content/MaterialLibrary/M_Master`. If the target project doesn't have a master material already, this should work without issue.
+여러 프로젝트에서 작업이 이루어지면서 다른 모든 프로젝트에 유용하게 사용될 에셋이 있는 경우, 한 프로젝트에서 다른 프로젝트로 에셋 그룹을 `이주(Migrate)`하는 것이 일반적입니다. 콘텐츠 브라우저의 이주 기능을 사용하여 에셋을 다른 프로젝트로 복사하는 경우, 에디터의 종속성 검사에 의해 이와 관련된 에셋 일체가 함께 복사됩니다. 
 
-As work on one or both projects progress, their respective master materials may change to be tailored for their specific projects due to the course of normal development.
+두 프로젝트 사이에 `최상위 폴더 규칙`이 제대로 지켜지지 않는 경우, 에셋의 이주는 쉽게 문제를 일으키게 됩니다. 구체적인 충돌 예시는 다음과 같습니다. 
 
-The issue comes when, for example, an artist for one project created a nice generic modular set of static meshes and someone wants to include that set of static meshes in the second project. If the artist who created the assets used material instances based on `Content/MaterialLibrary/M_Master` as they're instructed to, when a migration is performed there is a great chance of conflict for the previously migrated `Content/MaterialLibrary/M_Master` asset.
+##### 2.2.2.1 마스터 머티리얼 이주 충돌 예시
 
-This issue can be hard to predict and hard to account for. The person migrating the static meshes may not be the same person who is familiar with the development of both project's master material, and they may not be even aware that the static meshes in question rely on material instances which then rely on the master material. The Migrate tool requires the entire chain of dependencies to work however, and so it will be forced to grab `Content/MaterialLibrary/M_Master` when it copies these assets to the other project and it will overwrite the existing asset.
+`ProjectA`에서 마스터 머티리얼을 만들었고, 이 머티리얼이 `ProjectB`에도 유용하다 판단해 이주하는 상황을 가정합니다. 만약 프로젝트가 최상위 폴더 규칙을 지키지 않는 경우, 마스터 머티리얼은 `Content\MaterialLibrary\M_Master`와 같은 경로에 위치할 확률이 높아집니다.
 
-It is at this point where if the master materials for both projects are incompatible in _any way_, you risk breaking possibly the entire material library for a project as well as any other dependencies that may have already been migrated, simply because assets were not stored in a top level folder. The simple migration of static meshes now becomes a very ugly task.
+문제는 `ProjectB`도 최상위 경로 규칙을 지키지 않으며 동일한 경로에 이미 자체적인 마스터 머티리얼이 있을 경우 발생합니다. `ProjectB`의 아티스트들은 지시받은 대로 `Content\MaterialLibrary\M_Mater`의 인스턴스를 생성해 여러 에셋에 이미 이를 적용해두었습니다. 이 상태에서 `ProjectA`의 `M_Master`가 이주되면 기존의 `M_Master`를 덮어씌우며 의도치 않게 기존의 모든 에셋의 룩을 변경하는 결과가 발생하게 됩니다.
 
+이러한 충돌 문제는 이주를 실행하는 당사자가 아티스트라면 미리 예측하기 어려우며, 충돌이 발생한 후에도 문제가 발생한 이유를 쉽게 발견하지 못할 수 있습니다. 스태틱 메시를 이주하는 아티스트는 종속성에 의해 `Content\MaterialLibrary\M_Mater` 에셋이 함께 이주되는 것을 미리 파악하지 못할 수 있으며, 일반적으로 아티스트는 마스터 머티리얼 개발에 익숙한 사람이 아닐 가능성이 높기 때문에 잘못된 덮어씌움으로 기존 에셋에도 문제가 발생했다는 사실을 파악하지 못할 수 있습니다. 
+
+이처럼 최상위 폴더 규칙이 지켜지지 않은 두 프로젝트 사이의 이주는 기존 에셋과의 충돌을 일으킬 확률이 매우 높아집니다. 만일 두 프로젝트가 모두 최상위 폴더 규칙을 지키고 있었다면, `ProjectB`로의 이주 결과는 다음과 같이 되며 충돌을 피할 수 있습니다. 
+<pre>
+|-- Content
+    |-- ProjectA
+        |-- MaterialLibrary
+        |   |-- M_Master.uasset
+    |-- ProjectB
+        |-- MaterialLibrary
+        |   |-- M_Master.uasset
+</pre>
+
+
+이는 에픽이 마켓플레이스 가이드라인에 동일한 규칙을 적용하는 이유입니다.
 
 #### 2.2.3 최상위 폴더 규칙을 준수하는 샘플, 템플릿, 마켓플레이스 콘텐츠는 폴더 구조를 수정하지 않습니다.
 
-An extension to [2.2.2](#2.2.2), if a team member decides to add sample content, template files, or assets they bought from the marketplace, it is guaranteed, as long your project's top-level folder is uniquely named,that these new assets will not interfere with your project.
+[2.2.2](#222-최상위-폴더-규칙은-이주-충돌을-감소시켜줍니다)의 예를 보듯, 마켓플레이스 콘텐츠, 템플릿 등은 최상위 폴더 규칙을 준수하기 때문에 이러한 에셋의 추가는 프로젝트에 방해가 되지 않습니다.
 
-You can not trust marketplace content to fully conform to the [top level folder rule](#2.2). There exists many assets that have the majority of their content in a top level folder but also have possibly modified Epic sample content as well as level files polluting the global `Content` folder.
+하지만 마켓플레이스 콘텐츠가 언제나 최상위 폴더 규칙을 준수한다고 신뢰할 수는 없습니다. 마켓플레이스 콘텐츠를 본 프로젝트에 추가하기 전 반드시 테스트 프로젝트에 먼저 추가해본 뒤, 최상위 폴더 규칙을 추가하는 경우에만 본 프로젝트로 이주합니다.
 
-When adhering to [2.2](#2.2), the worst marketplace conflict you can have is if two marketplace assets both have the same Epic sample content. If all your assets are in a project specific folder, including sample content you may have moved into your folder, your project will never break.
+최상위 폴더 규칙을 준수하는 패키지를 올바르게 프로젝트에 추가한 뒤에는 이주된 상태 그대로 별도의 최상위 폴더에 둡니다. 추가한 패키지의 폴더 구조를 변경하거나 기존 프로젝트 최상위 폴더로의 병합은 해당 패키지가 업데이트되거나 패키지에서 추가로 이주할 에셋이 생길 경우 중복된 에셋을 만들거나 이주 충돌이 발생할 확률이 높아지게 됩니다. 이주해온 패키지에 일부 변형을 주고 싶은 경우, `Content\이주 패키지의 최상위폴더\Modified` 폴더를 만들어 패키지에서 변경된 사항은 `Modified` 폴더에 모아 추가 이주로 인한 충돌 가능성을 줄입니다.
+
+추가한 패키지의 최상위 폴더 구조를 변경하는 경우는 해당 패키지를 프로젝트에 완전히 병합하려는 경우에 한합니다.
 
 
 #### 2.2.4 다른 프로젝트로 자주 이주될 수 있는 에셋 그룹은 별도의 최상위 폴더를 가져야 합니다.
@@ -738,7 +751,7 @@ If you find that the content browser has an empty folder you can't delete, you s
 <br>
 <br>
 
-## 3. Blueprints
+## 3. 블루프린트 코딩 표준
 
 This section will focus on Blueprint classes and their internals. When possible, style rules conform to [Epic's Coding Standard](https://docs.unrealengine.com/latest/INT/Programming/Development/CodingStandard).
 

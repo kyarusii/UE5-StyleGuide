@@ -294,30 +294,30 @@
 
 | 에셋 유형                              | 접두사     | 접미사     | Notes                            |
 | ------------------------------------- | ---------- | ---------- | -------------------------------- |
-| 레벨 *Level*                          |            |            | `Maps` 폴더 안에 있어야 한다.      |
-| 블루프린트 *Blueprint*                 | BP_        |            |                                  |
-| 머티리얼 *Material*                   | M_         |            |                                  |
-| 머티리얼 인스턴스 *Material Instance*  | M_         |            |                                  |
-| 스태틱 메시 *Static Mesh*             | SM_        |            |                                  |
-| 스켈레탈 메시 *Skeletal Mesh*         | SKM_       |            |                                  |
-| 텍스처 *Texture*                      | T_         | _?         | 접미사 디테일은 [텍스처 (Textures)]() 항목을 봐주세요.    |
-| 나이아가라 시스템 *Niagara System*     | NS_        |            |                                  |
-| 위젯 블루프린트 *Widget Blueprint*     | WBP_       |            |                                  |
+| 레벨                           |            |            | `Maps` 폴더 안에 있어야 한다.      |
+| 블루프린트                  | BP_        |            |                                  |
+| 머티리얼                    | M_         |            |                                  |
+| 머티리얼 인스턴스   | M_         |            |                                  |
+| 스태틱 메시              | SM_        |            |                                  |
+| 스켈레탈 메시          | SKM_       |            |                                  |
+| 텍스처                       | T_         | _?         | 접미사 디테일은 [텍스처 (Textures)]() 항목을 봐주세요.    |
+| 나이아가라 시스템      | NS_        |            |                                  |
+| 위젯 블루프린트      | WBP_       |            |                                  |
 
 
 #### 1.2.2 애니메이션 (Animations)
 
 | 에셋 유형                                      | 접두사     | 접미사     | Notes                            |
 | --------------------------------------------- | ---------- | ---------- | -------------------------------- |
-| 에임 오프셋 *Aim Offset*                       | AO_        |            |                                  |
-| 에임 오프셋 1D *Aim Offset 1D*                 | AO_        |            |                                  |
-| 애니메이션 블루프린트 *Animation Blueprint*     | ABP_       |            |                                  |
-| 애니메이션 컴포짓 *Animation Composite*         | AC_        |            |                                  |
-| 애니메이션 몽타주 *Animation Montage*           | AM_        |            |                                  |
-| 애니메이션 시퀀스 *Animation Sequence*          | A_         |            |                                  |
-| 블렌드 스페이스 *Blend Space*                   | BS_        |            |                                  |
-| 블렌드 스페이스 1D *Blend Space 1D*             | BS_        |            |                                  |
-| 레벨 시퀀스 *Level Sequence*                   | LS_         |            |                                  |
+| 에임 오프셋                        | AO_        |            |                                  |
+| 에임 오프셋 1D                  | AO_        |            |                                  |
+| 애니메이션 블루프린트      | ABP_       |            |                                  |
+| 애니메이션 컴포짓          | AC_        |            |                                  |
+| 애니메이션 몽타주            | AM_        |            |                                  |
+| 애니메이션 시퀀스           | A_         |            |                                  |
+| 블렌드 스페이스                    | BS_        |            |                                  |
+| 블렌드 스페이스 1D              | BS_        |            |                                  |
+| 레벨 시퀀스                    | LS_         |            |                                  |
 | 페이퍼 플립북 *Paper Flipbook*                 | PFB_        |            |                                  |
 | 컨트롤 릭 *Control Rig*                        | CR_         |            |                                  |
 | IK 릭 *IK Rig*                                 | IK_        |            |                                  |
@@ -344,38 +344,38 @@
 
 | 에셋 유형              | 접두사     | 접미사     | Notes                            |
 | ----------------------- | ---------- | ---------- | -------------------------------- |
-| 블루프린트 *Blueprint*               | BP_        |            |                                  |
-| 블루프린트 컴포넌트 *Blueprint Component*     | BPC_        |            |         |
-| 블루프린트 함수 라이브러리 *Blueprint Function Library* | BPFL_   |            |                                  |
-| 블루프린트 인터페이스 *Blueprint Interface*     | BPI_       |            |                                  |
-| 블루프린트 매크로 라이브러리 *Blueprint Macro Library* | BPML_      |            | 가능한 한 사용하지 않는다. |
+| 블루프린트                | BP_        |            |                                  |
+| 블루프린트 컴포넌트      | BPC_        |            |         |
+| 블루프린트 함수 라이브러리  | BPFL_   |            |                                  |
+| 블루프린트 인터페이스      | BPI_       |            |                                  |
+| 블루프린트 매크로 라이브러리  | BPML_      |            | 가능한 한 사용하지 않는다. |
 | 열거형 *Enumeration*             | E          |            | 접두사 후 밑줄 없음. eg. ECharacterState                   |
 | 구조체 *Structure*               | S     |            | 접두사 후 밑줄 없음.                  |
-| 위젯 블루프린트 *Widget Blueprint*        | WBP_       |            |                                  |
-| 게임플레이 어빌리티 *Gameplay Ability*        | GA_       |            |                                  |
+| 위젯 블루프린트         | WBP_       |            |                                  |
+| 게임플레이 어빌리티         | GA_       |            |                                  |
 
 
 #### 1.2.5 머티리얼 (Materials)
 
 | 에셋 유형                    | 접두사     | 접미사     | Notes                            |
 | ----------------------------- | ---------- | ---------- | -------------------------------- |
-| 머티리얼 *Material*                      | M_         |            |                                  |
+| 머티리얼                       | M_         |            |                                  |
 | 머티리얼 (포스트 프로세스)       | M_PP_        |            |                                  |
 | 머티리얼 (데칼)       | M_Decal_        |            |                                  |
-| 머티리얼 인스턴스 *Material Instance*             | MI_        |            |                                  |
+| 머티리얼 인스턴스              | MI_        |            |                                  |
 | 머티리얼 인스턴스 (포스트 프로세스)             | MI_PP_        |            |                                  |
 | 머티리얼 인스턴스 (데칼)             | MI_Decal_        |            |                                  |
-| 머티리얼 함수 *Material Function*             | MF_        |            |                                  |
-| 머티리얼 파라미터 컬렉션 *Material Parameter Collection* | MPC_       |            |                                  |
+| 머티리얼 함수              | MF_        |            |                                  |
+| 머티리얼 파라미터 컬렉션  | MPC_       |            |                                  |
 | 서브서피스 프로파일 *Subsurface Profile*            | SSP_        |            |                                  |
-| 피직스 머티리얼 *Physical Materials*            | PM_        |            |                                  |
+| 피직스 머티리얼             | PM_        |            |                                  |
 
 
 #### 1.2.6 텍스처 (Textures)
 
 | 에셋 유형              | 접두사     | 접미사     | Notes                            |
 | ----------------------- | ---------- | ---------- | -------------------------------- |
-| 텍스처 *Texture*                 | T_         |            |                                  |
+| 텍스처                  | T_         |            |                                  |
 | - Diffuse/Albedo/Base Color| T_ | _D      |                                  |
 | - Normal        | T_         | _N         |                                  |
 | - Roughness     | T_         | _R         |                                  |
@@ -390,7 +390,7 @@
 | 텍스처 큐브 *Texture Cube*            | TC_        |            |                                  |
 | 미디어 텍스처 *Media Texture*           | MT_        |            |                                  |
 | 렌더 타깃 *Render Target*           | RT_        |            |                                  |
-| 큐브 렌더 타깃 *Cube Render Target*      | RTC_       |            |                                  |
+| 큐브 렌더 타깃       | RTC_       |            |                                  |
 
 
 ##### 1.2.6.1 패킹된 텍스처 (Texture Packing)
@@ -404,7 +404,7 @@
 
 #### 1.2.7 기타 (Miscellaneous)
 
-| Asset Type                 | Prefix     | Suffix     | Notes                            |
+| 에셋 유형                 | 접두사     | 접미사     | Notes                            |
 | -------------------------- | ---------- | ---------- | -------------------------------- |
 | Animated Vector Field      | VFA_       |            |                                  |
 | Camera Anim                | CA_        |            |                                  |
@@ -421,7 +421,7 @@
 | Media Player               | MP_        |            |                                  |
 | File Media Source          | FMS_       |            |                                  |
 | Object Library             | OL_        |            |                                  |
-| Redirector                 |            |            | These should be fixed up ASAP.   |
+| Redirector                 |            |            | 가능한 한 빨리 고쳐 제거해야 한다.   |
 | Sprite Sheet               | SS_        |            |                                  |
 | Static Vector Field        | VF_        |            |                                  |
 | Substance Graph Instance   | SGI_       |            |                                  |
@@ -432,7 +432,7 @@
 
 #### 1.2.8 페이퍼 2D (Paper 2D)
 
-| Asset Type              | Prefix     | Suffix     | Notes                            |
+| 에셋 유형              | 접두사     | 접미사     | Notes                            |
 | ----------------------- | ---------- | ---------- | -------------------------------- |
 | Paper Flipbook          | PFB_       |            |                                  |
 | Sprite                  | SPR_       |            |                                  |
@@ -443,7 +443,7 @@
 
 #### 1.2.9 피직스 (Physics)
 
-| Asset Type              | Prefix     | Suffix     | Notes                            |
+| 에셋 유형              | 접두사     | 접미사     | Notes                            |
 | ----------------------- | ---------- | ---------- | -------------------------------- |
 | Physical Material       | PM_        |            |                                  |
 | Physics Asset           | PHYS_      |            |                                  |
@@ -452,7 +452,7 @@
 
 #### 1.2.10 사운드 (Sounds)
 
-| Asset Type              | Prefix     | Suffix     | Notes                            |
+| 에셋 유형              | 접두사     | 접미사     | Notes                            |
 | ----------------------- | ---------- | ---------- | -------------------------------- |
 | Dialogue Voice          | DV_        |            |                                  |
 | Dialogue Wave           | DW_        |            |                                  |
@@ -468,7 +468,7 @@
 
 #### 1.2.11 유저 인터페이스 (User Interface)
 
-| Asset Type              | Prefix     | Suffix     | Notes                            |
+| 에셋 유형              | 접두사     | 접미사     | Notes                            |
 | ----------------------- | ---------- | ---------- | -------------------------------- |
 | Font                    | Font_      |            |                                  |
 | Slate Brush             | Brush_     |            |                                  |
@@ -478,10 +478,11 @@
 
 #### 1.2.12 FX
 
-| Asset Type              | Prefix     | Suffix     | Notes                            |
+| 에셋 유형              | 접두사     | 접미사     | Notes                            |
 | ----------------------- | ---------- | ---------- | -------------------------------- |
-| Particle System         | PS_        |            |                                  |
-| Material (Post Process) | PP_        |            |                                  |  
+| 나이아가라 시스템 *Niagara System*         | NS_        |            |                                  |
+| 나이아가라 시스템 *Niagara System*         | NS_        |            |                                  |
+| 나이아가라 시스템 *Niagara System*         | NS_        |            |                                  |
 
 
 **[⬆ Back to Top](#목차)**

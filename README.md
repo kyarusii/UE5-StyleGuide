@@ -22,16 +22,16 @@
 - [**00. 원칙들**](#00-원칙들)
   - [00.1 당신이 기존에 어떤 스타일을 가지고 있었든, VLAST 소속의 UE 작업자는 모두 이 스타일 가이드를 따라 작업해야 합니다.](#001-당신이-기존에-어떤-스타일을-가지고-있었든-vlast-소속의-ue-작업자는-모두-이-스타일-가이드를-따라-작업해야-합니다)
   - [00.2 프로젝트는 아무리 많은 사람이 참여했다 하더라도, 이 스타일 가이드에 따라 모두 한 사람이 작업한 것처럼 보여야 합니다.](#002-프로젝트는-아무리-많은-사람이-참여했다-하더라도-이-스타일-가이드에-따라-모두-한-사람이-작업한-것처럼-보여야-합니다)
-  - [00.3 스타일 가이드를 지키지 않는 팀원을 그대로 내버려두어선 안됩니다.](#0.3)
-- [**01. 금지된 사항들**](#00)
-  - [01.1 금지된 문자](#00.1)
+  - [00.3 스타일 가이드를 지키지 않는 팀원을 그대로 내버려두어선 안됩니다.]()
+- [**01. 금지된 사항들**]()
+  - [01.1 금지된 문자]()
 - [**02. BaseEngineConfig 설정**]()
   - [02.1 BaseEngine.ini]()
   - [02.2 BaseEditorPerProjectUserSettings.ini]()
 - [**1. 에셋 명명 규칙**]()
-  - [1.1 에셋명 기본 형식: `접두사_기본에셋명_변형_접미사`](#base-asset-name)
-    - [1.1 에셋 명명 예](#1.1-examples)
-  - [1.2 에셋 접두사 & 접미사 테이블](#asset-name-modifiers)
+  - [1.1 에셋명 기본 형식: `접두사_기본에셋명_변형_접미사`]()
+    - [1.1 에셋 명명 예]()
+  - [1.2 에셋 접두사 & 접미사 테이블]()
     - [1.2.1 자주 사용되는 에셋](#anc-common)
     - [1.2.2 애니메이션 (Animations)](#anc-animations)
     - [1.2.3 인공 지능 (Artificial Intelligence)](#anc-ai)
@@ -258,7 +258,7 @@
 만약 기본에셋명에서 파생되는 변형이 특정 이름으로 표현하기에는 애매한 눈에 띄는 특징이 없는 경우, 변형 이름을 숫자로 대신할 수 있습니다. 예를 들어 모델러가 다양한 종류의 암석을 디자인했을 때, 그것들의 변형은 SM_Rock_`01`, SM_Rock_`02`, SM_Rock_`03` 같은 형태가 될 수 있습니다. 또는 다음과 같이 특정 변형이름 다음에 변형숫자가 올 수도 있습니다. SM_Rock_Tropical_`01`, SM_Rock_Tropical_`02`
 
 
-#### 1.1 예시들
+#### 1.1의 예시들
 
 ##### 기본에셋명 `Nina`의 `CasualOffice`변형 예
 
@@ -270,7 +270,7 @@
 | 텍스처 (Texture) *Diffuse/Albedo*         | T_Nina_Suit_Shirt_D               |
 | 텍스처 (Texture) *Normal*                 | T_Nina_Suit_Shirt_N               |
 
-##### 기본에셋명 `Rock`의 불특정 변형들
+##### 기본에셋명 `Rock`의 `불특정 변형` 예
 
 | 에셋 유형                                                         | 에셋명                                |
 | ---------------------------------------------------------------- | ------------------------------------- |
@@ -281,35 +281,29 @@
 | 머티리얼 인스턴스 (Material Instance) *변형1의 인스턴스*            | MI_Rock_01                            |
 | 머티리얼 인스턴스 (Material Instance) *변형1의 눈쌓인 버전 인스턴스* | MI_Rock_01_Snow                       |
 
-<a name="asset-name-modifiers"></a>
-<a name="1.2"></a>
-### 1.2 Asset Name Modifiers
+<br>
 
-When naming an asset, use these tables to determine the prefix and suffix to use with an asset's [Base Asset Name](#base-asset-name).
+### 1.2 에셋 접두사 & 접미사 테이블
 
-<a name="anc-common"></a>
-<a name="1.2.1"></a>
-#### 1.2.1 Most Common
+[1.1 에셋명 기본 형식]()의 `접두사`, `접미사` 규칙입니다. 
 
-| Asset Type              | Prefix     | Suffix     | Notes                            |
+
+#### 1.2.1 흔히 사용되는 에셋
+
+| 에셋 유형                | 접두사     | 접미사     | Notes                            |
 | ----------------------- | ---------- | ---------- | -------------------------------- |
-| Level / Map             |            |            | [Should be in a folder called Maps.](#2.4) |
-| Level (Persistent)      |            | _P         |                                  |
-| Level (Audio)           |            | _Audio     |                                  |
-| Level (Lighting)        |            | _Lighting  |                                  |
-| Level (Geometry)        |            | _Geo       |                                  |
-| Level (Gameplay)        |            | _Gameplay  |                                  |
-| Blueprint               | BP_        |            |                                  |
-| Material                | M_         |            |                                  |
-| Static Mesh             | S_         |            | Many use SM_. We use S_.         |
-| Skeletal Mesh           | SK_        |            |                                  |
-| Texture                 | T_         | _?         | See [Textures](#anc-textures)    |
-| Particle System         | PS_        |            |                                  |
-| Widget Blueprint        | WBP_       |            |                                  |
+| 레벨 (Level)             |            |            | `Maps` 폴더 안에 있어야 한다.      |
+| 블루프린트 (Blueprint)               | BP_        |            |                                  |
+| 머티리얼 (Material)                | M_         |            |                                  |
+| 머티리얼 인스턴스 (Material Instance)                | M_         |            |                                  |
+| 스태틱 메시 (Static Mesh)             | SM_        |            |                                  |
+| 스켈레탈 메시 (Skeletal Mesh)           | SKM_       |            |                                  |
+| 텍스처 (Texture)                 | T_         | _?         | 접미사 디테일은 [텍스처 (Textures)]() 항목을 봐주세요.    |
+| 나이아가라 시스템 (Niagara System)         | NS_        |            |                                  |
+| 위젯 블루프린트 (Widget Blueprint)        | WBP_       |            |                                  |
 
-<a name="anc-animations"></a>
-<a name="1.2.2"></a>
-#### 1.2.2 Animations
+
+#### 1.2.2 애니메이션 (Animations)
 
 | Asset Type              | Prefix     | Suffix     | Notes                            |
 | ----------------------- | ---------- | ---------- | -------------------------------- |
@@ -328,9 +322,8 @@ When naming an asset, use these tables to determine the prefix and suffix to use
 | Skeletal Mesh           | SK_        |            |                                  |
 | Skeleton                | SKEL_      |            |                                  |
 
-<a name="anc-ai"></a>
-<a name="1.2.3"></a>
-### 1.2.3 Artificial Intelligence
+
+#### 1.2.3 인공 지능 (Artificial Intelligence)
 
 | Asset Type              | Prefix     | Suffix     | Notes                            |
 | ----------------------- | ---------- | ---------- | -------------------------------- |
@@ -343,9 +336,8 @@ When naming an asset, use these tables to determine the prefix and suffix to use
 | Environment Query       | EQS_       |            |                                  |
 | EnvQueryContext         | EQS_       | Context    |                                  |
 
-<a name="anc-bp"></a>
-<a name="1.2.4"></a>
-### 1.2.4 Blueprints
+
+#### 1.2.4 블루프린트 (Blueprints)
 
 | Asset Type              | Prefix     | Suffix     | Notes                            |
 | ----------------------- | ---------- | ---------- | -------------------------------- |
@@ -359,9 +351,8 @@ When naming an asset, use these tables to determine the prefix and suffix to use
 | Tutorial Blueprint      | TBP_       |            |                                  |
 | Widget Blueprint        | WBP_       |            |                                  |
 
-<a name="anc-materials"></a>
-<a name="1.2.5"></a>
-### 1.2.5 Materials
+
+#### 1.2.5 머티리얼 (Materials)
 
 | Asset Type                    | Prefix     | Suffix     | Notes                            |
 | ----------------------------- | ---------- | ---------- | -------------------------------- |
@@ -374,9 +365,8 @@ When naming an asset, use these tables to determine the prefix and suffix to use
 | Physical Materials            | PM_        |            |                                  |
 | Decal                         | M_, MI_    | _Decal     |                                  |
 
-<a name="anc-textures"></a>
-<a name="1.2.6"></a>
-### 1.2.6 Textures
+
+#### 1.2.6 텍스처 (Textures)
 
 | Asset Type              | Prefix     | Suffix     | Notes                            |
 | ----------------------- | ---------- | ---------- | -------------------------------- |
@@ -398,18 +388,16 @@ When naming an asset, use these tables to determine the prefix and suffix to use
 | Cube Render Target      | RTC_       |            |                                  |
 | Texture Light Profile   | TLP        |            |                                  |
 
-<a name="anc-textures-packing"></a>
-<a name="1.2.6.1"></a>
-#### 1.2.6.1 Texture Packing
+
+##### 1.2.6.1 패킹된 텍스처 (Texture Packing)
 It is common practice to pack multiple layers of texture data into one texture. An example of this is packing Emissive, Roughness, Ambient Occlusion together as the Red, Green, and Blue channels of a texture respectively. To determine the suffix, simply stack the given suffix letters from above together, e.g. `_ERO`.
 
 > It is generally acceptable to include an Alpha/Opacity layer in your Diffuse/Albedo's alpha channel and as this is common practice, adding `A` to the `_D` suffix is optional.
 
 Packing 4 channels of data into a texture (RGBA) is not recommended except for an Alpha/Opacity mask in the Diffuse/Albedo's alpha channel as a texture with an alpha channel incurs more overhead than one without.
 
-<a name="anc-misc"></a>
-<a name="1.2.7"></a>
-### 1.2.7 Miscellaneous
+
+#### 1.2.7 기타 (Miscellaneous)
 
 | Asset Type                 | Prefix     | Suffix     | Notes                            |
 | -------------------------- | ---------- | ---------- | -------------------------------- |
@@ -436,9 +424,8 @@ Packing 4 channels of data into a texture (RGBA) is not recommended except for a
 | Touch Interface Setup      | TI_        |            |                                  |
 | Vector Curve               | Curve_     | _Vector    |                                  |
 
-<a name="anc-paper2d"></a>
-<a name="1.2.8"></a>
-### 1.2.8 Paper 2D
+
+#### 1.2.8 페이퍼 2D (Paper 2D)
 
 | Asset Type              | Prefix     | Suffix     | Notes                            |
 | ----------------------- | ---------- | ---------- | -------------------------------- |
@@ -448,9 +435,8 @@ Packing 4 channels of data into a texture (RGBA) is not recommended except for a
 | Tile Map                | TM_        |            |                                  |
 | Tile Set                | TS_        |            |                                  |
 
-<a name="anc-physics"></a>
-<a name="1.2.9"></a>
-### 1.2.9 Physics
+
+#### 1.2.9 피직스 (Physics)
 
 | Asset Type              | Prefix     | Suffix     | Notes                            |
 | ----------------------- | ---------- | ---------- | -------------------------------- |
@@ -458,9 +444,8 @@ Packing 4 channels of data into a texture (RGBA) is not recommended except for a
 | Physics Asset           | PHYS_      |            |                                  |
 | Destructible Mesh       | DM_        |            |                                  |
 
-<a name="anc-sounds"></a>
-<a name="1.2.10"></a>
-### 1.2.10 Sounds
+
+#### 1.2.10 사운드 (Sounds)
 
 | Asset Type              | Prefix     | Suffix     | Notes                            |
 | ----------------------- | ---------- | ---------- | -------------------------------- |
@@ -475,9 +460,8 @@ Packing 4 channels of data into a texture (RGBA) is not recommended except for a
 | Sound Mix               | Mix_       |            |                                  |
 | Sound Wave              | A_         |            |                                  |
 
-<a name="anc-ui"></a>
-<a name="1.2.11"></a>
-### 1.2.11 User Interface
+
+#### 1.2.11 유저 인터페이스 (User Interface)
 
 | Asset Type              | Prefix     | Suffix     | Notes                            |
 | ----------------------- | ---------- | ---------- | -------------------------------- |
@@ -486,16 +470,16 @@ Packing 4 channels of data into a texture (RGBA) is not recommended except for a
 | Slate Widget Style      | Style_     |            |                                  |
 | Widget Blueprint        | WBP_       |            |                                  |
 
-<a name="anc-effects"></a>
-<a name="1.2.12"></a>
-### 1.2.12 Effects
+
+#### 1.2.12 FX
 
 | Asset Type              | Prefix     | Suffix     | Notes                            |
 | ----------------------- | ---------- | ---------- | -------------------------------- |
 | Particle System         | PS_        |            |                                  |
-| Material (Post Process) | PP_        |            |                                  |
+| Material (Post Process) | PP_        |            |                                  |  
 
-**[⬆ Back to Top](#table-of-contents)**
+
+**[⬆ Back to Top](#목차)**
 
 <a name="2"></a>
 <a name="structure"></a>

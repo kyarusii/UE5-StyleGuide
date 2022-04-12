@@ -281,7 +281,7 @@
 | 스태틱 메시 (Static Mesh) *변형3*                                 | SM_Rock_03                             |
 | 머티리얼 (Material) *변형들의 마스터*                              | M_Rock                                 |
 | 머티리얼 인스턴스 (Material Instance) *변형1의 인스턴스*            | MI_Rock_01                            |
-| 머티리얼 인스턴스 (Material Instance) *눈쌓인 번형 인스턴스* | MI_Rock_Snow_01                       |
+| 머티리얼 인스턴스 (Material Instance) *눈쌓인 번형 인스턴스*        | MI_Rock_Snow_01                       |
 
 <br>
 
@@ -292,43 +292,43 @@
 
 #### 1.2.1 흔히 사용되는 에셋
 
-| 에셋 유형                | 접두사     | 접미사     | Notes                            |
-| ----------------------- | ---------- | ---------- | -------------------------------- |
-| 레벨 *Level*             |            |            | `Maps` 폴더 안에 있어야 한다.      |
-| 블루프린트 *Blueprint*               | BP_        |            |                                  |
-| 머티리얼 *Material*                | M_         |            |                                  |
-| 머티리얼 인스턴스 *Material Instance*                | M_         |            |                                  |
+| 에셋 유형                              | 접두사     | 접미사     | Notes                            |
+| ------------------------------------- | ---------- | ---------- | -------------------------------- |
+| 레벨 *Level*                          |            |            | `Maps` 폴더 안에 있어야 한다.      |
+| 블루프린트 *Blueprint*                 | BP_        |            |                                  |
+| 머티리얼 *Material*                   | M_         |            |                                  |
+| 머티리얼 인스턴스 *Material Instance*  | M_         |            |                                  |
 | 스태틱 메시 *Static Mesh*             | SM_        |            |                                  |
-| 스켈레탈 메시 *Skeletal Mesh*           | SKM_       |            |                                  |
-| 텍스처 *Texture*                 | T_         | _?         | 접미사 디테일은 [텍스처 (Textures)]() 항목을 봐주세요.    |
-| 나이아가라 시스템 *Niagara System*         | NS_        |            |                                  |
-| 위젯 블루프린트 *Widget Blueprint*        | WBP_       |            |                                  |
+| 스켈레탈 메시 *Skeletal Mesh*         | SKM_       |            |                                  |
+| 텍스처 *Texture*                      | T_         | _?         | 접미사 디테일은 [텍스처 (Textures)]() 항목을 봐주세요.    |
+| 나이아가라 시스템 *Niagara System*     | NS_        |            |                                  |
+| 위젯 블루프린트 *Widget Blueprint*     | WBP_       |            |                                  |
 
 
 #### 1.2.2 애니메이션 (Animations)
 
-| Asset Type              | Prefix     | Suffix     | Notes                            |
-| ----------------------- | ---------- | ---------- | -------------------------------- |
-| 에임 오프셋 *Aim Offset*              | AO_        |            |                                  |
-| 에임 오프셋 1D *Aim Offset 1D*           | AO_        |            |                                  |
+| 에셋 유형                                      | 접두사     | 접미사     | Notes                            |
+| --------------------------------------------- | ---------- | ---------- | -------------------------------- |
+| 에임 오프셋 *Aim Offset*                       | AO_        |            |                                  |
+| 에임 오프셋 1D *Aim Offset 1D*                 | AO_        |            |                                  |
 | 애니메이션 블루프린트 *Animation Blueprint*     | ABP_       |            |                                  |
-| 애니메이션 컴포짓 *Animation Composite*     | AC_        |            |                                  |
-| 애니메이션 몽타주 *Animation Montage*       | AM_        |            |                                  |
-| 애니메이션 시퀀스 *Animation Sequence*      | A_         |            |                                  |
-| 블렌드 스페이스 *Blend Space*             | BS_        |            |                                  |
-| 블렌드 스페이스 1D *Blend Space 1D*          | BS_        |            |                                  |
-| 레벨 시퀀스 *Level Sequence*          | LS_        |            |                                  |
-| 페이퍼 플립북 *Paper Flipbook*          | PFB_       |            |                                  |
-| 컨트롤 릭 *Control Rig*                     | CR_       |            |                                  |
-| IK 릭 *IK Rig*                     | IK_       |            |                                  |
+| 애니메이션 컴포짓 *Animation Composite*         | AC_        |            |                                  |
+| 애니메이션 몽타주 *Animation Montage*           | AM_        |            |                                  |
+| 애니메이션 시퀀스 *Animation Sequence*          | A_         |            |                                  |
+| 블렌드 스페이스 *Blend Space*                   | BS_        |            |                                  |
+| 블렌드 스페이스 1D *Blend Space 1D*             | BS_        |            |                                  |
+| 레벨 시퀀스 *Level Sequence*                   | LS_         |            |                                  |
+| 페이퍼 플립북 *Paper Flipbook*                 | PFB_        |            |                                  |
+| 컨트롤 릭 *Control Rig*                        | CR_         |            |                                  |
+| IK 릭 *IK Rig*                                 | IK_        |            |                                  |
 | IK 리타기터 *IK Retargeter*                     | RTG_       |            |                                  |
-| 스켈레탈 메시 *Skeletal Mesh*         | SKM_       |            |                                  |
-| 스켈레톤 *Skeleton*                   | SKEL_      |            |                                  |
+| 스켈레탈 메시 *Skeletal Mesh*                   | SKM_       |            |                                  |
+| 스켈레톤 *Skeleton*                             | SKEL_      |            |                                  |
 
 
 #### 1.2.3 인공 지능 (Artificial Intelligence)
 
-| Asset Type              | Prefix     | Suffix     | Notes                            |
+| 에셋 유형                | 접두사     | 접미사     | Notes                            |
 | ----------------------- | ---------- | ---------- | -------------------------------- |
 | AI Controller           | AIC_       |            |                                  |
 | Behavior Tree           | BT_        |            |                                  |
@@ -342,62 +342,64 @@
 
 #### 1.2.4 블루프린트 (Blueprints)
 
-| Asset Type              | Prefix     | Suffix     | Notes                            |
+| 에셋 유형              | 접두사     | 접미사     | Notes                            |
 | ----------------------- | ---------- | ---------- | -------------------------------- |
-| Blueprint               | BP_        |            |                                  |
-| Blueprint Component     | BP_        | Component  | I.e. BP_InventoryComponent       |
-| Blueprint Function Library | BPFL_   |            |                                  |
-| Blueprint Interface     | BPI_       |            |                                  |
-| Blueprint Macro Library | BPML_      |            | Do not use macro libraries if possible. |
-| Enumeration             | E          |            | No underscore.                   |
-| Structure               | F or S     |            | No underscore.                   |
-| Tutorial Blueprint      | TBP_       |            |                                  |
-| Widget Blueprint        | WBP_       |            |                                  |
+| 블루프린트 *Blueprint*               | BP_        |            |                                  |
+| 블루프린트 컴포넌트 *Blueprint Component*     | BPC_        |            |         |
+| 블루프린트 함수 라이브러리 *Blueprint Function Library* | BPFL_   |            |                                  |
+| 블루프린트 인터페이스 *Blueprint Interface*     | BPI_       |            |                                  |
+| 블루프린트 매크로 라이브러리 *Blueprint Macro Library* | BPML_      |            | 가능한 한 사용하지 않는다. |
+| 열거형 *Enumeration*             | E          |            | 접두사 후 밑줄 없음. eg. ECharacterState                   |
+| 구조체 *Structure*               | S     |            | 접두사 후 밑줄 없음.                  |
+| 위젯 블루프린트 *Widget Blueprint*        | WBP_       |            |                                  |
+| 게임플레이 어빌리티 *Gameplay Ability*        | GA_       |            |                                  |
 
 
 #### 1.2.5 머티리얼 (Materials)
 
-| Asset Type                    | Prefix     | Suffix     | Notes                            |
+| 에셋 유형                    | 접두사     | 접미사     | Notes                            |
 | ----------------------------- | ---------- | ---------- | -------------------------------- |
-| Material                      | M_         |            |                                  |
-| Material (Post Process)       | PP_        |            |                                  |
-| Material Function             | MF_        |            |                                  |
-| Material Instance             | MI_        |            |                                  |
-| Material Parameter Collection | MPC_       |            |                                  |
-| Subsurface Profile            | SP_        |            |                                  |
-| Physical Materials            | PM_        |            |                                  |
-| Decal                         | M_, MI_    | _Decal     |                                  |
+| 머티리얼 *Material*                      | M_         |            |                                  |
+| 머티리얼 (포스트 프로세스)       | M_PP_        |            |                                  |
+| 머티리얼 (데칼)       | M_Decal_        |            |                                  |
+| 머티리얼 인스턴스 *Material Instance*             | MI_        |            |                                  |
+| 머티리얼 인스턴스 (포스트 프로세스)             | MI_PP_        |            |                                  |
+| 머티리얼 인스턴스 (데칼)             | MI_Decal_        |            |                                  |
+| 머티리얼 함수 *Material Function*             | MF_        |            |                                  |
+| 머티리얼 파라미터 컬렉션 *Material Parameter Collection* | MPC_       |            |                                  |
+| 서브서피스 프로파일 *Subsurface Profile*            | SSP_        |            |                                  |
+| 피직스 머티리얼 *Physical Materials*            | PM_        |            |                                  |
 
 
 #### 1.2.6 텍스처 (Textures)
 
-| Asset Type              | Prefix     | Suffix     | Notes                            |
+| 에셋 유형              | 접두사     | 접미사     | Notes                            |
 | ----------------------- | ---------- | ---------- | -------------------------------- |
-| Texture                 | T_         |            |                                  |
-| Texture (Diffuse/Albedo/Base Color)| T_ | _D      |                                  |
-| Texture (Normal)        | T_         | _N         |                                  |
-| Texture (Roughness)     | T_         | _R         |                                  |
-| Texture (Alpha/Opacity) | T_         | _A         |                                  |
-| Texture (Ambient Occlusion) | T_     | _O         |                                  |
-| Texture (Bump)          | T_         | _B         |                                  |
-| Texture (Emissive)      | T_         | _E         |                                  |
-| Texture (Mask)          | T_         | _M         |                                  |
-| Texture (Specular)      | T_         | _S         |                                  |
-| Texture (Metallic)      | T_         | _M         |                                  |
-| Texture (Packed)        | T_         | _*         | See notes below about [packing](#anc-textures-packing). |
-| Texture Cube            | TC_        |            |                                  |
-| Media Texture           | MT_        |            |                                  |
-| Render Target           | RT_        |            |                                  |
-| Cube Render Target      | RTC_       |            |                                  |
-| Texture Light Profile   | TLP        |            |                                  |
+| 텍스처 *Texture*                 | T_         |            |                                  |
+| - Diffuse/Albedo/Base Color| T_ | _D      |                                  |
+| - Normal        | T_         | _N         |                                  |
+| - Roughness     | T_         | _R         |                                  |
+| - Alpha/Opacity | T_         | _A         |                                  |
+| - Ambient Occlusion | T_     | _O         |                                  |
+| - Bump          | T_         | _B         |                                  |
+| - Emissive      | T_         | _E         |                                  |
+| - Mask          | T_         | _M         |                                  |
+| - Specular      | T_         | _S         |                                  |
+| - Metallic      | T_         | _M         |                                  |
+| - RGB채널에 패킹된 텍스처        | T_         | _*         | 아래의 [패킹된 텍스처 (Texture Packing)](#1261-패킹된-텍스처-texture-packing)를 참고해주세요. |
+| 텍스처 큐브 *Texture Cube*            | TC_        |            |                                  |
+| 미디어 텍스처 *Media Texture*           | MT_        |            |                                  |
+| 렌더 타깃 *Render Target*           | RT_        |            |                                  |
+| 큐브 렌더 타깃 *Cube Render Target*      | RTC_       |            |                                  |
 
 
 ##### 1.2.6.1 패킹된 텍스처 (Texture Packing)
-It is common practice to pack multiple layers of texture data into one texture. An example of this is packing Emissive, Roughness, Ambient Occlusion together as the Red, Green, and Blue channels of a texture respectively. To determine the suffix, simply stack the given suffix letters from above together, e.g. `_ERO`.
 
-> It is generally acceptable to include an Alpha/Opacity layer in your Diffuse/Albedo's alpha channel and as this is common practice, adding `A` to the `_D` suffix is optional.
+`Roughness`, `Ambient Occlusion`, `Metallic` 등 여러 개의 맵을 RGB채널에 각각 할당해 하나의 텍스처로 패킹하는 것이 일반적입니다. 패킹된 텍스처의 접미사는 RGB 채널에 할당된 맵의 순서를 따릅니다.  
+예를 들어, `Emissive`, `Roughness`, `Ambient Occlusion` 맵을 각각 `Red`, `Green`, `Blue` 채널에 할당한 경우, `접미사`는 RGB에 할당된 순서에 따라 `_ERO`가 됩니다.
 
-Packing 4 channels of data into a texture (RGBA) is not recommended except for an Alpha/Opacity mask in the Diffuse/Albedo's alpha channel as a texture with an alpha channel incurs more overhead than one without.
+> RGBA 4채널 패킹은 추천하지 않습니다.  
+> 기본 텍스처 압축 포맷이 알파채널 압축을 지원하지 않아, 4채널 압축을 위한 추가적인 연산이 필요해지기 때문입니다. 
 
 
 #### 1.2.7 기타 (Miscellaneous)

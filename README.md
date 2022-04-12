@@ -24,7 +24,7 @@
   - [00.3 스타일 가이드를 지키지 않는 팀원을 그대로 내버려두어선 안됩니다.](#003-스타일-가이드를-지키지-않는-팀원을-그대로-내버려두어선-안됩니다)
 - [**01. 금지된 사항들**](#01-금지된-사항들)
   - [01.1 금지된 문자](#011-금지된-문자)
-- [**02. BaseEngineConfig 설정**](#02-baseengineconfig-설정)
+- [**02. 엔진 기본 Config 설정**](#02-엔진-기본-config-설정)
   - [02.1 BaseEngine.ini](#021-baseengineini)
   - [02.2 BaseEditorPerProjectUserSettings.ini](#022-baseeditorperprojectusersettingsini)
 - [**1. 에셋 명명 규칙**](#1-에셋-명명-규칙)

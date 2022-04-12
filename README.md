@@ -237,6 +237,19 @@
 <br>
 <br>
 
+## **02. BaseEngineConfig 설정**
+no content
+
+### 02.1 BaseEngine.ini
+no content
+
+
+### 02.2 BaseEditorPerProjectUserSettings.ini
+no content
+
+
+<br>
+<br>
 
 ## 1. 에셋 명명 규칙
 
@@ -594,6 +607,7 @@ Content 폴더 내의 모든 폴더 이름에 적용되는 공통 규칙들입�
 
 > `Developers` 폴더는 프로젝트에 종속된 폴더가 아니므로, 프로젝트별로 구분되지 않습니다. 자세한 내용은 [Developers 폴더](#23-로컬-테스트는-developers-폴더-내에서-해야합니다) 항목을 참고해주세요.
 
+최상위 폴더 규칙에 대한 세부 사항은 다음과 같습니다.
 
 #### 2.2.1 최상위 폴더 바깥에 에셋을 두어선 안됩니다. 
 
@@ -613,17 +627,17 @@ Content 폴더 내의 모든 폴더 이름에 적용되는 공통 규칙들입�
 
 여러 프로젝트에서 작업이 이루어지면서 다른 모든 프로젝트에 유용하게 사용될 에셋이 있는 경우, 한 프로젝트에서 다른 프로젝트로 에셋 그룹을 `이주(Migrate)`하는 것이 일반적입니다. 콘텐츠 브라우저의 이주 기능을 사용하여 에셋을 다른 프로젝트로 복사하는 경우, 에디터의 종속성 검사에 의해 이와 관련된 에셋 일체가 함께 복사됩니다. 
 
-두 프로젝트 사이에 `최상위 폴더 규칙`이 제대로 지켜지지 않는 경우, 에셋의 이주는 쉽게 문제를 일으키게 됩니다. 구체적인 충돌 예시는 다음과 같습니다. 
+두 프로젝트 사이에 [최상위 폴더 규칙](#22-최상위-폴더-규칙)이 제대로 지켜지지 않는 경우, 에셋의 이주는 쉽게 문제를 일으키게 됩니다. 구체적인 충돌 예시는 다음과 같습니다. 
 
 ##### 2.2.2.1 마스터 머티리얼 이주 충돌 예시
 
-`ProjectA`에서 마스터 머티리얼을 만들었고, 이 머티리얼이 `ProjectB`에도 유용하다 판단해 이주하는 상황을 가정합니다. 만약 프로젝트가 최상위 폴더 규칙을 지키지 않는 경우, 마스터 머티리얼은 `Content\MaterialLibrary\M_Master`와 같은 경로에 위치할 확률이 높아집니다.
+`ProjectA`에서 마스터 머티리얼을 만들었고, 이 머티리얼이 `ProjectB`에도 유용하다 판단해 이주하는 상황을 가정합니다. 만약 프로젝트가 [최상위 폴더 규칙](#22-최상위-폴더-규칙)을 지키지 않는 경우, 마스터 머티리얼은 `Content\MaterialLibrary\M_Master`와 같은 경로에 위치할 확률이 높아집니다.
 
 문제는 `ProjectB`도 최상위 경로 규칙을 지키지 않으며 동일한 경로에 이미 자체적인 마스터 머티리얼이 있을 경우 발생합니다. `ProjectB`의 아티스트들은 지시받은 대로 `Content\MaterialLibrary\M_Mater`의 인스턴스를 생성해 여러 에셋에 이미 이를 적용해두었습니다. 이 상태에서 `ProjectA`의 `M_Master`가 이주되면 기존의 `M_Master`를 덮어씌우며 의도치 않게 기존의 모든 에셋의 룩을 변경하는 결과가 발생하게 됩니다.
 
 이러한 충돌 문제는 이주를 실행하는 당사자가 아티스트라면 미리 예측하기 어려우며, 충돌이 발생한 후에도 문제가 발생한 이유를 쉽게 발견하지 못할 수 있습니다. 스태틱 메시를 이주하는 아티스트는 종속성에 의해 `Content\MaterialLibrary\M_Mater` 에셋이 함께 이주되는 것을 미리 파악하지 못할 수 있으며, 일반적으로 아티스트는 마스터 머티리얼 개발에 익숙한 사람이 아닐 가능성이 높기 때문에 잘못된 덮어씌움으로 기존 에셋에도 문제가 발생했다는 사실을 파악하지 못할 수 있습니다. 
 
-이처럼 최상위 폴더 규칙이 지켜지지 않은 두 프로젝트 사이의 이주는 기존 에셋과의 충돌을 일으킬 확률이 매우 높아집니다. 만일 두 프로젝트가 모두 최상위 폴더 규칙을 지키고 있었다면, `ProjectB`로의 이주 결과는 다음과 같이 되며 충돌을 피할 수 있습니다. 
+이처럼 [최상위 폴더 규칙](#22-최상위-폴더-규칙)이 지켜지지 않은 두 프로젝트 사이의 이주는 기존 에셋과의 충돌을 일으킬 확률이 매우 높아집니다. 만일 두 프로젝트가 모두 [최상위 폴더 규칙](#22-최상위-폴더-규칙)을 지키고 있었다면, `ProjectB`로의 이주 결과는 다음과 같이 되며 충돌을 피할 수 있습니다. 
 <pre>
 |-- Content
     |-- ProjectA
@@ -639,40 +653,41 @@ Content 폴더 내의 모든 폴더 이름에 적용되는 공통 규칙들입�
 
 #### 2.2.3 최상위 폴더 규칙을 준수하는 샘플, 템플릿, 마켓플레이스 콘텐츠는 폴더 구조를 수정하지 않습니다.
 
-[2.2.2](#222-최상위-폴더-규칙은-이주-충돌을-감소시켜줍니다)의 예를 보듯, 마켓플레이스 콘텐츠, 템플릿 등은 최상위 폴더 규칙을 준수하기 때문에 이러한 에셋의 추가는 프로젝트에 방해가 되지 않습니다.
+[2.2.2](#222-최상위-폴더-규칙은-이주-충돌을-감소시켜줍니다)의 예를 보듯, 마켓플레이스 콘텐츠, 템플릿 등은 [최상위 폴더 규칙](#22-최상위-폴더-규칙)을 준수하기 때문에 이러한 에셋의 추가는 프로젝트에 방해가 되지 않습니다.
 
-하지만 마켓플레이스 콘텐츠가 언제나 최상위 폴더 규칙을 준수한다고 신뢰할 수는 없습니다. 마켓플레이스 콘텐츠를 본 프로젝트에 추가하기 전 반드시 테스트 프로젝트에 먼저 추가해본 뒤, 최상위 폴더 규칙을 추가하는 경우에만 본 프로젝트로 이주합니다.
+하지만 마켓플레이스 콘텐츠가 언제나 [최상위 폴더 규칙](#22-최상위-폴더-규칙)을 준수한다고 신뢰할 수는 없습니다. 마켓플레이스 콘텐츠를 본 프로젝트에 추가하기 전 반드시 테스트 프로젝트에 먼저 추가해본 뒤, 규칙을 준수하는 경우에만 본 프로젝트로 이주합니다. 그렇지 않을 경우 규칙에 따라 정리한 뒤 이주합니다.
 
-최상위 폴더 규칙을 준수하는 패키지를 올바르게 프로젝트에 추가한 뒤에는 이주된 상태 그대로 별도의 최상위 폴더에 둡니다. 추가한 패키지의 폴더 구조를 변경하거나 기존 프로젝트 최상위 폴더로의 병합은 해당 패키지가 업데이트되거나 패키지에서 추가로 이주할 에셋이 생길 경우 중복된 에셋을 만들거나 이주 충돌이 발생할 확률이 높아지게 됩니다. 이주해온 패키지에 일부 변형을 주고 싶은 경우, `Content\이주 패키지의 최상위폴더\Modified` 폴더를 만들어 패키지에서 변경된 사항은 `Modified` 폴더에 모아 추가 이주로 인한 충돌 가능성을 줄입니다.
+[최상위 폴더 규칙](#22-최상위-폴더-규칙)을 준수하는 패키지를 올바르게 프로젝트에 추가한 뒤에는 이주된 상태 그대로 별도의 최상위 폴더에 둡니다. 추가한 패키지의 폴더 구조를 변경하거나 기존 프로젝트의 최상위 폴더에 병합하는 일은 해당 패키지가 업데이트되거나 패키지에서 추가로 이주할 에셋이 생길 경우 중복된 에셋을 만들거나 이주 충돌 가능성을 높입니다. 이주해온 패키지에 일부 변형을 주고 싶은 경우, `Content\이주 패키지의 최상위폴더\Modified` 폴더를 만들어 패키지에서 변경된 사항은 `Modified` 폴더에 모아 추가 이주로 인한 충돌 가능성을 줄여야 합니다.
 
 추가한 패키지의 최상위 폴더 구조를 변경하는 경우는 해당 패키지를 프로젝트에 완전히 병합하려는 경우에 한합니다.
 
 
 #### 2.2.4 다른 프로젝트로 자주 이주될 수 있는 에셋 그룹은 별도의 최상위 폴더를 가져야 합니다.
 
-If your project plans to release DLC or has multiple sub-projects associated with it that may either be migrated out or simply not cooked in a build, assets relating to these projects should have their own separate top level content folder. This make cooking DLC separate from main project content far easier. Sub-projects can also be migrated in and out with minimal effort. If you need to change a material of an asset or add some very specific asset override behavior in a patch, you can easily put these changes in a patch folder and work safely without the chance of breaking the core project.
+만약 프로젝트의 일부 작업사항을 다른 프로젝트로 이주할 계획이 있거나, 빈번하게 다른 프로젝트와 공유되는 작업이 있을 경우 이러한 작업들을 모아 별도의 최상위 폴더에 두는 것을 고려해야 합니다. 이 결정은 주로 프로그래머 또는 마스터 머티리얼 등을 제작하는 테크니컬 아티스트가 내리게 됩니다.  
+
+자주 이주되는 에셋 그룹을 별도의 최상위 폴더에 두는 것은 이 그룹을 메인 프로젝트와 분리된 별도의 모듈처럼 만들어, 다른 프로젝트로의 이주를 쉽게 만들어줍니다. 분리된 최상위 폴더의 에셋들은 본 프로젝트의 에셋을 참조해서는 안됩니다. 본 프로젝트에서 분리된 에셋들이 다시 본 프로젝트의 에셋을 참조할 경우, 분리된 최상위 폴더의 이주는 본 프로젝트의 에셋까지 함께 이주해버리며 간편한 이주를 불가능하게 만듭니다. 
+
+본 프로젝트에서 분리된 최상위 폴더의 방향으로만 참조가 이루어져야 모듈화된 에셋 그룹의 장점이 보장됩니다. 이렇게 분리된 최상위 폴더는 완전히 모듈화되어 에셋들을 변경해 다른 프로젝트에 패치를 적용하거나, 다른 프로젝트로부터 다시 패치를 적용하는 일을 본 프로젝트에 영향을 최소화한 채 분리된 최상위 폴더의 이주만으로 간단히 가능하게 만들어줍니다.
 
 <br>
 
 ### 2.3 로컬 테스트는 `Developers` 폴더 내에서 해야합니다.
 
-During a project's development, it is very common for team members to have a sort of 'sandbox' where they can experiment freely without risking the core project. Because this work may be ongoing, these team members may wish to put their assets on a project's source control server. Not all teams require use of Developer folders, but ones that do use them often run into a common problem with assets submitted to source control.
+팀원들은 프로젝트에 영향을 끼치지 않으면서도 자유롭게 이런저런 실험을 해보기를 원할 수 있습니다. 다른 팀원과 공유될 필요가 전혀 없는 완전히 실험적인 에셋을 `소스컨트롤(VLAST의 경우 PlasticSCM)`에 추가하는 행위는 프로젝트의 디렉터리 구조를 혼잡하게 만들며, 팀원이 실수로 완전히 실험적인 에셋을 사용할 위험까지 생기게 됩니다. 이러한 실험적인 에셋을 소스컨트롤에 제출한 채로 장기간 방치할 경우, 그것의 제거는 광범위한 문제를 일으킬 수도 있습니다.
 
-It is very easy for a team member to accidentally use assets that are not ready for use, which will cause issues once those assets are removed. For example, an artist may be iterating on a modular set of static meshes and still working on getting their sizing and grid snapping correct. If a world builder sees these assets in the main project folder, they might use them all over a level not knowing they could be subject to incredible change and/or removal. This causes massive amounts of re-working for everyone on the team to resolve.
+소스컨트롤에 영향을 끼치지 않으며 마음껏 테스트해보기 위해 사본 프로젝트를 만든 뒤 사본 프로젝트에 테스트 환경을 구축할 수도 있지만, 보다 나은 방법은 `Developers` 폴더를 이용하는 것입니다.
 
-If these modular assets were placed in a Developer folder, the world builder should never have had a reason to use them and the whole issue would never happen. The Content Browser has specific View Options that will hide Developer folders (they are hidden by default) making it impossible to accidentally use Developer assets under normal use.
+`Developers` 폴더는 로컬에만 존재하는 완전히 실험적인 에셋이 저장되는 공간입니다. `Developers` 폴더 내의 환경은 프로젝트 소스컨트롤과 분리된 완전히 개인화된 실험실 같은 것입니다. 따라서 소스컨트롤은 `Developers` 폴더 내의 어떠한 에셋도 관리하지 않으며, 실수 또는 모종의 이유로 `Developers` 폴더 내의 에셋이 체크인되었다 하더라도 팀원들은 `Developers` 폴더 내의 어떠한 에셋도 참조해서는 안됩니다. `Developers` 폴더에서 충분한 실험이 이루어져 프로젝트 폴더로 이동해도 되겠다는 판단이 설 경우, 해당 에셋을 올바른 경로로 이동시킨 뒤 리디렉터를 고쳐주기만 하면 됩니다.
 
-Once the assets are ready for use, an artist simply has to move the assets into the project specific folder and fix up redirectors. This is essentially 'promoting' the assets from experimental to production.
+`Developers` 폴더는 콘텐츠 브라우저에서 기본적으로 숨겨져 있습니다. 콘텐츠 브라우저 세팅의 `개발자 콘텐츠 표시(Show Developers Content)` 항목을 체크해야 콘텐츠 브라우저에 노출됩니다. 
+
+`Developers` 폴더 내의 모든 에셋은 `소스컨트롤(PlasticSCM)`의 `ignore.conf` 설정에 의해 무시되도록 설정되어있습니다. 하지만 에디터 개인설정에서 `변경 시 새 파일 추가(Add New Files when Modified)` 옵션이 켜져있을 경우, `Developers` 폴더 내에 에셋을 추가할 경우 `ignore.conf` 규칙을 무시한 채 체크인 대기 항목에 올라가며 소스컨트롤에 잘못 체크인할 확률을 높이게 됩니다. 이 항목을 꺼두었다 하더라도 `Saved` 폴더를 삭제할 경우 에디터 개인설정이 엔진 기본설정으로 초기화됩니다.  
+때문에 `Developers` 폴더를 완전히 개인화된 실험실로 사용하기 위해서는 [BaseEditorPerProjectUserSettings.ini](#022-baseeditorperprojectusersettingsini)항목의 `bSCCAutoAddNewFiles=False` 설정이 되어있어야 합니다.
 
 <br>
 
 ### 2.4 모든 레벨 에셋은 `Maps` 폴더 내에 위치해야 합니다.
-
-Map files are incredibly special and it is common for every project to have its own map naming system, especially if they work with sub-levels or streaming levels. No matter what system of map organization is in place for the specific project, all levels should belong in `/Content/Project/Maps`.
-
-Being able to tell someone to open a specific map without having to explain where it is is a great time saver and general 'quality of life' improvement. It is common for levels to be within sub-folders of `Maps`, such as `Maps/Campaign1/` or `Maps/Arenas`, but the most important thing here is that they all exist within `/Content/Project/Maps`.
-
-This also simplifies the job of cooking for engineers. Wrangling levels for a build process can be extremely frustrating if they have to dig through arbitrary folders for them. If a team's maps are all in one place, it is much harder to accidentally not cook a map in a build. It also simplifies lighting build scripts as well as QA processes.
 
 <br>
 

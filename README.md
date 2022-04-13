@@ -577,20 +577,20 @@
                 |-- Rock
                 |-- Tree
             |-- Props
-                |-- OldWoodenBench            
+                |-- OldWoodenBench
             |-- OldSchool
         |-- <a href="#27-이름이-meshes-textures-materials인-에셋유형-폴더를-만들지-마십시오">3D_Plants</a>
             |-- Desert
                 |-- Cactus
                 |-- DesertYellowHead
             |-- Arctic
-                |-- Moss        
+                |-- Moss
         |-- <a href="#27-이름이-meshes-textures-materials인-에셋유형-폴더를-만들지-마십시오">Decals</a>
             |-- Concrete
-            |-- Metal        
+            |-- Metal
         |-- <a href="#27-이름이-meshes-textures-materials인-에셋유형-폴더를-만들지-마십시오">Surfaces</a>
             |-- Asphalt
-            |-- Fabric         
+            |-- Fabric
         |-- <a href="#271-characters-이하-폴더에는-적용하지-않음">Characters</a>
             |-- <a href="#28-여러-에셋과-공유되는-에셋들은-common-폴더-내에-위치합니다">Common</a>
                 |-- Animations
@@ -600,13 +600,13 @@
                 |-- Blueprints
                 |-- Meshes
                 |-- Materials
-                |-- Textures    
+                |-- Textures
             |-- Abo
                 |-- Animations
                 |-- Blueprints
                 |-- Meshes
                 |-- Materials
-                |-- Textures                
+                |-- Textures
         |-- <a href="#25-프로젝트에-핵심적인-블루프린트-및-기타-에셋은-core-폴더-내에-위치합니다">Core</a>
             |-- Characters
             |-- Engine
@@ -627,9 +627,9 @@
             |-- Textures
             |-- Utility
         |-- GUI
-    |-- <a href="#223-최상위-폴더-규칙을-준수하는-샘플-템플릿-마켓플레이스-콘텐츠는-폴더-구조를-수정하지-않습니다">Megascans</a>   
+    |-- <a href="#223-최상위-폴더-규칙을-준수하는-샘플-템플릿-마켓플레이스-콘텐츠는-폴더-구조를-수정하지-않습니다">Megascans</a>
     |-- <a href="#223-최상위-폴더-규칙을-준수하는-샘플-템플릿-마켓플레이스-콘텐츠는-폴더-구조를-수정하지-않습니다">StarterContent</a>
-    |-- <a href="#223-최상위-폴더-규칙을-준수하는-샘플-템플릿-마켓플레이스-콘텐츠는-폴더-구조를-수정하지-않습니다">ThirdPerson</a>                   
+    |-- <a href="#223-최상위-폴더-규칙을-준수하는-샘플-템플릿-마켓플레이스-콘텐츠는-폴더-구조를-수정하지-않습니다">ThirdPerson</a>
 </pre>
 
 #### 2.0.1 예제의 폴더들에 대한 설명
@@ -834,21 +834,21 @@ Content 폴더 내의 모든 폴더 이름에 적용되는 공통 규칙들입�
               |-- Tree
           |-- Props
               |-- Book
-              |-- OldWoodenBench            
+              |-- OldWoodenBench
       |-- 3D_Plants
           |-- Desert
               |-- Cactus
               |-- DesertYellowHead
           |-- Arctic
-              |-- Moss        
+              |-- Moss
       |-- Decals
           |-- Concrete
-          |-- Blood 
-          |-- Metal        
+          |-- Blood
+          |-- Metal
       |-- Surfaces
           |-- Grass
           |-- Asphalt
-          |-- Fabric        
+          |-- Fabric
 </pre>
 
 다음과 같이 실제로 배치될 개체 단위로 잘 정리된 폴더구조는 아티스트가 `Meshes`와 같은 불필요한 에셋유형 정보가 아닌, 실제로 찾으려는 `개체이름`에 집중해 폴더를 탐색할 수 있게 해줍니다. 개체이름의 폴더 안에는 그 개체에 필요한 모든 `스태틱 메시`, `머티리얼`, `텍스처` 등이 포함되어있으며, 아티스트는 콘텐츠 브라우저의 필터링 시스템을 활용해 구체적인 에셋 유형을 찾으면 됩니다.
@@ -866,12 +866,12 @@ Content 폴더 내의 모든 폴더 이름에 적용되는 공통 규칙들입�
     |-- ProjectName
       |-- Characters
           |-- Nina
-              |-- Audio          
+              |-- Audio
               |-- Animations
               |-- Blueprints
               |-- Meshes
               |-- Materials
-              |-- Textures      
+              |-- Textures
 </pre>
 
 <br>
@@ -1559,24 +1559,7 @@ Every texture has a Texture Group property used for LODing, and this should be s
 **[⬆ Back to Top](#table-of-contents)**
 
 
-## Major Contributors
-
-* [Michael Allar](http://allarsblog.com): [GitHub](https://github.com/Allar), [Twitter](https://twitter.com/michaelallar)
-* [CosmoMyzrailGorynych](https://github.com/CosmoMyzrailGorynych)
-* [billymcguffin](https://github.com/billymcguffin)
-* [akenatsu](https://github.com/akenatsu)
-
-## License
-
-Copyright (c) 2016 Gamemakin LLC
-
-See [LICENSE](/LICENSE)
-
-**[⬆ Back to Top](#table-of-contents)**
+## 스타일 변경 이력
 
 
-## Amendments
 
-We encourage you to fork this guide and change the rules to fit your team's style guide. Below, you may list some amendments to the style guide. This allows you to periodically update your style guide without having to deal with merge conflicts.
-
-# };

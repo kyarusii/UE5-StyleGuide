@@ -20,6 +20,8 @@
   - [맵(map)과 레벨(level)](#맵map과-레벨level)
   - [명명 규칙 종류](#명명-규칙-종류)
     - [파스칼 케이스 (PascalCase)](#파스칼-케이스-PascalCase)
+    - [카멜 케이스 (camelCase)](#카멜-케이스-camelCase)
+    - [스네이크 케이스 (snake_case)](#스네이크-케이스-snake_case)
   - [변수(Variable)와 프로퍼티(Property)](#변수variable와-프로퍼티property))
     - [프로퍼티(Property)](#프로퍼티-property)
     - [변수(Variable)](#변수-variable)

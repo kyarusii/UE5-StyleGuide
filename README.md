@@ -6,7 +6,7 @@
 
 >[UE4 코딩표준](https://docs.unrealengine.com/4.26/ko/ProductionPipelines/DevelopmentSetup/CodingStandard/)  
 [POCU 아카데미용 C# 코딩 표준](https://docs.popekim.com/ko/coding-standards/pocu-csharp)  
-[POCU 아카데미용 C++ 코딩 표준](https://docs.popekim.com/ko/coding-standards/pocu-cpp)
+[POCU 아카데미용 C++ 코딩 표준](https://docs.popekim.com/ko/coding-standards/pocu-cpp)  
 [언리얼 엔진 마켓플레이스 가이드라인](https://www.unrealengine.com/ko/marketplace-guidelines?sessionInvalidated=true)  
 [Recommended Asset Naming Conventions](https://docs.unrealengine.com/4.27/ko/ProductionPipelines/AssetNaming/)  
 [LyraStarterGame 샘플 프로젝트](https://www.unrealengine.com/marketplace/en-US/product/lyra)  

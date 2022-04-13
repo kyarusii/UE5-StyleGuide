@@ -104,7 +104,7 @@
     - [3.2.14 카테고리](#3214-카테고리)
     - [3.2.15 고급 디스플레이 옵션](#3215-고급-디스플레이-옵션)
     - [3.2.16 기타 고급(Advanced) 변수 설정](#3216-기타-고급advanced-변수-설정)
-  - [3.3 Functions, Events, and Event Dispatchers](#bp-functions)
+  - [3.3 함수(Functions), 이벤트(Events), 이벤트 디스패처(Event Dispatchers)](#33-함수functions-이벤트events-이벤트-디스패처event-dispatchers)
     - [3.3.1 Function Naming](#bp-funcs-naming)
     - [3.3.1.1 All Functions Should Be Verbs](#bp-funcs-naming-verbs)
     - [3.3.1.2 Property RepNotify Functions Always `OnRep_Variable`](#bp-funcs-naming-onrep)
@@ -1161,9 +1161,7 @@ C++ 수준의 이해도를 가진 작업자가 아니라면 `환경설정 변수
 
 <br>
 
-<a name="3.3"></a>
-<a name="bp-functions"></a>
-### 3.3 Functions, Events, and Event Dispatchers
+### 3.3 함수(Functions), 이벤트(Events), 이벤트 디스패처(Event Dispatchers)
 
 This section describes how you should author functions, events, and event dispatchers. Everything that applies to functions also applies to events, unless otherwise noted.
 

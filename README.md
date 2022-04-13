@@ -440,10 +440,10 @@
 | - Normal                        | T_         | _N         |                                  |
 | - Roughness                     | T_         | _R         |                                  |
 | - Alpha/Opacity                 | T_         | _A         |                                  |
+| - Mask                          | T_         | _A         | *똑같이 Opacity 채널에 들어가므로 Alpha/Opacity와 동일합니다.*  |
 | - Ambient Occlusion             | T_         | _O         |                                  |
 | - Bump                          | T_         | _B         |                                  |
 | - Emissive                      | T_         | _E         |                                  |
-| - Mask                          | T_         | _M         |                                  |
 | - Specular                      | T_         | _S         |                                  |
 | - Metallic                      | T_         | _M         |                                  |
 | - RGB채널에 패킹된 텍스처         | T_         | _*         | 아래의 [패킹된 텍스처 (Texture Packing)](#1261-패킹된-텍스처-texture-packing)를 참고해주세요. |

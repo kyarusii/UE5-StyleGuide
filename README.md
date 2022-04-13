@@ -204,7 +204,7 @@
 하위 클래스로만 멤버가 공개되어 상속받은 클래스까지만 접근 가능  
 
 #### private 
-공개가 제한되어 멤버를 선언한 자신만 접근 가능
+공개가 제한되어 멤버를 선언한 클래스 자신만 접근 가능
 
 <br>
 
@@ -941,206 +941,204 @@ Content 폴더 내의 모든 폴더 이름에 적용되는 공통 규칙들입�
 <br>
 <br>
 <br>
+<br>
 
 ## 3. 블루프린트 코딩 표준
 
-This section will focus on Blueprint classes and their internals. When possible, style rules conform to [Epic's Coding Standard](https://docs.unrealengine.com/latest/INT/Programming/Development/CodingStandard).
+<br>
 
-Remember: Blueprinting badly bears blunders, beware! (Phrase by [KorkuVeren](http://github.com/KorkuVeren))
+### 시작하기 전
+`친숙한 변수 이름 보기(Show Friendly Name)`를 끄는 것은 블루프린트 코딩 표준 준수 과정에서의 불필요한 혼란을 줄여줍니다. Saved 폴더를 삭제해도 항상 이 설정이 적용되도록 하려면 [블루프린트 코딩 표준 준수를 위한 설정](#0222-블루프린트-코딩-표준-준수를-위한-설정)을 따라 설정해주시면 됩니다.
+
+`친숙한 변수 이름 보기`로 인해 발생할 수 있는 혼란은 다음과 같습니다.  
+사진  
+1. 접두사 b-가 자동으로 생략됨
+1. 단어의 첫 문자가 대문자로 변경되며 [카멜 케이스](#카멜-케이스-camelcase)와 [파스칼 케이스](#파스칼-케이스-pascalcase)를 구분할 수 없어짐
+1. [파스칼 케이스](#파스칼-케이스-pascalcase)의 단어구분 사이에 자동으로 공백이 추가됨
+1. 밑줄이 자동으로 공백으로 변환됨
+1. 3-4의 문제로 겉보기상 동일한 변수명에 [파스칼 케이스](#파스칼-케이스-pascalcase), [스네이크 케이스](#스네이크-케이스-snake_case), [공백](#011-금지된-문자)이 모두 사용되는 문제 발생  
+
+`친숙한 변수 이름 보기`를 끄는 것은 모두가 변수 이름을 원형 그대로 볼 수 있도록 하여 이러한 혼란을 피하게 해줍니다.
+
+<br>
+
+### 3.0 기본 원칙
+
+1. 코드 자체가 문서 역할을 하도록, 가독성을 최우선으로 삼아야 합니다.
+2. 컴파일과 런타임 모두에서 단 하나의 경고나 오류도 없어야 합니다.
+
+<br>
+
+### 3.1 컴파일과 런타임
+
+#### 3.1.1 컴파일
+
+모든 블루프린트는 반드시 컴파일 결과에 경고 및 오류가 없어야 합니다. 블루프린트 경고 및 오류는 예기치 못한 동작으로 이어질 수 있으므로 발견 즉시 고쳐야 합니다.
+
+망가진 블루프린트는 잘못된 참조, 예상치 못한 실행결과, 쿠킹 실패, 잦은 재컴파일 등 여러 문제를 일으킵니다. 망가진 블루프린트의 방치는 프로젝트 전체를 망가뜨리므로, 컴파일되지 않는 블루프린트를 소스컨트롤에 제출하지 마십시오.
+
+#### 3.1.2 런타임
+
+런타임이란 게임의 실행 도중을 의미합니다. 컴파일 결과에 경고 및 [오류](#오류)가 없었다 할지라도, 런타임 도중에 문제가 발생할 수도 있습니다. 예를 들어 컴파일할 때는 정상적으로 참조하던 개체가 런타임 도중 Destroy 되었는데 다시 참조하는 경우, 런타임 도중 None 참조 오류가 발생하게 됩니다. 또한 런타임 중에는 프로그램 로직 자체의 결함으로 [버그](#버그)가 발생할 수 있습니다. 런타임 도중 이런 문제를 발견하는 즉시 원인을 파악하고 고쳐야합니다. 
+
+경고는 지금 당장 문제를 일으키지는 않기 때문에 가볍게 여겨지고 방치되기 쉽습니다. 방치된 채 누적된 경고는 언젠가 정말 중요한 문제가 발생했을 때 경고 사이에서 정말 중요한 단서를 찾아내는 일을 어렵게 만드므로, 경고도 발견 즉시 고쳐야 합니다.
+
+<br>
+
+### 3.2 변수
+
+[변수와 프로퍼티](#변수variable와-프로퍼티property)는 일반적인 문맥에서 서로 바꿔서 사용할 수 있습니다. 블루프린트에서는 변수 용어 사용이 흔하므로, 이 스타일 가이드에서는 프로퍼티도 모두 변수로 표현합니다. 
+
+#### 3.2.1 변수 이름은 명사여야 합니다.
+변수 이름은 그 자체로 명확하게 이해할 수 있는 명사여야 합니다.  
+누구나 이해할 수 있도록 충분히 설명적인 명사여야 하며, 지나친 축약을 피해야 합니다.
+
+*[불리언 변수]()는 동사가 사용될 수 있습니다.*
 
 
-### 3.1 Compiling
+#### 3.2.2 Public 변수에는 파스칼 케이스를 사용합니다.
+기본적으로 모든 변수 이름은 [파스칼 케이스](#파스칼-케이스-pascalcase)를 따릅니다.  
+불리언 변수와 Public 이외의 변수에는 특정한 접두사가 붙습니다.
 
-All blueprints should compile with zero warnings and zero errors. You should fix blueprint warnings and errors immediately as they can quickly cascade into very scary unexpected behavior.
+즉, [불리언을 제외한](#323-불리언-변수는-b--접두사를-가집니다) `모든 Public 변수`는 [파스칼 케이스](#파스칼-케이스-pascalcase)를 따릅니다.  
 
-Do *not* submit broken blueprints to source control. If you must store them on source control, shelve them instead.
-
-Broken blueprints can cause problems that manifest in other ways, such as broken references, unexpected behavior, cooking failures, and frequent unneeded recompilation. A broken blueprint has the power to break your entire game.
-
-<a name="3.2"></a>
-<a name="bp-vars"></a>
-### 3.2 Variables
-
-The words `variable` and `property` may be used interchangeably.
-
-<a name="3.2.1"></a>
-<a name="bp-var-naming"></a>
-#### 3.2.1 Naming
-
-<a name="3.2.1.1"></a>
-<a name="bp-var-naming-nouns"></a>
-##### 3.2.1.1 Nouns
-
-All non-boolean variable names must be clear, unambiguous, and descriptive nouns.
-
-<a name="3.2.1.2"></a>
-<a name="bp-var-naming-case"></a>
-##### 3.2.1.2 PascalCase
-
-All non-boolean variables should be in the form of [PascalCase](#terms-cases).
-
-<a name="3.2.1.2e"></a>
-###### 3.2.1.2e Examples
-
+불리언이 아닌 Public 변수 이름의 예:
 * `Score`
 * `Kills`
 * `TargetPlayer`
 * `Range`
-* `CrosshairColor`
-* `AbilityID`
+* `PlayerID`
 
-<a name="3.2.1.3"></a>
-<a name="bp-var-bool-prefix"></a>
-##### 3.2.1.3 Boolean `b` Prefix
 
-All booleans should be named in PascalCase but prefixed with a lowercase `b`.
+#### 3.2.3 불리언 변수는 b- 접두사를 가집니다.
+모든 `불리언 변수`는 `소문자 b`를 접두사로 가집니다.
 
-Example: Use `bDead` and `bEvil`, **not** `Dead` and `Evil`.
+예를 들어 사망 상태를 체크하는 변수는 `Dead`에 `b-`를 붙여 `bDead`가 되어야 합니다.
 
-UE4 Blueprint editors know not to include the `b` in user-friendly displays of the variable.
+#### 3.2.4 불리언 변수는 Is, Can, Has, Should와 같은 의문형 동사를 가질 수 있습니다.
+몇몇 스타일 가이드에서는 불리언 변수에 동사를 사용하는 것은 함수와 혼동을 일으키므로 사용을 금지하고 있습니다. 하지만 예/아니오를 담는 불리언 변수에 접근할 때 그 이름이 의문형인 것은 자연스러우며, 더 나은 가독성을 제공합니다.  
 
-<a name="3.2.1.4"></a>
-<a name="bp-var-bool-names"></a>
-##### 3.2.1.4 Boolean Names
+`불리언 변수`에는 `b-` 접두사가 오기 때문에 함수와의 혼동을 피할 수 있고 에픽의 코딩 표준도 불리언 변수에 의문형 동사를 사용하므로, 이 스타일 가이드에서는 불리언 변수에 의문형 동사를 허용합니다.
 
-<a name="3.2.1.4.1"></a>
-###### 3.2.1.4.1 General And Independent State Information
+따라서 다음은 모두 올바른 이름입니다. 
+* `bDead`
+* `bIsDead`
+* `bHostile`
+* `bIsHostile`
+* `bAlive`
+* `bHasChild`
 
-All booleans should be named as descriptive adjectives when possible if representing general information. Do not include words that phrase the variable as a question, such as `Is`. This is reserved for functions.
 
-Example: Use `bDead` and `bHostile` **not** `bIsDead` and `bIsHostile`.
+#### 3.2.5 불리언 변수로 복잡한 상태를 정의하지 마십시오.
+불리언 변수는 언제나 변수 하나로 하나의 상태를 온전히 정의할 수 있어야 합니다. 하나의 상태를 온전히 정의하는 데 두 개 이상의 불리언 변수가 필요하다면 `열거형`을 사용하십시오.
 
-Try to not use verbs such as `bRunning`. Verbs tend to lead to complex states.
+예를 들어 캐릭터의 걸음걸이 상태를 정의하는 상황을 가정해보겠습니다. `캐릭터의 걸음걸이`에는 `Walking`, `Running`, `Sprinting` 등 `세 가지 이상의 상태`가 존재할 수 있습니다.
+이런 상태를 불리언으로 정의하려면 각각의 상태에 각각의 변수 `bWalking`, `bRunning`, `bSprinting`가 필요하며, 하나의 상태를 정의하기 위해선 다른 모든 상태 변수를 false로 변경해줘야 합니다. 여기에 기어가거나 절뚝거리는 상태가 또다시 추가된다면 로직의 크기에 따라 이 작업은 매우 번거로워질 수 있습니다. 불리언 대신 `열거형`을 사용하면 `PlayerWalkState` 변수 하나로 상태를 정의할 수 있으며, 상태의 추가/제거도 간편해집니다.
 
-<a name="3.2.1.4.2"></a>
-###### 3.2.1.4.2 Complex States
+#### 3.2.6 private, protected 변수에는 접두사 m-을 붙입니다.
 
-Do not to use booleans to represent complex and/or dependent states. This makes state adding and removing complex and no longer easily readable. Use an enumeration instead.
+`Public`, `protected`, `private`에 대한 설명은 [접근 제어자](#접근-제어자-access-modifier) 항목을 참고해주세요.
 
-Example: When defining a weapon, do **not** use `bReloading` and `bEquipping` if a weapon can't be both reloading and equipping. Define an enumeration named `EWeaponState` and use a variable with this type named `WeaponState` instead. This makes it far easier to add new states to weapons.
+##### 3.2.6.1 private 변수
+외부에서 접근해서는 안되며 자식 블루프린트에서도 사용해서는 안되는 게 확실한 변수는 [private](#private)로 설정하십시오. 즉, 현재 클래스 내부에서만 사용할 것이 확실한 변수는 [private](#private)로 설정해야 합니다. 이런 변수를 [private](#private)로 선언하는 것은 변수의 외부 노출을 원천 차단해 게임 디자이너가 블루프린트를 더 안전하게 사용할 수 있도록 해줍니다.
 
-Example: Do **not** use `bRunning` if you also need `bWalking` or `bSprinting`. This should be defined as an enumeration with clearly defined state names.
+[private](#private) 변수에는 접두사 `m-`을 붙입니다. 모든 변수에 파스칼 케이스만을 사용하면 어떤 변수가 private인지 확인하기 위해서는 매번 변수의 디테일 패널을 확인해야 합니다. `private 변수`에 접두사 `m-`을 붙이면 내부용 변수가 명확히 보이므로 코드 작성이 편리해집니다.
 
-<a name="3.2.1.5"></a>
-<a name="bp-vars-naming-context"></a>
-##### 3.2.1.5 Considered Context
+##### 3.2.6.2 protected로 의도된 변수
+블루프린트 변수는 [protected](#protected) 접근 제어자를 지원하지 않습니다. 때문에 현재로서는 자식 클래스에서도 사용되거나 잠재적으로 그럴 가능성이 있는 변수는 [Public](#public)으로 열어둘 수밖에 없습니다. 
 
-All variable names must not be redundant with their context as all variable references in Blueprint will always have context.
+이처럼 외부에서 접근해서는 안되지만 불가피하게 Public으로 공개된 변수의 문제를 보완하기 위해, `protected로 의도된 변수`에도 접두사 `m-`을 붙이십시오. 이 규칙을 따르면 외부에서 접근하는 사용자는 `m` 접두사가 붙은 변수는 내부용임을 알고 접근하지 않을 것입니다.
 
-<a name="3.2.1.5e"></a>
-###### 3.2.1.5e Examples
+이 문제는 `외부에서는 언제나 함수 호출로 변수 접근` 규칙으로 추가로 보완됩니다.
 
-Consider a Blueprint called `BP_PlayerCharacter`.
+##### 3.2.6.3 private/protected 변수 이름 예시
+즉, `Public이 아닌 모든 변수`에는 `접두사 m-`이 붙습니다. 추가로 `불리언 변수는 접두사 b-가 뒤이어 오게 됩니다.` 이 규칙에 따른 예는 다음과 같습니다.
+* `m`b`Fired`  
+* `mAge`
+* `mName`
+* `mProcessState`
 
-**Bad**
+#### 3.2.7 변수가 속한 클래스를 고려해 불필요한 의미 중복을 피하십시오.
+클래스의 변수들은 이미 그 클래스에 소속되어있음이 명확합니다. 이런 문맥을 고려하지 않은 의미 중복을 피하십시오.
 
+예를 들어 `BP_PlayerCharacter` 개체의 변수에 접근하는 상황을 가정해봅니다.
+
+나쁜 예:
 * `PlayerScore`
 * `PlayerKills`
-* `MyTargetPlayer`
 * `MyCharacterName`
 * `CharacterSkills`
-* `ChosenCharacterSkin`
+* `CharacterSkin`
 
-All of these variables are named redundantly. It is implied that the variable is representative of the `BP_PlayerCharacter` it belongs to because it is `BP_PlayerCharacter` that is defining these variables.
+호출자 입장에서 이런 변수의 호출은 `BP_PlayerCharacter.PlayerScore` 형태가 됩니다. 이미 `PlayerCharacter` 소속임이 명확하므로 `BP_PlayerCharacter.Score` 형태가 되는 것이 더 바람직합니다.
 
-**Good**
-
+좋은 예:
 * `Score`
 * `Kills`
-* `TargetPlayer`
 * `Name`
 * `Skills`
 * `Skin`
 
-<a name="3.2.1.6"></a>
-<a name="bp-vars-naming-atomic"></a>
-##### 3.2.1.6 Do _Not_ Include Atomic Type Names
 
-Atomic or primitive variables are variables that represent data in their simplest form, such as booleans, integers, floats, and enumerations.
+#### 3.2.8 기본 자료형 변수에 자료형 이름을 포함하지 마십시오.
+`기본 자료형`에는 `불리언(Bool)`, `정수(Int)`, `실수(Float)`, `열거형(Enum)` 등이 있습니다. `문자열(String)`과 `벡터(Vector)`는 기본 자료형은 아니지만 `블루프린트에서는 기본 자료형처럼 간주`됩니다.  
+>	텍스트(Text) 변수는 기본 자료형으로 간주되지 않습니다. 텍스트 변수는 현지화 기능을 숨기고 있습니다. 기본 자료형으로 간주하는 문자열 형태의 변수는 문자열(String) 변수입니다.
 
-Strings and vectors are considered atomic in terms of style when working with Blueprints, however they are technically not atomic.
+잘못된 예:
+* `ScoreFloat`
+* `FloatDamage`
+* `DescriptionString`
 
-> While vectors consist of three floats, vectors are often able to be manipulated as a whole, same with rotators.
-
-> Do _not_ consider Text variables as atomic, they are secretly hiding localization functionality. The atomic type of a string of characters is `String`, not `Text`.
-
-Atomic variables should not have their type name in their name.
-
-Example: Use `Score`, `Kills`, and `Description` **not** `ScoreFloat`, `FloatKills`, `DescriptionString`.
-
-The only exception to this rule is when a variable represents 'a number of' something to be counted _and_ when using a name without a variable type is not easy to read.
-
-Example: A fence generator needs to generate X number of posts. Store X in `NumPosts` or `PostsCount` instead of `Posts` as `Posts` may potentially read as an Array of a variable type named `Post`.
-
-<a name="3.2.1.7"></a>
-<a name="bp-vars-naming-complex"></a>
-##### 3.2.1.7 Do Include Non-Atomic Type Names
-
-Non-atomic or complex variables are variables that represent data as a collection of atomic variables. Structs, Classes, Interfaces, and primitives with hidden behavior such as `Text` and `Name` all qualify under this rule.
-
-> While an Array of an atomic variable type is a list of variables, Arrays do not change the 'atomicness' of a variable type.
-
-These variables should include their type name while still considering their context.
-
-If a class owns an instance of a complex variable, i.e. if a `BP_PlayerCharacter` owns a `BP_Hat`, it should be stored as the variable type as without any name modifications.
-
-Example: Use `Hat`, `Flag`, and `Ability` **not** `MyHat`, `MyFlag`, and `PlayerAbility`.
-
-If a class does not own the value a complex variable represents, you should use a noun along with the variable type.
-
-Example: If a `BP_Turret` has the ability to target a `BP_PlayerCharacter`, it should store its target as `TargetPlayer` as when in the context of `BP_Turret` it should be clear that it is a reference to another complex variable type that it does not own.
+기본 자료형 이름과 유사하거나 겹치더라도, `NumPosts`, `PostsCount`, `PlayerName`과 같이 문맥상 단지 일반 명사로서 사용된 경우라면 해당하지 않습니다.
 
 
-<a name="3.2.1.8"></a>
-<a name="bp-vars-naming-arrays"></a>
-##### 3.2.1.8 Arrays
+#### 3.2.9 배열은 복수형 이름을 가져야 합니다.
 
-Arrays follow the same naming rules as above, but should be named as a plural noun.
+나쁜 예:
+* `TargetList`
+* `HatArray`
+* `EnemyPlayerArray`
 
-Example: Use `Targets`, `Hats`, and `EnemyPlayers`, **not** `TargetList`, `HatArray`, `EnemyPlayerArray`.
+좋은 예:
+* `Targets`
+* `Hats`
+* `EnemyPlayers`
 
+#### 3.2.10 구조체의 멤버변수는 모두 파스칼 케이스를 따릅니다.
 
-<a name="3.2.2"></a>
-<a name="bp-vars-editable"></a>
-#### 3.2.2 Editable Variables
+#### 3.2.11 런타임 중 변경되어선 안되는 상수
+컴파일 단계에서 값을 결정하고 런타임 중 절대 변경되어선 안되는 변수는 `블루프린트 읽기 전용(Blueprint Read Only)`으로 선언해줍니다. 
 
-All variables that are safe to change the value of in order to configure behavior of a blueprint should be marked as `Editable`.
+변수 이름은 [스네이크 표기법](#스네이크-케이스-snake_case)을 따르되, `모든 문자를 대문자`로 표시해 상수임을 알립니다.
 
-Conversely, all variables that are not safe to change or should not be exposed to designers should _not_ be marked as editable, unless for engineering reasons the variable must be marked as `Expose On Spawn`.
+게임 또는 개체의 초기화 단계에서 값을 읽어와 설정한 뒤 나머지 시간동안 변경되어선 안되는 `상수 성격의 변수`도 같은 이름 규칙을 따릅니다.
 
-Do not arbitrarily mark variables as `Editable`.
+올바른 예:
+* PLAYER_HP
+* TARGET_FPS
+* NUM_PLAYERS
 
-<a name="3.2.2.1"></a>
-<a name="bp-vars-editable-tooltips"></a>
-##### 3.2.2.1 Tooltips
+#### 3.2.12 변수 툴팁
+모든 `인스턴스 편집 가능(Instance Editable)`, `스폰시 노출(Exposure on Spawn)` 변수는 툴팁으로 이 변수가 블루프린트 동작에 어떤 영향을 미치는지에 대한 설명을 제공해야 합니다. 
 
-All `Editable` variables, including those marked editable just so they can be marked as `Expose On Spawn`, should have a description in their `Tooltip` fields that explains how changing this value affects the behavior of the blueprint.
+그렇지 않은 변수라도 변수 이름만으로 변수의 목적이 명확히 드러나지 않을 경우 툴팁으로 설명을 보충할 수 있습니다.
 
-<a name="3.2.2.2"></a>
-<a name="bp-vars-editable-ranges"></a>
-##### 3.2.2.2 Slider And Value Ranges
+#### 3.2.13 슬라이더 및 값 범위
 
-All `Editable` variables should make use of slider and value ranges if there is ever a value that a variable should _not_ be set to.
+특히 `인스턴스 편집 가능 변수`에서 변수에 허용되지 않는 값이 있을 경우 슬라이더로 변수의 값을 제한해줘야 합니다. 예를 들어 절차적으로 울타리를 생성하는 블루프린트의 경우 `FenceCount` 변수에 음수를 입력하는 것은 아무런 의미가 없습니다. 슬라이더 최소값을 0으로 제한해 방지할 수 있습니다. 또한, 지나치게 큰 값을 입력해 에디터를 망가뜨리는 것을 막기 위해 정상범위라 생각하는 최대값도 설정해주면 좋습니다.
 
-Example: A blueprint that generates fence posts might have an editable variable named `PostsCount` and a value of -1 would not make any sense. Use the range fields to mark 0 as a minimum.
+특히 슬라이더 최댓값 설정은 해당 변수가 `컨스트럭션 스크립트`에서 사용될 때 중요합니다. 최댓값이 설정되어있지 않으면 드래그 실수로 지나치게 큰 값을 입력하기 쉬우므로, 실수로 인해 에디터 크래시가 나지 않도록 적절한 최댓값을 설정해야 합니다.
+	
+슬라이더는 값을 드래그할 때 허용되는 범위를 제한할 뿐, 실제 값의 입력을 제한하지는 않습니다. 값 범위는 실제로 입력될 수 있는 값 자체를 제한하므로, 변수에 허용되는 값 범위가 명확한 경우 정의해줍니다.
 
-If an editable variable is used in a Construction Script, it should have a reasonable Slider Range defined so that someone can not accidentally assign it a large value that could crash the editor.
+#### 3.2.14 카테고리
+클래스가 적은 수의 변수만 가지고 있다면 카테고리는 필요하지 않습니다.
 
-A Value Range only needs to be defined if the bounds of a value are known. While a Slider Range prevents accidental large number inputs, an undefined Value Range allows a user to specify a value outside the Slider Range that may be considered 'dangerous' but still valid.
+만약 클래스가 한 눈에 파악하기 어려운 많은 변수를 가진다면, 카테고리로 분류하여 사용자가 변수의 용도를 파악하기 쉽게 해야합니다. `인스턴스 편집 가능 변수`들은 사용자에게 개체의 기본설정을 위한 변수라는 것을 암시하기 위해 `Config` 카테고리에 할당됩니다.
 
-<a name="3.2.3"></a>
-<a name="bp-vars-categories"></a>
-#### 3.2.3 Categories
+변수 분류의 계층이 깊다면 `|` 를 사용해 하위 카테고리를 만들 수 있습니다. 
 
-If a class has only a small number of variables, categories are not required.
-
-If a class has a moderate amount of variables (5-10), all `Editable` variables should have a non-default category assigned. A common category is `Config`.
-
-If a class has a large amount of variables, all `Editable` variables should be categorized into sub-categories using the category `Config` as the base category. Non-editable variables should be categorized into descriptive categories describing their usage.
-
-> You can define sub-categories by using the pipe character `|`, i.e. `Config | Animations`.
-
-Example: A weapon class set of variables might be organized as:
+무기 클래스 변수들의 카테고리 예:
 
     |-- Config
     |    |-- Animations
@@ -1152,43 +1150,13 @@ Example: A weapon class set of variables might be organized as:
     |-- State
     |-- Visuals
 
-<a name="3.2.4"></a>
-<a name="bp-vars-access"></a>
-#### 3.2.4 Variable Access Level
+#### 3.2.15 고급 디스플레이 옵션
+변수가 수정 가능해야 하기는 하지만 매우 드물게 수정되거나 그 변수에 대해 잘 아는 사람이 아니라면 수정하기를 원치 않을 경우, `고급(Advanced)` 설정의 `고급 디스플레이(Advanced Display)` 옵션으로 변수를 접어 가려줍니다.
 
-In C++, variables have a concept of access level. Public means any code outside the class can access the variable. Protected means only the class and any child classes can access this variable internally. Private means only this class and no child classes can access this variable.
+#### 3.2.16 기타 `고급(Advanced)` 변수 설정
+C++ 수준의 이해도를 가진 작업자가 아니라면 `환경설정 변수(Config Variable)`, `트랜션트(Transient)` 등의 설정은 사용하지 않습니다.
 
-Blueprints do not have a defined concept of protected access currently.
-
-Treat `Editable` variables as public variables. Treat non-editable variables as protected variables.
-
-<a name="3.2.4.1"></a>
-<a name="bp-vars-access-private"></a>
-##### 3.2.4.1 Private Variables
-
-Unless it is known that a variable should only be accessed within the class it is defined and never a child class, do not mark variables as private. Until variables are able to be marked `protected`, reserve private for when you absolutely know you want to restrict child class usage.
-
-<a name="3.2.5"></a>
-<a name="bp-vars-advanced"></a>
-#### 3.2.5 Advanced Display
-
-If a variable should be editable but often untouched, mark it as `Advanced Display`. This makes the variable hidden unless the advanced display arrow is clicked.
-
-To find the `Advanced Display` option, it is listed as an advanced displayed variable in the variable details list.
-
-<a name="3.2.6"></a>
-<a name="bp-vars-transient"></a>
-#### 3.2.6 Transient Variables
-
-Transient variables are variables that do not need to have their value saved and loaded and have an initial value of zero or null. This is useful for references to other objects and actors who's value isn't known until run-time. This prevents the editor from ever saving a reference to it, and speeds up saving and loading of the blueprint class.
-
-Because of this, all transient variables should always be initialized as zero or null. To do otherwise would result in hard to debug errors.
-
-<a name="3.2.7"></a>
-<a name="bp-vars-config"></a>
-#### 3.2.8 Config Variables
-
-Do not use the `Config Variable` flag. This makes it harder for designers to control blueprint behavior. Config variables should only be used in C++ for rarely changed variables. Think of them as `Advanced Advanced Display` variables.
+<br>
 
 <a name="3.3"></a>
 <a name="bp-functions"></a>

@@ -116,7 +116,7 @@
     - [3.3.3 No Function Should Have More Than 50 Nodes](#bp-graphs-funcs-node-limit)
     - [3.3.4 All Public Functions Should Have A Description](#bp-graphs-funcs-description)
     - [3.3.5 All Custom Static Plugin `BlueprintCallable` Functions Must Be Categorized By Plugin Name](#bp-graphs-funcs-plugin-category)
-  - [**3.4 데이터 유효성 검증 칙**](#00-원칙들)
+  - [**3.4 데이터 유효성 검증 원칙**](#00-원칙들)
     - [3.4.1 프로그램의 외부와 내부](#00-원칙들)
     - [3.4.2 경계 지점에서의 데이터 유효성 검증과 예외처리](#00-원칙들)
     - [3.4.3 유효성 검증을 통과한 프로그램 내부 로직](#00-원칙들)

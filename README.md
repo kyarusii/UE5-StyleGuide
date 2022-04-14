@@ -1358,10 +1358,10 @@ C++ 수준의 이해도를 가진 작업자가 아니라면 `환경설정 변수
 
 
 #### 3.3.16 함수가 참조형을 반환할 경우 Null을 반환하지 않습니다.
-
+모든 함수는 참조형 변수를 반환할 때 기본적으로 `Null`을 반환하지 않습니다. 이 가이드에 따라 함수 호출자는 Null 반환 가능성을 고려하지 않으며, 호출 뒤 반환값에 대한 유효성 검사나 Null일 경우를 대비한 예외처리 로직을 만들지 않습니다.
 
 #### 3.3.17 예외적으로 Null 반환이 가능한 함수의 경우 함수명 뒤에 `-OrNull` 접미사를 붙입니다.
-
+함수가 예외적으로 `Null` 참조를 반환할 수 있는 경우, 함수 이름 뒤에 `-OrNull` 접미사를 붙여 `Null`이 반환될 수 있음을 명시합니다. `Null` 반환 가능성이 명확히 드러나므로 함수 호출자는 호출 뒤 유효성 검증과 예외처리 로직을 추가할 것입니다.
 
 #### 3.3.18 이벤트 핸들러 및 디스패처는 `On-` 접두사로 시작해야 합니다.
 
@@ -1393,28 +1393,74 @@ C++ 수준의 이해도를 가진 작업자가 아니라면 `환경설정 변수
 
 ### 3.4 데이터 유효성 검증 원칙
 
-프로젝트에 명확한 데이터 유효성 검증 원칙이 없다면, 블루프린트 작성자는 자신이 직접 초기화한 변수 외에는 모든 데이터가 잠재적으로 유효하지 않을지도 모른다는 걱정을 하게 됩니다. 이런 걱정은 프로젝트 전반에 걸쳐 거의 모든 변수(특히 참조형)에 대해 `IsValid` 체크를 하는 비효율을 낳게 되며, 수시로 나오는 유효성 검증 노드는 블루프린트 가독성도 해치게 됩니다.
+프로젝트에 명확한 데이터 유효성 검증 원칙이 없다면, 블루프린트 작성자는 자신이 직접 초기화한 변수 외에는 모든 데이터가 잠재적으로 유효하지 않을지도 모른다는 걱정을 하게 됩니다. 이런 걱정은 프로젝트 전반에 걸쳐 거의 모든 변수(특히 참조형)에 대해 `IsValid` 체크를 하는 비효율을 낳게 되며, 수시로 나오는 유효성 검증 노드는 블루프린트 가독성도 해치게 됩니다.  
 
 이런 상황을 피하기 위하여, 이 항목은 명확한 데이터 유효성 검증 지점을 제시합니다. 
 
 #### 3.4.1 프로그램의 외부와 내부
 
-데이터 유효성 검증을 수행해야하는 지점은 프로그램 외부와 내부의 경계지점입니다. 
+데이터 유효성 검증을 수행해야하는 지점은 `프로그램 외부와 내부의 경계지점`입니다. 
 
-프로그램 외부는 자신이 통제할 수 없는 데이터가 오가는 영역입니다. 프로그램 내부는 모든 데이터를 자신이 완벽히 통제할 수 있는 영역입니다.
+`프로그램 외부`는 `자신이 통제할 수 없는 데이터`가 오가는 영역입니다.  
+*직접 통제할 수 없는 데이터가 오가는 외부 영역의 예:*
+* 플레이어의 키보드 입력
+* 네트워크 스트림 데이터
+* 로드한 파일의 데이터
+* 추적하기 어려운 복잡한 다중 상호작용 상황
 
-통제할 수 없는 데이터가 오가는, 프로그램 외부 영역 다음과 같습니다.
-플레이어에게 키보드 입력으로 데이터를 받는 상황
-네트워크 스트림으로 데이터를 읽어오는 상황
-로드한 파일로부터 데이터를 읽어오는 상황
-다수의 개체가 얽힌 복잡한 상호작용 상황에서의 개체 참조
-
+`프로그램 내부`는 `모든 데이터를 자신이 완벽히 통제`할 수 있는 영역입니다.  
+외부 영역으로부터 데이터를 받아올 일이 없는 로직이나 외부 영역으로부터 데이터를 받아온 뒤 이어지는 로직 등, 사실상 프로그램 내부 구현의 대부분이 여기에 해당합니다. 
 
 #### 3.4.2 경계 지점에서의 데이터 유효성 검증과 예외처리
 
+만약 프로그램 외부에서 내부 영역으로 넘어온 데이터가 유효함을 보장할 수 없다면, 내부 영역에까지 통제되지 않은 데이터가 돌아다니며 외부와 내부의 경계를 모호하게 만들어 버립니다. 이런 프로그램의 구현부는 사실상 모든 부분이 잠재적으로 외부 영역인 것이나 마찬가지이며, 때문에 이런 상황에서 프로그래머는 최대한 방어적인 자세로 모든 변수에 대해 유효성 검증을 할 수밖에 없게 됩니다.
+
+`프로그램 외부와 내부의 경계 지점에서 유효성을 검증하는 이유가 여기에 있습니다.` 이는 외부로부터 들어오는 데이터는 경계 지점에서 유효성을 검증하고, `내부 영역에는 반드시 올바른 데이터만 전달하겠다는 약속`입니다. 프로젝트가 명확한 스타일 가이드에 의해 이 원칙을 준수한다면, 프로그램은 외부와 내부의 경계를 명확히 나눌 수 있게 됩니다.
+
+[Null 매개변수를 허용하는 함수](#3315-함수의-참조형-매개변수가-예외적으로-null을-허용할-경우-매개변수명-뒤에--ornull-접미사를-붙입니다)나 [Null을 반환할 수 있는 함수](#3317-예외적으로-null-반환이-가능한-함수의-경우-함수명-뒤에--ornull-접미사를-붙입니다), `불리언으로 실행 성공여부를 반환하는 함수(eg. 블루프린트의 Teleport, C#의 TryParse ...)`들이 경계 지점에서 흔히 사용되는 함수들입니다.
+
+이 함수들은 기본적으로 데이터의 유효성이 보장되지 않은 상황을 가정하고 있습니다. 데이터가 유효하지 않을 수 있음을 전제했기 때문에 `NUll`을 받거나 반환할 수 있음을 명시하고 있으며, 어떤 기능을 수행하는 함수는 데이터가 유효하지 않아 실행이 실패할 수 있음을 `불리언 실행결과`를 반환하는 것으로 명시하고 있습니다.  
+
+블루프린트의 `Teleport` 함수로 예를 들자면, 액터를 이동시키려는 위치의 `월드 상황은 완전히 미지의 영역`입니다. 런타임 도중 시시각각 변하는 월드의 상황은 컴파일 단계에서는 미리 예단할 수 없는 `외부 영역`입니다. 같은 위치에 이동을 시도하더라도 어느 시점에는 성공하지만 어느 시점에서는 다른 오브젝트에 가로막혀 이동에 실패하는 상황이 발생할 수도 있습니다. 때문에 `Teleport` 함수는 통제된 `내부 영역`으로부터 검증된 `Target`, `Dest Location`, `Dest Rotation` 매개변수를 받지만 그 `실행은 결과를 보장할 수 없는 외부영역`에서 이뤄져야하기 때문에, 외부 월드의 상황이 유효하지 않을 경우 이동에 실패했음을 불리언 변수로 반환합니다. 
+
+이처럼 경계 지점에서는 데이터가 유효하지 않을 수 있음을 가정하고 적절한 유효성 검증과 예외 처리를 수행해야 합니다. 경계 지점에서 유효성을 검증하고 예외 상황을 처리해, 내부로는 유효한 데이터만을 전달해야 합니다.
+
+*경계 지점에서의 유효성 검증과 예외 처리 예:*
+* `플레이어로부터 제한된 길이의 입력`을 받아야하는데 `입력 길이가 초과`했을 경우, 올바른 길이를 입력할 때까지 `다시 입력을 요청하거나 허용 길이만큼 문자열을 자른 뒤 내부로 전달`할 수 있습니다.
+
+* `파일을 읽어와 로직을 처리`해야하는데 `파일이 삭제 또는 변형`되었을 경우 `관련 로직을 건너뛰거나 적당히 진행될 수 있게끔 유사 데이터를 생성해 내부로 전달`할 수 있습니다.
+
+
 #### 3.4.3 유효성 검증을 통과한 프로그램 내부의 로직
 
-이 원칙에 따라, 프로그래머는 경계지점을 통과한 데이터는 모두 유효한 데이터라는 전제 하에 프로그램을 작성할 수 있게 됩니다. 때문에 경계지점을 지난 내부 영역에서는 더 이상 유효성 검증을 하지 않습니다. 유효한 데이터만 다룬다면 예외 상황도 없다고 전제할 수 있으므로, 내부 영역에서는 예외 처리를 위한 로직도 작성하지 않습니다.
+이 원칙에 따라, 프로그래머는 경계지점을 통과한 데이터는 모두 유효한 데이터라는 전제 하에 프로그램을 작성할 수 있게 됩니다. 때문에 경계 지점을 지난 내부 영역에서는 더 이상 유효성 검증을 하지 않습니다. 유효한 데이터만 다룬다면 예외 상황도 없다고 전제할 수 있으므로, 내부 영역에서는 예외 처리를 위한 로직도 작성하지 않습니다.
+
+<br>
+
+### 3.5 기타
+
+#### 3.5.1 블루프린트 노드는 대부분의 경우 왼쪽에서 오른쪽으로 진행돼야 합니다.
+
+블루프린트 노드는 스파게티처럼 꼬이기 쉽습니다. 노드가 꼬이지 않도록 항상 실행 순서를 왼쪽에서 오른쪽으로 일관되게 유지해주세요. `동일한 로직의 반복처리`나 `Sequence 노드` 사용 등에서는 `위에서 아래로 진행되어도 괜찮습니다.`
+
+#### 3.5.2 역순으로 돌아가는 실행흐름을 만들지 말아야 합니다.
+
+`goto문`을 역방향으로 사용하지 않는 이유와 같습니다. 역방향으로 되돌아가는 실행흐름은 블루프린트를 스파게티처럼 꼬아놓으므로, 그런 실행흐름을 만들어서는 안됩니다. 특정 조건에 따른 반복처리가 필요한 것이라면, 실행흐름을 역방향으로 돌리는 대신 `while`과 같은 반복문을 사용해야 합니다. 
+
+#### 3.5.3 노드의 정렬의 기준은 실행흐름 와이어(흰색 실선) 입니다.
+
+*나쁜 예:*
+
+*좋은 예:*
+
+**[⬆ Back to Top](#목차)**
+
+<br>
+<br>
+
+## 4. 소스 컨트롤 (버전관리)
+
+
 
 
 **[⬆ Back to Top](#목차)**
@@ -1422,146 +1468,62 @@ C++ 수준의 이해도를 가진 작업자가 아니라면 `환경설정 변수
 <br>
 <br>
 
-## 4. Static Meshes
+## 5. 모델링
 
-This section will focus on Static Mesh assets and their internals.
+레퍼런스가 끊겼을 때 올바른 머티리얼과 텍스처를 찾는 일을 매우 어렵게 만듭니다.
 
 
-### 4.1 Static Mesh UVs
 
-If Linter is reporting bad UVs and you can't seem to track it down, open the resulting `.log` file in your project's `Saved/Logs` folder for exact details as to why it's failing. I am hoping to include these messages in the Lint report in the future.
+**[⬆ Back to Top](#목차)**
 
+<br>
+<br>
 
-#### 4.1.1 All Meshes Must Have UVs
 
-Pretty simple. All meshes, regardless how they are to be used, should not be missing UVs.
+## 6. 텍스처
 
 
-#### 4.1.2 All Meshes Must Not Have Overlapping UVs for Lightmaps
 
-Pretty simple. All meshes, regardless how they are to be used, should have valid non-overlapping UVs.
+**[⬆ Back to Top](#목차)**
 
+<br>
+<br>
 
+## 7. 머티리얼
 
-### 4.3 Modular Socketless Assets Should Snap To The Grid Cleanly
 
-This is a subjective check on a per-asset basis, however any modular socketless assets should snap together cleanly based on the project's grid settings.
+## 8. 캐릭터 (리깅)
 
-It is up to the project whether to snap based on a power of 2 grid or on a base 10 grid. However if you are authoring modular socketless assets for the marketplace, Epic's requirement is that they snap cleanly when the grid is set to 10 units or bigger.
 
 
-### 4.4 All Meshes Must Have Collision
+**[⬆ Back to Top](#목차)**
 
-Regardless of whether an asset is going to be used for collision in a level, all meshes should have proper collision defined. This helps the engine with things such as bounds calculations, occlusion, and lighting. Collision should also be well-formed to the asset.
+<br>
+<br>
 
+## 9. 레벨
 
-### 4.5 All Meshes Should Be Scaled Correctly
 
-This is a subjective check on a per-project basis, however all assets should be scaled correctly to their project. Level designers or blueprint authors should not have to tweak the scale of meshes to get them to confirm in the editor. Scaling meshes in the engine should be treated as a scale override, not a scale correction.
 
-**[⬆ Back to Top](#table-of-contents)**
+**[⬆ Back to Top](#목차)**
 
+<br>
+<br>
 
+## 10. 나이아가라
 
-## 5. Niagara
 
-This section will focus on Niagara assets and their internals.
-GPU,바운드,CPU
+**[⬆ Back to Top](#목차)**
 
+<br>
+<br>
 
-### 5.1 No Spaces, Ever
 
-As mentioned in [00.1 Forbidden Identifiers](#00), spaces and all white space characters are forbidden in identifiers. This is especially true for Niagara systems as it makes working with things significantly harder if not impossible when working with HLSL or other means of scripting within Niagara and trying to reference an identifier.
 
-(Original Contribution by [@dunenkoff](https://github.com/Allar/ue5-style-guide/issues/58))
 
 
-**[⬆ Back to Top](#table-of-contents)**
-
-
-
-## 6. Levels / Maps
-
-월드파티션에 대한 내부 테스트가 끝난 뒤 업데이트될 예정입니다.
-
-
-### 6.1 No Errors Or Warnings
-
-All levels should load with zero errors or warnings. If a level loads with any errors or warnings, they should be fixed immediately to prevent cascading issues.
-
-You can run a map check on an open level in the editor by using the console command "map check".
-
-Please note: Linter is even more strict on this than the editor is currently, and will catch load errors that the editor will resolve on its own.
-
-
-### 6.2 Lighting Should Be Built
-
-It is normal during development for levels to occasionally not have lighting built. When doing a test/internal/shipping build or any build that is to be distributed however, lighting should always be built.
-
-
-### 6.3 No Player Visible Z Fighting
-
-Levels should not have any [z-fighting](https://en.wikipedia.org/wiki/Z-fighting) in all areas visible to the player.
-
-
-### 6.4 Marketplace Specific Rules
-
-If a project is to be sold on the UE4 Marketplace, it must follow these rules.
-
-
-#### 6.4.1 Overview Level
-
-If your project contains assets that should be visualized or demoed, you must have a map within your project that contains the name "Overview".
-
-This overview map, if it is visualizing assets, should be set up according to [Epic's guidelines](http://help.epicgames.com/customer/en/portal/articles/2592186-marketplace-submission-guidelines-preparing-your-assets#Required%20Levels%20and%20Maps).
-
-For example, `InteractionComponent_Overview`.
-
-
-#### 6.4.2 Demo Level
-
-If your project contains assets that should be demoed or come with some sort of tutorial, you must have a map within your project that contains the name "Demo". This level should also contain documentation within it in some form that illustrates how to use your project. See Epic's Content Examples project for good examples on how to do this.
-
-If your project is a gameplay mechanic or other form of system as opposed to an art pack, this can be the same as your "Overview" map.
-
-For example, `InteractionComponent_Overview_Demo`, `ExplosionKit_Demo`.
-
-**[⬆ Back to Top](#table-of-contents)**
-
-
-
-## 7. Textures
-
-This section will focus on Texture assets and their internals.
-
-
-### 7.1 Dimensions Are Powers of 2
-
-All textures, except for UI textures, must have its dimensions in multiples of powers of 2. Textures do not have to be square.
-
-For example, `128x512`, `1024x1024`, `2048x1024`, `1024x2048`, `1x512`.
-
-
-### 7.2 Texture Density Should Be Uniform
-
-All textures should be of a size appropriate for their standard use case. Appropriate texture density varies from project to project, but all textures within that project should have a consistent density.
-
-For example, if a project's texture density is 8 pixel per 1 unit, a texture that is meant to be applied to a 100x100 unit cube should be 1024x1024, as that is the closest power of 2 that matches the project's texture density.
-
-
-### 7.3 Textures Should Be No Bigger than 8192
-
-No texture should have a dimension that exceeds 8192 in size, unless you have a very explicit reason to do so. Often, using a texture this big is simply just a waste of resources.
-
-
-### 7.4 Textures Should Be Grouped Correctly
-
-Every texture has a Texture Group property used for LODing, and this should be set correctly based on its use. For example, all UI textures should belong in the UI texture group.
-
-**[⬆ Back to Top](#table-of-contents)**
 
 
 ## 스타일 변경 이력
 
-
-**[⬆ Back to Top](#table-of-contents)**
+**[⬆ Back to Top](#목차)**

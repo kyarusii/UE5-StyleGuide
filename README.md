@@ -1578,62 +1578,78 @@ GPU와 게임엔진은 2의 거듭제곱 크기를 가진 텍스처 처리에 �
 |-- root
   |-- pelvis
     |-- spine_01
-      |-- spine_02
-        |-- spine_03
-          |-- spine_04
-            |-- spine_05 spine 본이 5개 미만이더라도, chest 위치의 spine 본 이름은 spine_05 가 되어야 합니다.>
-              |-- clavicle_l
-              : |-- upperarm_l <a href="#dafa">3D_Assets</a>
-              : : |-- upperarm_twist_01_l
-              : : |-- upperarm_twist_02_l
-              : : |-- upperarm_twist_03_l
-              : : |-- lowerarm_l
-              : :   |-- lowerarm_twist_01_l
-              : :   |-- lowerarm_twist_02_l
-              : :   |-- lowerarm_twist_03_l
-              : :   |-- hand_l
-              : :     |-- index_01_l
-              : :       |-- index_02_l
-              : :         |-- index_03_l
-              : :     |-- middle_01_l
-              : :       |-- middle_02_l
-              : :         |-- middle_03_l
-              : :     |-- pinky_01_l
-              : :       |-- pinky_02_l
-              : :         |-- pinky_03_l
-              : :     |-- ring_01_l
-              : :       |-- ring_02_l
-              : :         |-- ring_03_l
-              : :     |-- thumb_01_l
-              : :       |-- thumb_02_l
-              : :         |-- thumb_03_l
-              : |-- upperarm_r
-              :   |-- upperarm_twist_01_r
-              :   |-- upperarm_twist_02_r
-              :   |-- upperarm_twist_03_r
-              :   |-- lowerarm_r
-              :     |-- lowerarm_twist_01_r
-              :     |-- lowerarm_twist_02_r
-              :     |-- lowerarm_twist_03_r
-              :     |-- hand_r
-              :       |-- index_01_r
-              :         |-- index_02_r
-              :           |-- index_03_r
-              :       |-- middle_01_r
-              :         |-- middle_02_r
-              :           |-- middle_03_r
-              :       |-- pinky_01_r
-              :         |-- pinky_02_r
-              :           |-- pinky_03_r
-              :       |-- ring_01_r
-              :         |-- ring_02_r
-              :           |-- ring_03_r
-              :       |-- thumb_01_r
-              :         |-- thumb_02_r
-              :           |-- thumb_03_r                          
-              |-- neck_01
-                |-- neck_02
-                  |-- head
+    : |-- spine_02
+    :   |-- spine_03 <a href="#asdf">선택적 본, 캐릭터에 따라 없을 수 있음</a>
+    :     |-- spine_04 <a href="#asdf">선택적 본, 캐릭터에 따라 없을 수 있음</a>
+    :       |-- spine_05 <a href="#asdf">spine 본이 5개 미만이더라도, chest 위치의 spine 본 이름은 "spine_05" 가 되어야 합니다.</a>
+    :         |-- clavicle_l
+    :         : |-- upperarm_l 
+    :         : : |-- upperarm_twist_01_l
+    :         : : |-- upperarm_twist_02_l
+    :         : : |-- upperarm_twist_03_l <a href="#asdf">01부터 존재하는 twist 본 갯수만큼 넘버링</a>
+    :         : : |-- lowerarm_l
+    :         : :   |-- lowerarm_twist_01_l
+    :         : :   |-- lowerarm_twist_02_l
+    :         : :   |-- lowerarm_twist_03_l <a href="#asdf">01부터 존재하는 twist 본 갯수만큼 넘버링</a>
+    :         : :   |-- hand_l
+    :         : :     |-- index_01_l
+    :         : :       |-- index_02_l
+    :         : :         |-- index_03_l
+    :         : :     |-- middle_01_l
+    :         : :       |-- middle_02_l
+    :         : :         |-- middle_03_l
+    :         : :     |-- pinky_01_l
+    :         : :       |-- pinky_02_l
+    :         : :         |-- pinky_03_l
+    :         : :     |-- ring_01_l
+    :         : :       |-- ring_02_l
+    :         : :         |-- ring_03_l
+    :         : :     |-- thumb_01_l
+    :         : :       |-- thumb_02_l
+    :         : :         |-- thumb_03_l
+    :         : |-- upperarm_r
+    :         :   |-- upperarm_twist_01_r
+    :         :   |-- upperarm_twist_02_r
+    :         :   |-- upperarm_twist_03_r <a href="#asdf">01부터 존재하는 twist 본 갯수만큼 넘버링</a>
+    :         :   |-- lowerarm_r
+    :         :     |-- lowerarm_twist_01_r
+    :         :     |-- lowerarm_twist_02_r
+    :         :     |-- lowerarm_twist_03_r <a href="#asdf">01부터 존재하는 twist 본 갯수만큼 넘버링</a>
+    :         :     |-- hand_r
+    :         :       |-- index_01_r
+    :         :         |-- index_02_r
+    :         :           |-- index_03_r
+    :         :       |-- middle_01_r
+    :         :         |-- middle_02_r
+    :         :           |-- middle_03_r
+    :         :       |-- pinky_01_r
+    :         :         |-- pinky_02_r
+    :         :           |-- pinky_03_r
+    :         :       |-- ring_01_r
+    :         :         |-- ring_02_r
+    :         :           |-- ring_03_r
+    :         :       |-- thumb_01_r
+    :         :         |-- thumb_02_r
+    :         :           |-- thumb_03_r                          
+    :         |-- neck_01
+    :           |-- neck_02 <a href="#asdf">선택적 본, 캐릭터에 따라 없을 수 있음</a>
+    :             |-- head
+    |-- thigh_l
+    : |-- thigh_twist_01_l
+    : |-- thigh_twist_02_l <a href="#asdf">01부터 존재하는 twist 본 갯수만큼 넘버링</a>
+    : |-- calf_l
+    :   |-- calf_twist_01_l
+    :   |-- calf_twist_02_l <a href="#asdf">01부터 존재하는 twist 본 갯수만큼 넘버링</a>
+    :   |-- foot_l
+    :     |-- ball_l
+    |-- thigh_r
+      |-- thigh_twist_01_r
+      |-- thigh_twist_02_r <a href="#asdf">01부터 존재하는 twist 본 갯수만큼 넘버링</a>
+      |-- calf_r
+        |-- calf_twist_01_r
+        |-- calf_twist_02_r <a href="#asdf">01부터 존재하는 twist 본 갯수만큼 넘버링</a>
+        |-- foot_r
+          |-- ball_r          
 </pre>
 
 

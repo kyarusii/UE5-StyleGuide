@@ -1575,69 +1575,65 @@ GPU와 게임엔진은 2의 거듭제곱 크기를 가진 텍스처 처리에 �
 
 *에픽 표준 본 구조 예시:*
 <pre>
-|-- Root
-    |-- <a href="#22-최상위-폴더-규칙">MySampleProject</a>
-        |-- <a href="#27-이름이-meshes-textures-materials인-에셋유형-폴더를-만들지-마십시오">3D_Assets</a>
-            |-- Building
-                |-- Balcony
-                |-- Wall
-            |-- Nature
-                |-- Rock
-                |-- Tree
-            |-- Props
-                |-- OldWoodenBench
-            |-- OldSchool
-        |-- <a href="#27-이름이-meshes-textures-materials인-에셋유형-폴더를-만들지-마십시오">3D_Plants</a>
-            |-- Desert
-                |-- Cactus
-                |-- DesertYellowHead
-            |-- Arctic
-                |-- Moss
-        |-- <a href="#27-이름이-meshes-textures-materials인-에셋유형-폴더를-만들지-마십시오">Decals</a>
-            |-- Concrete
-            |-- Metal
-        |-- <a href="#27-이름이-meshes-textures-materials인-에셋유형-폴더를-만들지-마십시오">Surfaces</a>
-            |-- Asphalt
-            |-- Fabric
-        |-- <a href="#271-characters-이하-폴더에는-적용하지-않음">Characters</a>
-            |-- <a href="#28-여러-에셋과-공유되는-에셋들은-common-폴더-내에-위치합니다">Common</a>
-                |-- Animations
-                |-- Audio
-            |-- Nina
-                |-- Animations
-                |-- Blueprints
-                |-- Meshes
-                |-- Materials
-                |-- Textures
-            |-- Abo
-                |-- Animations
-                |-- Blueprints
-                |-- Meshes
-                |-- Materials
-                |-- Textures
-        |-- <a href="#25-프로젝트에-핵심적인-블루프린트-및-기타-에셋은-core-폴더-내에-위치합니다">Core</a>
-            |-- Characters
-            |-- Engine
-            |-- GameModes
-            |-- Interactables
-            |-- Weapons
-        |-- Effects
-            |-- Electrical
-            |-- Fire
-            |-- Weather
-        |-- Blueprints
-        |-- <a href="#24-모든-레벨-에셋은-maps-폴더-내에-위치해야-합니다">Maps</a>
-            |-- Campaign1
-            |-- Campaign2
-        |-- <a href="#29-materiallibrary">MaterialLibrary</a>
-            |-- Debug
-            |-- Functions
-            |-- Textures
-            |-- Utility
-        |-- GUI
-    |-- <a href="#223-최상위-폴더-규칙을-준수하는-샘플-템플릿-마켓플레이스-콘텐츠는-폴더-구조를-수정하지-않습니다">Megascans</a>
-    |-- <a href="#223-최상위-폴더-규칙을-준수하는-샘플-템플릿-마켓플레이스-콘텐츠는-폴더-구조를-수정하지-않습니다">StarterContent</a>
-    |-- <a href="#223-최상위-폴더-규칙을-준수하는-샘플-템플릿-마켓플레이스-콘텐츠는-폴더-구조를-수정하지-않습니다">ThirdPerson</a>
+|-- root
+  |-- pelvis
+    |-- spine_01
+      |-- spine_02
+        |-- spine_03
+          |-- spine_04
+            |-- spine_05
+              |-- clavicle_l
+              : |-- upperarm_l
+              : : |-- upperarm_twist_01_l
+              : : |-- upperarm_twist_02_l
+              : : |-- upperarm_twist_03_l
+              : : |-- lowerarm_l
+              : :   |-- lowerarm_twist_01_l
+              : :   |-- lowerarm_twist_02_l
+              : :   |-- lowerarm_twist_03_l
+              : :   |-- hand_l
+              : :     |-- index_01_l
+              : :       |-- index_02_l
+              : :         |-- index_03_l
+              : :     |-- middle_01_l
+              : :       |-- middle_02_l
+              : :         |-- middle_03_l
+              : :     |-- pinky_01_l
+              : :       |-- pinky_02_l
+              : :         |-- pinky_03_l
+              : :     |-- ring_01_l
+              : :       |-- ring_02_l
+              : :         |-- ring_03_l
+              : :     |-- thumb_01_l
+              : :       |-- thumb_02_l
+              : :         |-- thumb_03_l
+              : |-- upperarm_r
+              :   |-- upperarm_twist_01_r
+              :   |-- upperarm_twist_02_r
+              :   |-- upperarm_twist_03_r
+              :   |-- lowerarm_r
+              :     |-- lowerarm_twist_01_r
+              :     |-- lowerarm_twist_02_r
+              :     |-- lowerarm_twist_03_r
+              :     |-- hand_r
+              :       |-- index_01_r
+              :         |-- index_02_r
+              :           |-- index_03_r
+              :       |-- middle_01_r
+              :         |-- middle_02_r
+              :           |-- middle_03_r
+              :       |-- pinky_01_r
+              :         |-- pinky_02_r
+              :           |-- pinky_03_r
+              :       |-- ring_01_r
+              :         |-- ring_02_r
+              :           |-- ring_03_r
+              :       |-- thumb_01_r
+              :         |-- thumb_02_r
+              :           |-- thumb_03_r                          
+              |-- neck_01
+                |-- neck_02
+                  |-- head
 </pre>
 
 

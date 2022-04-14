@@ -137,35 +137,35 @@
     - [3.4.1 프로그램의 외부와 내부](#341-프로그램의-외부와-내부)
     - [3.4.2 경계 지점에서의 데이터 유효성 검증과 예외처리](#342-경계-지점에서의-데이터-유효성-검증과-예외처리)
     - [3.4.3 유효성 검증을 통과한 프로그램 내부의 로직](#343-유효성-검증을-통과한-프로그램-내부의-로직)
-  - [**3.5 블루프린트 그래프**](#bp-graphs)
-    - [3.4.1 No Spaghetti](#bp-graphs-spaghetti)
-    - [3.4.2 Align Wires Not Nodes](#bp-graphs-align-wires)
-    - [3.4.3 White Exec Lines Are Top Priority](#bp-graphs-exec-first-class)
-    - [3.4.4 Graphs Should Be Reasonably Commented](#bp-graphs-block-comments)
-    - [3.4.5 Graphs Should Handle Casting Errors Where Appropriate](#bp-graphs-cast-error-handling)
-    - [3.4.6 Graphs Should Not Have Any Dangling / Loose / Dead Nodes](#bp-graphs-dangling-nodes)
-- [4. Static Meshes](#4)
-  - [4.1 Static Mesh UVs](#s-uvs)
-    - [4.1.1 All Meshes Must Have UVs](#s-uvs-no-missing)
-    - [4.1.2 All Meshes Must Not Have Overlapping UVs for Lightmaps](#s-uvs-no-overlapping)
-  - [4.2 LODs Should Be Set Up Correctly](#s-lods)
-  - [4.3 Modular Socketless Assets Should Snap To The Grid Cleanly](#s-modular-snapping)
-  - [4.4 All Meshes Must Have Collision](#s-collision)
-  - [4.5 All Meshes Should Be Scaled Correctly](#s-scaled)
-- [5. Niagara](#Niagara)
-  - [5.1 No Spaces, Ever](#ng-rules)
-- [6. Levels / Maps](#levels)
-  - [6.1 No Errors Or Warnings](#levels-no-errors-or-warnings)
-  - [6.2 Lighting Should Be Built](#levels-lighting-should-be-built)
-  - [6.3 No Player Visible Z Fighting](#levels-no-visible-z-fighting)
-  - [6.4 Marketplace Specific Rules](#levels-mp-rules)
-    - [6.4.1 Overview Level](#levels-mp-rules-overview)
-    - [6.4.2 Demo Level](#levels-mp-rules-demo)
-- [7. Textures](#textures)
-  - [7.1 Dimensions Are Powers of 2](#textures-dimensions)
-  - [7.2 Texture Density Should Be Uniform](#textures-density)
-  - [7.3 Textures Should Be No Bigger than 8192](#textures-max-size)
-  - [7.4 Textures Should Be Grouped Correctly](#textures-group)
+  - [**3.5 기타**](#35-기타)
+    - [3.5.1 블루프린트 노드는 대부분의 경우 왼쪽에서 오른쪽으로 진행돼야 합니다.](#351-블루프린트-노드는-대부분의-경우-왼쪽에서-오른쪽으로-진행돼야-합니다)
+    - [3.5.2 역순으로 돌아가는 실행흐름을 만들지 말아야 합니다.](#352-역순으로-돌아가는-실행흐름을-만들지-말아야-합니다)
+    - [3.5.3 노드 정렬의 기준은 실행흐름 와이어(흰색 실선) 입니다.](#353-노드-정렬의-기준은-실행흐름-와이어흰색-실선-입니다)
+- [4. 소스컨트롤 (버전관리)](#4-소스컨트롤-버전관리)
+  - [4.1 소스 컨트롤은 반드시 켜져있어야 합니다.](#41-소스-컨트롤은-반드시-켜져있어야-합니다)
+  - [4.2 플러그인, 프로젝트 세팅을 변경한 뒤 체크인하지 마십시오.](#42-플러그인-프로젝트-세팅을-변경한-뒤-체크인하지-마십시오)
+- [5. 모델링](#5-모델링)
+  - [5.1 한 스태틱 메시와 연관된 머티리얼과 텍스처들은 반드시 올바른 에셋 명명 규칙을 지켜야 합니다.](#51-한-스태틱-메시와-연관된-머티리얼과-텍스처들은-반드시-올바른-에셋-명명-규칙을-지켜야-합니다)
+  - [5.2 모든 메시는 UV가 있어야 합니다.](#52-모든-메시는-uv가-있어야-합니다)
+  - [5.3 메시의 피벗이 메시와 떨어져있어선 안됩니다.](#53-메시의-피벗이-메시와-떨어져있어선-안됩니다)
+  - [5.4 모든 메시는 콜리전이 있어야 합니다.](#54-모든-메시는-콜리전이-있어야-합니다)
+  - [5.5 모든 메시는 DCC 툴에서부터 올바른 실측 크기로 작업되어야 합니다.](#55-모든-메시는-dcc-툴에서부터-올바른-실측-크기로-작업되어야-합니다)
+- [6. 텍스처](#6-텍스처)
+  - [6.1 모든 텍스처는 2의 거듭제곱 크기여야 합니다.](#61-모든-텍스처는-2의-거듭제곱-크기여야-합니다)
+  - [6.2 텍스처의 최대 크기는 8K (8192px) 입니다.](#62-텍스처의-최대-크기는-8k-8192px-입니다)
+  - [6.3 텍스처에는 올바른 그룹이 할당되어야 합니다.](#63-텍스처에는-올바른-그룹이-할당되어야-합니다)
+- [7. 머티리얼](#7-머티리얼)
+  - [7.1 변수 이름은 파스칼 케이스로 지어야 합니다.](#71-변수-이름은-파스칼-케이스로-지어야-합니다)
+  - [7.2 4.27버전부터 도입된 Named Reroutes 기능을 활용해주세요.](#72-427버전부터-도입된-named-reroutes-기능을-활용해주세요)
+- [8. 캐릭터 (리깅)](#8-캐릭터-리깅)
+  - [8.1 모든 캐릭터는 에픽 표준 본 구조를 따라 리깅되어야 합니다.](#81-모든-캐릭터는-에픽-표준-본-구조를-따라-리깅되어야-합니다)
+  - [8.2 모듈식 캐릭터 본 구조](#82-모듈식-캐릭터-본-구조)
+    - [8.2.1 Body, Top, Bottom, Feet 모듈](#821-body-top-bottom-feet-모듈)
+    - [8.2.2 Face 모듈](#822-face-모듈)
+    - [8.2.3 Hair 모듈](#823-hair-모듈)
+- [9. 레벨](#9-레벨)
+- [10. 나이아가라](#10-나이아가라)
+- [스타일 변경 이력](#스타일-변경-이력)
 
 
 
@@ -1312,7 +1312,7 @@ C++ 수준의 이해도를 가진 작업자가 아니라면 `환경설정 변수
 
 #### 3.3.8.1 외부 접근자는 언제나 함수를 통해 접근
 
-3.3.8의 원칙에 따라, 클래스의 외부 접근자는 언제나 함수를 통해 접근하도록 만드십시오. 외부에서의 변수 접근을 완전히 막을 수는 없지만, 최소한 외부 접근이 빈번한 변수들에는 이러한 `Getter`, `Setter` 메서드를 제공한다면 Public 변수의 수를 크게 줄일 수 있습니다. 그 결과 블루프린트에 능하지 않은 아티스트, 게임 디자이너 등은 언제나 제공되는 함수를 호출한다는 가정 하에 클래스를 사용할 수 있게 됩니다.
+[3.3.8](#338-외부-접근이-빈번한-변수에는-get-set-함수를-만드십시오)의 원칙에 따라, 클래스의 외부 접근자는 언제나 함수를 통해 접근하도록 만드십시오. 외부에서의 변수 접근을 완전히 막을 수는 없지만, 최소한 외부 접근이 빈번한 변수들에는 이러한 `Getter`, `Setter` 메서드를 제공한다면 Public 변수의 수를 크게 줄일 수 있습니다. 그 결과 블루프린트에 능하지 않은 아티스트, 게임 디자이너 등은 언제나 제공되는 함수를 호출한다는 가정 하에 클래스를 사용할 수 있게 됩니다.
 
 
 #### 3.3.9 노드는 특정 기능 단위로 코멘트 블록으로 묶어 무엇을 위한 노드 그룹인지 설명합니다.
@@ -1329,7 +1329,7 @@ C++ 수준의 이해도를 가진 작업자가 아니라면 `환경설정 변수
 
 #### 3.3.11 Switch 문의 Default 케이스는 항상 추가해야 합니다.
 
-정상적인 실행에서는 `Default 케이스`가 실행될 일이 없다 하더라도, Default 케이스는 항상 추가해줘야 합니다. 만약 논리적으로 Default 케이스가 실행되는 일이 절대 없어야 한다면 Default 케이스에는 [오류 보고](#3312-프로젝트-전용-블루프린트-오류보고-함수) 노드를 넣어줍니다.
+정상적인 실행에서는 `Default 케이스`가 실행될 일이 없다 하더라도, Default 케이스는 항상 추가해줘야 합니다. 만약 논리적으로 Default 케이스가 실행되는 일이 절대 없어야 한다면 Default 케이스에는 오류 보고 노드를 넣어줍니다.
 
 
 #### 3.3.12 두 번 이상 중복되는 노드 그룹은 함수화를 고려해야 합니다.

@@ -1315,7 +1315,7 @@ C++ 수준의 이해도를 가진 작업자가 아니라면 `환경설정 변수
 이런 상황을 방지하기 위해 `private 변수` `mVelocity`, `mDirection`, `mSpeed`를 선언하고 외부에는 `Public 함수` `GetVelocity`를 제공하십시오. `GetVelocity` 함수는 `mVelocity`, `mDirection`, `mSpeed`의 `사본을 반환`할 뿐이며, Set 함수를 제공하지 않는 한 `더 이상 외부에서는 이 변수들을 변경할 수 없게 됩니다.`
 
 *좋은 예: Public Getter 호출을 통한 접근*  
-![eg.good](https://github.com/VLAST-GIT/UE5-StyleGuide/blob/main/images/338Good.png?raw=true "Good")
+![eg.good](https://github.com/VLAST-GIT/UE5-StyleGuide/blob/main/images/338Good_2.png?raw=true "Good")
 
 이런 패턴은 변수를 외부에서 수정할 수는 있지만 값 범위에 제한이 있어야하는 등의 `Set의 선조건`이 필요한 경우에도 유용합니다. 제한 없이 Public 변수로 열어둔다면 외부 접근자는 변수에 직접 어떤 값이든 대입할 수 있게 됩니다. 그보다는 변수는 `private`로 가려둔 뒤 `Set 함수`를 제공하십시오. `Set 함수` 내부에서 매개변수를 유효한 값으로 처리해준 뒤 `private 변수`에 대입해줘 외부 접근이 더 안전해집니다.
 
@@ -1460,9 +1460,11 @@ C++ 수준의 이해도를 가진 작업자가 아니라면 `환경설정 변수
 
 #### 3.5.3 노드 정렬의 기준은 실행흐름 와이어(흰색 실선) 입니다.
 
-*나쁜 예:*
+*나쁜 예:*  
+![eg.Bad](https://github.com/VLAST-GIT/UE5-StyleGuide/blob/main/images/353Bad.png?raw=true "Bad")
 
-*좋은 예:*
+*좋은 예:*  
+![eg.Good](https://github.com/VLAST-GIT/UE5-StyleGuide/blob/main/images/353Good.png?raw=true "Good")
 
 **[⬆ Back to Top](#목차)**
 
@@ -1501,10 +1503,20 @@ C++ 수준의 이해도를 가진 작업자가 아니라면 `환경설정 변수
 
 ### 5.3 메시의 피벗이 메시와 떨어져있어선 안됩니다.
 
-이 문제는 수많은 에셋들이 모여 하나의 씬을 구성하는 FBX를 임포트할 때 흔히 일어납니다. 이런 FBX를 일반적인 방식으로 임포트하면 모든 스태틱 메시 에셋이 자신이 씬에서 배치되어있던 오프셋만큼 떨어진 위치에 피벗을 만들게 됩니다. 
+이 문제는 수많은 에셋들이 모여 하나의 씬을 구성하는 FBX를 임포트할 때 흔히 일어납니다. 이런 FBX를 일반적인 방식으로 임포트하면 모든 스태틱 메시 에셋이 자신이 씬에서 배치되어있던 오프셋만큼 떨어진 위치에 피벗을 만들게 됩니다.  
+
+*나쁜 예: 스태틱 메시의 피벗이 떨어져있음*  
+![eg.Bad](https://github.com/VLAST-GIT/UE5-StyleGuide/blob/main/images/53Bad.png?raw=true "Bad")
 
 이런 `씬 FBX`는 아무 것도 없는 `빈 레벨(Empty Level)`을 만들어 연 뒤 상단의 `파일(File) - 레벨로 임포트(Import Into Level)`를 선택해 가져오십시오.  
-`버텍스에서 피벗 굽기(Bake Pivot in Vertex)` 옵션을 체크하면 피벗이 각 스태틱 메시의 중심으로 임포트되며, `계층 타입`은 `Create Level Actors`로 선택하면 빈 레벨에는 FBX 씬 구성대로 스태틱 메시들이 배치됩니다. 이 레벨은 액터 배치 상태를 저장하기 위해 그대로 `Overview` 이름으로 임포트한 경로에 저장해줍니다.
+`버텍스에서 피벗 굽기(Bake Pivot in Vertex)` 옵션을 체크하면 피벗이 각 스태틱 메시의 중심으로 임포트되며, `계층 타입`은 `Create Level Actors`로 선택하면 빈 레벨에는 FBX 씬 구성대로 스태틱 메시들이 배치됩니다.  
+이 레벨은 액터 배치 상태를 저장하기 위해 그대로 `Overview` 이름으로 임포트한 경로에 저장해줍니다.  
+
+*레벨로 임포트(Import Into Level)*  
+![eg.importintolevel](https://github.com/VLAST-GIT/UE5-StyleGuide/blob/main/images/53ImportIntoLevel.png?raw=true "Import Into Level")
+
+*좋은 예: 스태틱 메시의 피벗이 메시에 가까이 있음 (모듈식 메시에 모서리 피벗 권장)*  
+![eg.Good](https://github.com/VLAST-GIT/UE5-StyleGuide/blob/main/images/53Good.png?raw=true "Good")
 
 ### 5.4 모든 메시는 콜리전이 있어야 합니다.
 
@@ -1538,7 +1550,7 @@ GPU와 게임엔진은 2의 거듭제곱 크기를 가진 텍스처 처리에 �
 
 ### 6.2 텍스처의 최대 크기는 8K (8192px) 입니다.
 
-`8192 x 8192` 이상의 크기는 처리할 수 없습니다. 최대 크기가 8K 이기는 하지만, 반드시 필요한 이유가 없다면 이렇게 큰 사이즈의 텍스처는 임포트하지 마십시오. 겉으로 보이는 결과에 큰 차이가 없다면, `텍스처는 작으면 작을수록 좋습니다.`
+`8192 x 8192` 이상의 크기는 처리할 수 없습니다. 최대 크기가 8K 이기는 하지만, 반드시 필요한 이유가 없다면 이렇게 큰 사이즈의 텍스처는 임포트하지 마십시오. `겉으로 보이는 결과에 큰 차이가 없다면, 텍스처는 작으면 작을수록 좋습니다.`
 
 ### 6.3 텍스처에는 올바른 그룹이 할당되어야 합니다.
 
@@ -1765,5 +1777,7 @@ UE5부터 도입된 월드 파티션 기능의 내부테스트 후, 기존 레�
 
 
 ## 스타일 변경 이력
+
+220415 1.0
 
 **[⬆ Back to Top](#목차)**

@@ -1584,29 +1584,30 @@ GPU와 게임엔진은 2의 거듭제곱 크기를 가진 텍스처 처리에 �
     :       |-- spine_05 <a href="#asdf">spine 본이 5개 미만이더라도, chest 위치의 spine 본 이름은 "spine_05" 가 되어야 합니다.</a>
     :         |-- clavicle_l
     :         : |-- upperarm_l 
-    :         : : |-- upperarm_twist_01_l
-    :         : : |-- upperarm_twist_02_l
-    :         : : |-- upperarm_twist_03_l <a href="#asdf">01부터 존재하는 twist 본 갯수만큼 넘버링</a>
-    :         : : |-- lowerarm_l
-    :         : :   |-- lowerarm_twist_01_l
-    :         : :   |-- lowerarm_twist_02_l
-    :         : :   |-- lowerarm_twist_03_l <a href="#asdf">01부터 존재하는 twist 본 갯수만큼 넘버링</a>
-    :         : :   |-- hand_l
-    :         : :     |-- index_01_l
-    :         : :       |-- index_02_l
-    :         : :         |-- index_03_l
-    :         : :     |-- middle_01_l
-    :         : :       |-- middle_02_l
-    :         : :         |-- middle_03_l
-    :         : :     |-- pinky_01_l
-    :         : :       |-- pinky_02_l
-    :         : :         |-- pinky_03_l
-    :         : :     |-- ring_01_l
-    :         : :       |-- ring_02_l
-    :         : :         |-- ring_03_l
-    :         : :     |-- thumb_01_l
-    :         : :       |-- thumb_02_l
-    :         : :         |-- thumb_03_l
+    :         :   |-- upperarm_twist_01_l
+    :         :   |-- upperarm_twist_02_l
+    :         :   |-- upperarm_twist_03_l <a href="#asdf">01부터 존재하는 twist 본 갯수만큼 넘버링</a>
+    :         :   |-- lowerarm_l
+    :         :     |-- lowerarm_twist_01_l
+    :         :     |-- lowerarm_twist_02_l
+    :         :     |-- lowerarm_twist_03_l <a href="#asdf">01부터 존재하는 twist 본 갯수만큼 넘버링</a>
+    :         :     |-- hand_l
+    :         :       |-- index_01_l
+    :         :         |-- index_02_l
+    :         :           |-- index_03_l
+    :         :       |-- middle_01_l
+    :         :         |-- middle_02_l
+    :         :           |-- middle_03_l
+    :         :       |-- pinky_01_l
+    :         :         |-- pinky_02_l
+    :         :           |-- pinky_03_l
+    :         :       |-- ring_01_l
+    :         :         |-- ring_02_l
+    :         :           |-- ring_03_l
+    :         :       |-- thumb_01_l
+    :         :         |-- thumb_02_l
+    :         :           |-- thumb_03_l
+    :         |-- clavicle_r
     :         : |-- upperarm_r
     :         :   |-- upperarm_twist_01_r
     :         :   |-- upperarm_twist_02_r
@@ -1652,6 +1653,76 @@ GPU와 게임엔진은 2의 거듭제곱 크기를 가진 텍스처 처리에 �
           |-- ball_r          
 </pre>
 
+### 8.2 모듈식 캐릭터 본 구조
+
+VLAST는 캐릭터의 헤어, 상의, 하의, 신발 등을 자유롭게 교체할 수 있도록 모듈식 캐릭터 구조를 사용하고 있습니다.  
+캐릭터 모듈은 `Body`, `Hair`, `Face`, `Top`, `Bottom`, `Feet` 6개로 구성되어 있으며, 하위 항목에서 각 모듈별 본 구조 가이드를 다룹니다.
+
+#### 8.2.1 `Body`, `Top`, `Bottom`, `Feet` 모듈
+
+`Body`, `Top`, `Bottom`, `Feet` 모듈들은 `Body`의 스켈레톤을 공유합니다.  
+새로 추가되는 상의, 하의 신발 등의 의상은 모두 베이스가 되는 `Body 본`에 할당되어 임포트됩니다.
+
+`메시`는 다음과 같이 설정되어있어야 합니다.
+* Body : 헐벗거나 속옷만 입은 기본 바디 메시만 있어야 합니다.
+* Top : 상의 메시만 존재해야 합니다.
+* Bottom : 하의 메시만 존재해야 합니다.
+* Feet : 신발 메시만 존재해야 합니다.
+
+`Body 본`에는 `얼굴과 머리카락 본이 있어선 안됩니다.`  
+`Face`와 `Hair`는 별도의 스켈레톤을 사용하기 때문입니다.
+
+#### 8.2.2 `Face` 모듈
+
+`Face` 모듈은 별도의 스켈레톤을 가집니다.   
+모든 얼굴 리깅은 `face_root` 본 아래에 존재해야 합니다.  
+`Face 스켈레톤`은 팔다리 본을 가지지 않고, 척추와 어깨, 얼굴 본만 가집니다.
+
+*Face 모듈의 본 구조 예:*
+<pre>
+|-- root
+  |-- pelvis 
+    |-- spine_01 
+      |-- spine_02 
+        |-- spine_03 
+          |-- spine_04 
+            |-- spine_05  
+              |-- clavicle_l 
+              |-- clavicle_r 
+              |-- neck_01 
+                |-- neck_02 
+                  |-- head 
+                    |-- face_root <a href="#asdf">모든 얼굴 본의 부모</a>
+                      |-- 모든 얼굴 본
+                      |-- ...
+</pre>
+
+#### 8.2.3 `Hair` 모듈
+
+`Hair` 모듈도 별도의 스켈레톤을 가집니다.  
+단, `Hair` 에셋들은 각각의 스켈레탈 메시마다 새로운 스켈레톤을 생성해 임포트합니다.
+
+모든 머리카락 리깅은 `hair_root` 본 아래에 존재해야 합니다.  
+`hair 스켈레톤`은 척추 ~ 머리 본만 가집니다.
+
+*Hair 모듈의 본 구조 예:*
+<pre>
+|-- root
+  |-- pelvis 
+    |-- spine_01 
+      |-- spine_02 
+        |-- spine_03 
+          |-- spine_04 
+            |-- spine_05  
+              |-- clavicle_l 
+              |-- clavicle_r 
+              |-- neck_01 
+                |-- neck_02 
+                  |-- head 
+                    |-- hair_root <a href="#asdf">모든 머리카락 본의 부모</a>
+                      |-- 모든 머리카락 본
+                      |-- ...
+</pre>
 
 **[⬆ Back to Top](#목차)**
 

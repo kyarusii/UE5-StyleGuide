@@ -1393,11 +1393,28 @@ C++ 수준의 이해도를 가진 작업자가 아니라면 `환경설정 변수
 
 ### 3.4 데이터 유효성 검증 원칙
 
+프로젝트에 명확한 데이터 유효성 검증 원칙이 없다면, 블루프린트 작성자는 자신이 직접 초기화한 변수 외에는 모든 데이터가 잠재적으로 유효하지 않을지도 모른다는 걱정을 하게 됩니다. 이런 걱정은 프로젝트 전반에 걸쳐 거의 모든 변수(특히 참조형)에 대해 `IsValid` 체크를 하는 비효율을 낳게 되며, 수시로 나오는 유효성 검증 노드는 블루프린트 가독성도 해치게 됩니다.
+
+이런 상황을 피하기 위하여, 이 항목은 명확한 데이터 유효성 검증 지점을 제시합니다. 
+
 #### 3.4.1 프로그램의 외부와 내부
+
+데이터 유효성 검증을 수행해야하는 지점은 프로그램 외부와 내부의 경계지점입니다. 
+
+프로그램 외부는 자신이 통제할 수 없는 데이터가 오가는 영역입니다. 프로그램 내부는 모든 데이터를 자신이 완벽히 통제할 수 있는 영역입니다.
+
+통제할 수 없는 데이터가 오가는, 프로그램 외부 영역 다음과 같습니다.
+플레이어에게 키보드 입력으로 데이터를 받는 상황
+네트워크 스트림으로 데이터를 읽어오는 상황
+로드한 파일로부터 데이터를 읽어오는 상황
+다수의 개체가 얽힌 복잡한 상호작용 상황에서의 개체 참조
+
 
 #### 3.4.2 경계 지점에서의 데이터 유효성 검증과 예외처리
 
 #### 3.4.3 유효성 검증을 통과한 프로그램 내부의 로직
+
+이 원칙에 따라, 프로그래머는 경계지점을 통과한 데이터는 모두 유효한 데이터라는 전제 하에 프로그램을 작성할 수 있게 됩니다. 때문에 경계지점을 지난 내부 영역에서는 더 이상 유효성 검증을 하지 않습니다. 유효한 데이터만 다룬다면 예외 상황도 없다고 전제할 수 있으므로, 내부 영역에서는 예외 처리를 위한 로직도 작성하지 않습니다.
 
 
 **[⬆ Back to Top](#목차)**
@@ -1425,10 +1442,6 @@ Pretty simple. All meshes, regardless how they are to be used, should not be mis
 Pretty simple. All meshes, regardless how they are to be used, should have valid non-overlapping UVs.
 
 
-### 4.2 LODs Should Be Set Up Correctly
-
-This is a subjective check on a per-project basis, but as a general rule any mesh that can be seen at varying distances should have proper LODs.
-
 
 ### 4.3 Modular Socketless Assets Should Snap To The Grid Cleanly
 
@@ -1453,6 +1466,7 @@ This is a subjective check on a per-project basis, however all assets should be 
 ## 5. Niagara
 
 This section will focus on Niagara assets and their internals.
+GPU,바운드,CPU
 
 
 ### 5.1 No Spaces, Ever
@@ -1468,9 +1482,7 @@ As mentioned in [00.1 Forbidden Identifiers](#00), spaces and all white space ch
 
 ## 6. Levels / Maps
 
-[See Terminology Note](#terms-level-map) regarding "levels" vs "maps".
-
-This section will focus on Level assets and their internals.
+월드파티션에 대한 내부 테스트가 끝난 뒤 업데이트될 예정입니다.
 
 
 ### 6.1 No Errors Or Warnings
@@ -1552,4 +1564,4 @@ Every texture has a Texture Group property used for LODing, and this should be s
 ## 스타일 변경 이력
 
 
-
+**[⬆ Back to Top](#table-of-contents)**

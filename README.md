@@ -1583,7 +1583,7 @@ GPU와 게임엔진은 2의 거듭제곱 크기를 가진 텍스처 처리에 �
           |-- spine_04
             |-- spine_05 spine 본이 5개 미만이더라도, chest 위치의 spine 본 이름은 spine_05 가 되어야 합니다.>
               |-- clavicle_l
-              : |-- upperarm_l <a href="#">3D_Assets</a>
+              : |-- upperarm_l <a href="#dafa">3D_Assets</a>
               : : |-- upperarm_twist_01_l
               : : |-- upperarm_twist_02_l
               : : |-- upperarm_twist_03_l

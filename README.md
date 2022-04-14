@@ -1206,216 +1206,182 @@ C++ 수준의 이해도를 가진 작업자가 아니라면 `환경설정 변수
 
 ### 3.3 함수(Functions), 이벤트(Events)
 
+여기서는 함수와 이벤트에 대한 스타일 가이드를 다룹니다. 함수에 적용되는 모든 사항은 별다른 명시가 없는 한 이벤트에도 동일하게 적용됩니다.
 
+<br>
 
+#### 3.3.1 함수를 만드는 올바른 태도
 
-#### 3.3.1 Function Naming
+`함수의 작성자`는 `누가 이 함수를 호출하게 될지 미리 예측해서는 안됩니다.` 또한, `함수의 호출자`는 `함수 내부를 볼 수가 없다고 가정해야 합니다.` 
 
-The naming of functions, events, and event dispatchers is critically important. Based on the name alone, certain assumptions can be made about functions. For example:
+작성자가 호출자가 누구인지 예측하고 호출자는 필요할 경우 함수 내부를 볼 수 있다고 가정한 채 함수를 작성하면, 스타일이나 로직이 잘못되어도 이 함수를 쓰는 사람은 함수 내부를 알고있으니 괜찮다는 태도로 방치하기 쉬워집니다.
 
-* Is it a pure function?
-* Is it fetching state information?
-* Is it a handler?
-* Is it an RPC?
-* What is its purpose?
+함수의 작성자는 누가 함수를 호출하게 될지 모르므로, `함수명`, `반환형`, `매개변수`만 보고도 누구나 함수의 기능을 명확히 유추할 수 있도록 만들어야 합니다. 이에 따라 잘 만들어진 함수는 내부 구조를 모르더라도 `함수명`과 `매개변수`, `반환형`만으로 어떤 결과가 보장되는지 명확히 드러나기 때문에, 호출자는 함수 내부를 알 필요 자체가 없어집니다.
 
-These questions and more can all be answered when functions are named appropriately.
+<br>
 
+#### 3.3.2 `함수는 항상 동사로 시작`해야 합니다.
 
-#### 3.3.1.1 All Functions Should Be Verbs
+`함수는 행동(action)`입니다. 모든 함수는 특정 계산을 수행하거나, 어떤 값을 찾아오거나, 무언가를 폭발시키는 등의 특정 행동을 수행합니다. 때문에 함수 이름은 무언가를 한다는 것을 명확히 드러내기 위해 항상 `동사로 시작`해야 하며, 특별한 이유가 없다면 항상 현재형으로 표현해야 합니다. 
 
-All functions and events perform some form of action, whether its getting info, calculating data, or causing something to explode. Therefore, all functions should all start with verbs. They should be worded in the present tense whenever possible. They should also have some context as to what they are doing.
-
-`OnRep` functions, event handlers, and event dispatchers are an exception to this rule.
-
-Good examples:
-
-* `Fire` - Good example if in a Character / Weapon class, as it has context. Bad if in a Barrel / Grass / any ambiguous class.
-* `Jump` - Good example if in a Character class, otherwise, needs context.
-* `Explode`
+*좋은 예:*
 * `ReceiveMessage`
-* `SortPlayerArray`
+* `SortPlayerItems`
 * `GetArmOffset`
-* `GetCoordinates`
-* `UpdateTransforms`
+* `UpdateTransform`
 * `EnableBigHeadMode`
-* `IsEnemy` - ["Is" is a verb.](http://writingexplained.org/is-is-a-verb)
+* `IsEnemy`
 
-Bad examples:
+*나쁜 예:*
+* `Dead` - 죽었다는 것인지 죽을 예정이라는 것인지 모호
+* `ProcessData` - 프로그램의 모든 것은 데이터입니다. 이 함수 이름은 아무것도 의미하지 않습니다.
+* `PlayerState` - 명사이고 어떤 상태를 말하는지도 모호합니다.
 
-* `Dead` - Is Dead? Will deaden?
-* `Rock`
-* `ProcessData` - Ambiguous, these words mean nothing.
-* `PlayerState` - Nouns are ambiguous.
-* `Color` - Verb with no context, or ambiguous noun.
+<br>
 
+#### 3.3.3 순수하게 값을 계산하거나 가져오기 위한 함수는 `퓨어(Pure) 함수`로 만들어야 합니다.
 
-#### 3.3.1.2 Property RepNotify Functions Always `OnRep_Variable`
+함수 내부에 주어진 값을 계산만 해 그대로 반환하거나 개체가 가진 값을 그대로 반환하는 등, 개체의 상태나 어떤 변수를 수정하지 않고 순수하게 계산과 반환만 하는 함수는 `퓨어(Pure) 함수`로 만들어야 합니다.
 
-All functions for replicated with notification variables should have the form `OnRep_Variable`. This is forced by the Blueprint editor. If you are writing a C++ `OnRep` function however, it should also follow this convention when exposing it to Blueprints.
+<br>
 
+#### 3.3.4 퓨어함수의 이름은 `Get- 접두사`로 시작해 무엇을 가져오는지 알 수 있게 지어야 합니다.
 
-#### 3.3.1.3 Info Functions Returning Bool Should Ask Questions
+`퓨어함수`는 무언가를 가져오는 데 사용하기 때문에 `Get- 접두사`로 시작하는 것이 일반적입니다. Get 뒤에 무엇을 가져올 수 있는지 명확히 서술하십시오.
 
-When writing a function that does not change the state of or modify any object and is purely for getting information, state, or computing a yes/no value, it should ask a question. This should also follow [the verb rule](#bp-funcs-naming-verbs).
+*좋은 예:*
+* `GetUnitDirection`
+* `GetGameInstance`
+* `GetPlayerStamina`
 
-This is extremely important as if a question is not asked, it may be assumed that the function performs an action and is returning whether that action succeeded.
+<br>
 
-Good examples:
+#### 3.3.5 불리언을 반환하는 함수는 질문을 해야합니다.
 
+순수하게 예/아니오 `불리언만을 반환하는 함수`는 `질문을 하는 형태`여야 합니다. 질문형 동사를 가진 불리언 변수에서 b 접두사만 빠진 형태입니다. 이런 함수도 어떤 상태를 가져오는 것이므로 퓨어함수가 됩니다.
+
+*좋은 예:*
 * `IsDead`
 * `IsOnFire`
 * `IsAlive`
 * `IsSpeaking`
-* `IsHavingAnExistentialCrisis`
 * `IsVisible`
-* `HasWeapon` - ["Has" is a verb.](http://grammar.yourdictionary.com/parts-of-speech/verbs/Helping-Verbs.html)
-* `WasCharging` - ["Was" is past-tense of "be".](http://grammar.yourdictionary.com/parts-of-speech/verbs/Helping-Verbs.html) Use "was" when referring to 'previous frame' or 'previous state'.
-* `CanReload` - ["Can" is a verb.](http://grammar.yourdictionary.com/parts-of-speech/verbs/Helping-Verbs.html)
+* `HasWeapon`
+* `WasCharging`
+* `CanReload`
 
-Bad examples:
+<br>
 
-* `Fire` - Is on fire? Will fire? Do fire?
-* `OnFire` - Can be confused with event dispatcher for firing.
-* `Dead` - Is dead? Will deaden?
-* `Visibility` - Is visible? Set visibility? A description of flying conditions?
+#### 3.3.6 함수 접근제어자
 
+##### 3.3.6.1 외부 호출이 필요한 함수만 `Public 함수`로 정의하십시오.
 
-#### 3.3.1.4 Event Handlers and Dispatchers Should Start With `On`
+함수를 Public으로 공개한다는 것은 그 순간부터 이 함수를 호출하는 수많은 사용자들에 대해 내가 책임을 져야함을 의미합니다. 버그나 기능확장을 위해 함수를 수정하려면, 그 함수를 호출하고 있는 다른 모든 기능들에 문제가 없는지 확인해야하는 책임이 생기게 됩니다. 외부 호출이 필요없는 함수까지 Public으로 지정해 불필요한 책임을 늘려선 안됩니다.
 
-Any function that handles an event or dispatches an event should start with `On` and continue to follow [the verb rule](#bp-funcs-naming-verbs). The verb may move to the end however if past-tense reads better.
+##### 3.3.6.2 그 외의 모든 함수는 `protected, private 함수`로 정의하십시오.
+불필요한 책임을 늘리지 않기 위해, 내부 기능 처리를 위한 함수들은 `protected, private 함수`로 정의하는 것이 좋습니다.
 
-[Collocations](http://dictionary.cambridge.org/us/grammar/british-grammar/about-words-clauses-and-sentences/collocation) of the word `On` are exempt from following the verb rule.
+##### 3.3.6.3 `Public 함수는 파스칼 케이스`, `protected, private 함수는 카멜 케이스`를 사용합니다.
 
-`Handle` is not allowed. It is 'Unreal' to use `On` instead of `Handle`, while other frameworks may prefer to use `Handle` instead of `On`.
+[m- 접두 변수 규칙](#327-private-protected-변수에는-접두사-m-을-붙입니다)과 동일한 이유입니다. 내부에서만 호출되는 함수에 [카멜 케이스](#카멜-케이스-camelcase)를 사용하면 블루프린트 작성 중 무엇이 내부용 함수인지 명확히 드러나 가독성이 좋아집니다.
 
-Good examples:
+<br>
 
-* `OnDeath` - Common collocation in games
+#### 3.3.7 모든 Public 함수에는 함수 설명이 있어야 합니다.
+
+[인스턴스 편집 가능 변수에 툴팁 설명을 다는 것](#3214-변수-툴팁)과 같은 이유입니다. [Public 함수](#3361-외부-호출이-필요한-함수만-public-함수로-정의하십시오)는 모두 호출자가 이 함수를 호출하면 무슨 일이 일어나는가에 대해 함수 설명으로 보다 자세한 내용을 제공해야 합니다.
+
+<br>
+
+#### 3.3.8 노드는 특정 기능 단위로 코멘트 블록으로 묶어 무엇을 위한 노드 그룹인지 설명합니다.
+
+<br>
+
+#### 3.3.9 모든 함수는 반환 노드(Return Node)를 가지고 있어야 합니다.
+
+모든 함수는 함수가 끝나는 위치에 `반환 노드(Return Node)`를 가지고 있어야 합니다.
+
+`반환 노드`는 `함수가 끝나는 지점을 명시적으로 보여줍니다.` 또한 함수가 끝날 것이라 예상되는 모든 지점에 반환 노드를 추가해두면 컴파일러가 실행 흐름을 디버깅해주게 되어 디버깅이 더 쉬워집니다. 
+
+예를 들어 실행 흐름이 `Sequence`나 `ForLoop` 등에 의해 여러 갈래로 나뉘는 경우, 잘못된 조건체크나 예상보다 빠른 루프 탈출 등으로 인해 실제로는 반환 노드 실행 자체가 논리적으로 불가능한 경우가 생길 수 있습니다. 반환 노드를 추가하지 않으면 오류 없이 컴파일되지만, `모든 예상 종료 지점에 반환 노드를 추가`하면 `컴파일러는 모든 반환 노드가 논리적으로 실행될 수 있는지 검증`하므로 일찍 오류를 발견할 수 있습니다.
+
+<br>
+
+#### 3.3.10 `Switch 문`의 `Default 케이스`는 항상 추가해야 합니다.
+
+정상적인 실행에서는 `Default 케이스`가 실행될 일이 없다 하더라도, Default 케이스는 항상 추가해줘야 합니다. 만약 논리적으로 Default 케이스가 실행되는 일이 절대 없어야 한다면 Default 케이스에는 [오류 보고](#3312-프로젝트-전용-블루프린트-오류보고-함수) 노드를 넣어줍니다.
+
+<br>
+
+#### 3.3.11 두 번 이상 중복되는 노드 그룹은 함수화를 고려해야 합니다.
+
+처음 블루프린트를 짜기 시작할 때는 함수화를 고려하지 마십시오. 일단 노드를 작성해나가다 특정 노드 그룹의 중복이 눈에 띄기 시작한다면, 그 그룹에 대해 함수화를 고려하기 시작하는 게 좋습니다. 
+
+`단순히 노드의 양이 많다해서 함수화를 해서는 안됩니다.` 한 함수 내에 아무리 노드의 양이 많다 할지라도 그 노드들 사이에 반복되는 그룹이 없으며 다른 곳에서도 재사용되지 않는다면, 함수화를 통해 얻을 수 있는 이득은 없습니다. 이처럼 로직의 중복이 없는 단지 긴 일련의 절차에 대해서는 특정 기능 단위로 `노드 접기(Collapse Nodes)` 기능을 사용해 노드를 기능 단위로 접어두는 것이 좋습니다. `노드의 양은 함수화를 고려하는 기준이 아닙니다.`
+
+`특정 노드 그룹의 중복`이 눈에 띄기 시작할 때 함수화를 고려하는 게 좋습니다. 만약 특정 노드 그룹이 한 기능 안에서 여러 곳에서 사용된다면, 중복되는 노드 그룹을 수정하려면 그것들이 사용되는 모든 지점에 찾아가 변경사항을 적용해야 합니다. 만약 이런 상황이 여러 함수, 여러 클래스에 걸쳐 일어난다고 상상해보십시오. 반드시 일부 지점에서는 업데이트를 깜빡하는 실수를 하게 됩니다. `이런 노드를 함수화`를 한다면 `함수 내부를 수정하는 것만으로 함수가 호출되는 모든 지점에 변경사항을 반영`할 수 있게 됩니다. `함수화의 기준은 노드의 중복 여부입니다.`
+
+<br>
+
+#### 3.3.12 프로젝트 전용 블루프린트 오류보고 함수
+
+블루프린트도 훌륭한 디버깅 툴을 제공하지만, 어서트나 오류로깅 등의 디버깅 전용 함수가 다른 언어만큼 편리하지는 않습니다. 때문에 프로젝트에 간단한 블루프린트 전용 오류보고 함수가 있다면 좋습니다. 
+
+<br>
+
+#### 3.3.13 함수의 참조형(Reference) 매개변수에는 기본적으로 `Null`이 들어오지 않는다고 가정합니다.
+`Null(None)`이 허용되지 않기 때문에 내부에서 모든 참조형 매개변수가 `유효한지 검증(IsValid)해야한다는 의미가 아닙니다.` 오히려 Null이 절대 들어오지 않을 것이라 가정했기 때문에 `내부에서는 어떤 유효성 검증도 하지 않음을 의미합니다.`   
+
+별다른 표시가 없다면 함수는 기본적으로 Null 매개변수를 예외처리하지 않음을 의미하고, 호출자도 함수가 Null을 제대로 처리해줄 것이라 기대하지 않습니다. 자세한 내용은 [데이터 유효성 검증 원칙](#)을 참고해주세요. 
+
+<br>
+
+#### 3.3.14 함수의 참조형 매개변수가 예외적으로 `Null을 허용`할 경우, `매개변수명 뒤에 -OrNull 접미사`를 붙입니다.
+
+참조형 매개변수로 `Null`을 허용해 `Null`이 들어와도 내부에서 적절히 예외처리를 해주는 함수는 Null을 받을 수 있음을 매개변수 이름 뒤에 `-OrNull`을 붙여 명시해줍니다. 
+
+<br>
+
+#### 3.3.15 함수가 참조형을 반환할 경우 `Null`을 반환하지 않습니다.
+
+<br>
+
+#### 3.3.16 예외적으로 `Null 반환`이 가능한 함수의 경우 `함수명 뒤에 -OrNull 접미사`를 붙입니다.
+
+<br>
+
+#### 3.3.17 이벤트 핸들러 및 디스패처는 `On- 접두사`로 시작해야 합니다.
+
+`이벤트`나 `디스패처`를 처리하는 함수는 모두 `On- 접두사`로 시작한 뒤 [기본 함수 이름 규칙](#332-함수는-항상-동사로-시작해야-합니다)을 따릅니다.
+
+*좋은 예:*
+* `OnDeath`
 * `OnPickup`
 * `OnReceiveMessage`
-* `OnMessageRecieved`
 * `OnTargetChanged`
 * `OnClick`
 * `OnLeave`
 
-Bad examples:
+<br>
 
-* `OnData`
-* `OnTarget`
-* `HandleMessage`
-* `HandleDeath`
+#### 3.3.18 원격 프로시저 호출은 그 대상이 앞에 와야합니다.
 
+`RPC`가 생성될 때마다 `Server`, `Client`, `Multicast` 접두사가 지정되어야 합니다. 대상 접두사 뒤에 [기본 함수 이름 규칙](#332-함수는-항상-동사로-시작해야-합니다)을 따릅니다.
 
-#### 3.3.1.5 Remote Procedure Calls Should Be Prefixed With Target
-
-Any time an RPC is created, it should be prefixed with either `Server`, `Client`, or `Multicast`. No exceptions.
-
-After the prefix, follow all other rules regarding function naming.
-
-Good examples:
-
+*좋은 예:*
 * `ServerFireWeapon`
 * `ClientNotifyDeath`
 * `MulticastSpawnTracerEffect`
 
-Bad examples:
-
-* `FireWeapon` - Does not indicate its an RPC of some kind.
-* `ServerClientBroadcast` - Confusing.
-* `AllNotifyDeath` - Use `Multicast`, never `All`.
-* `ClientWeapon` - No verb, ambiguous.
+*나쁜 예:*
+* `ServerClientBroadcast` 
+* `AllNotifyDeath` - `Multicast`를 써야합니다.
 
 
+**[⬆ Back to Top](#목차)**
 
-#### 3.3.2 All Functions Must Have Return Nodes
-
-All functions must have return nodes, no exceptions.
-
-Return nodes explicitly note that a function has finished its execution. In a world where blueprints can be filled with `Sequence`, `ForLoopWithBreak`, and backwards reroute nodes, explicit execution flow is important for readability, maintenance, and easier debugging.
-
-The Blueprint compiler is able to follow the flow of execution and will warn you if there is a branch of your code with an unhandled return or bad flow if you use return nodes.
-
-In situations like where a programmer may add a pin to a Sequence node or add logic after a for loop completes but the loop iteration might return early, this can often result in an accidental error in code flow. The warnings the Blueprint compiler will alert everyone of these issues immediately.
-
-
-#### 3.3.3 No Function Should Have More Than 50 Nodes
-
-Simply, no function should have more than 50 nodes. Any function this big should be broken down into smaller functions for readability and ease of maintenance.
-
-The following nodes are not counted as they are deemed to not increase function complexity:
-
-* Comment
-* Route
-* Cast
-* Getting a Variable
-* Breaking a Struct
-* Function Entry
-* Self
-
-
-#### 3.3.4 All Public Functions Should Have A Description
-
-This rule applies more to public facing or marketplace blueprints, so that others can more easily navigate and consume your blueprint API.
-
-Simply, any function that has an access specificer of Public should have its description filled out.
-
-
-#### 3.3.5 All Custom Static Plugin `BlueprintCallable` Functions Must Be Categorized By Plugin Name
-
-If your project includes a plugin that defines `static` `BlueprintCallable` functions, they should have their category set to the plugin's name or a subset category of the plugin's name.
-
-For example, `Zed Camera Interface` or `Zed Camera Interface | Image Capturing`.
-
-
-### 3.4 Blueprint Graphs
-
-This section covers things that apply to all Blueprint graphs.
-
-
-#### 3.4.1 No Spaghetti
-
-Wires should have clear beginnings and ends. You should never have to mentally untangle wires to make sense of a graph. Many of the following sections are dedicated to reducing spaghetti.
-
-
-#### 3.4.2 Align Wires Not Nodes
-
-Always align wires, not nodes. You can't always control the size and pin location on a node, but you can always control the location of a node and thus control the wires. Straight wires provide clear linear flow. Wiggly wires wear wits wickedly. You can straighten wires by using the Straighten Connections command with BP nodes selected. Hotkey: Q
-
-Good example: The tops of the nodes are staggered to keep a perfectly straight white exec line.
-![Aligned By Wires](https://github.com/Allar/ue5-style-guide/blob/main/images/bp-graphs-align-wires-good.png?raw=true "Aligned By Wires")
-
-Bad Example: The tops of the nodes are aligned creating a wiggly white exec line.
-![Bad](https://github.com/Allar/ue5-style-guide/blob/main/images/bp-graphs-align-wires-bad.png?raw=true "Wiggly")
-
-Acceptable Example: Certain nodes might not cooperate no matter how you use the alignment tools. In this situation, try to minimize the wiggle by bringing the node in closer.
-![Acceptable](https://github.com/Allar/ue5-style-guide/blob/main/images/bp-graphs-align-wires-acceptable.png?raw=true "Acceptable")
-
-
-#### 3.4.3 White Exec Lines Are Top Priority
-
-If you ever have to decide between straightening a linear white exec line or straightening data lines of some kind, always straighten the white exec line.
-
-
-#### 3.4.4 Graphs Should Be Reasonably Commented
-
-Blocks of nodes should be wrapped in comments that describe their higher-level behavior. While every function should be well named so that each individual node is easily readable and understandable, groups of nodes contributing to a purpose should have their purpose described in a comment block. If a function does not have many blocks of nodes and its clear that the nodes are serving a direct purpose in the function's goal, then they do not need to be commented as the function name and  description should suffice.
-
-
-#### 3.4.5 Graphs Should Handle Casting Errors Where Appropriate
-
-If a function or event assumes that a cast always succeeds, it should appropriately report a failure in logic if the cast fails. This lets others know why something that is 'supposed to work' doesn't. A function should also attempt a graceful recover after a failed cast if it's known that the reference being casted could ever fail to be casted.
-
-This does not mean every cast node should have its failure handled. In many cases, especially events regarding things like collisions, it is expected that execution flow terminates on a failed cast quietly.
-
-
-#### 3.4.6 Graphs Should Not Have Any Dangling / Loose / Dead Nodes
-
-All nodes in all blueprint graphs must have a purpose. You should not leave dangling blueprint nodes around that have no purpose or are not executed.
-
-**[⬆ Back to Top](#table-of-contents)**
-
-
+<br>
+<br>
 
 ## 4. Static Meshes
 

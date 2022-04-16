@@ -1121,11 +1121,11 @@ Content 폴더 내의 모든 폴더 이름에 적용되는 공통 규칙들입�
 *나쁜 예:*
 * `PlayerScore`
 * `PlayerKills`
-* `MyCharacterName`
+* `CharacterName`
 * `CharacterSkills`
 * `CharacterSkin`
 
-호출자 입장에서 이런 변수의 호출은 `BP_PlayerCharacter.PlayerScore` 형태가 됩니다. 이미 `PlayerCharacter` 소속임이 명확하므로 `BP_PlayerCharacter.Score` 형태가 되는 것이 더 바람직합니다.
+호출자 입장에서 이런 변수의 호출은 `BP_PlayerCharacter.CharacterName` 형태가 됩니다. 이미 `PlayerCharacter` 소속임이 명확하므로 `BP_PlayerCharacter.Name` 형태가 되는 것이 더 바람직합니다.
 
 *좋은 예:*
 * `Score`
